@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:dev": "cross-env ENVIRONMENT=dev jest",
-    "test:stag": "cross-env ENVIRONMENT=stag jest",
-    "test:prod": "cross-env ENVIRONMENT=prod jest"
+    "test:dev": "cross-env ENV=dev jest tests/suites/main.suite.test.ts --runInBand",
+    "test:staging": "cross-env ENV=staging jest tests/suites/main.suite.test.ts --runInBand",
+    "test:prod": "cross-env ENV=prod jest tests/suites/main.suite.test.ts --runInBand"
   },
   "keywords": [],
   "author": "",

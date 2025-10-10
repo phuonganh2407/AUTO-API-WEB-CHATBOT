@@ -1,4 +1,4 @@
-import { login } from "../api/auth.api";
+import { login } from "../api/apiAuthentication/auth.api";
 // import { ShopAPI } from "../api/shop.api";
 import { saveSession } from "./session.helper";
 import { accounts } from "../../config/accounts.config";

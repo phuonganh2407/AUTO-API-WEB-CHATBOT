@@ -32,8 +32,8 @@ axiosClient.interceptors.request.use((config) => {
   // Thêm tenant vào header
   config.headers.tenant = tenant;
 
-  // Log thông tin request
-  console.log('Request Details:', {
+   // ✅ Log
+  console.log("🚀 [REQUEST]", {
     url: config.url,
     method: config.method?.toUpperCase(),
     headers: config.headers,
@@ -46,13 +46,10 @@ axiosClient.interceptors.request.use((config) => {
 axiosClient.interceptors.response.use(
   (res) => res,
   (err) => {
-    console.error("API error details:", {
-      status: err.response?.status,
-      statusText: err.response?.statusText,
-      data: err.response?.data,
+    console.error("❌ API error:", {
       url: err.config?.url,
-      method: err.config?.method,
-      headers: err.config?.headers,
+      status: err.response?.status,
+      message: err.message,
     });
     throw err;
   }

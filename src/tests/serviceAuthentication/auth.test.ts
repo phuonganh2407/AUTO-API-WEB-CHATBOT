@@ -1,5 +1,5 @@
-import { AuthFlowHelper } from "../utils/infoAccount.helper";
-import { clearSession } from "../utils/session.helper";
+import { AuthFlowHelper } from "../../utils/infoAccount.helper";
+import { clearSession } from "../../utils/session.helper";
 
 describe("Auth Flow Test", () => {
 	beforeAll(() => {
