@@ -1,6 +1,6 @@
 import axios from "axios";
-import { getSession } from "../utils/session.helper";
-import { baseURL } from "../../config/urls.config";
+import { getSession } from "../src/utils/session.helper";
+import { baseURL } from "../config/urls.config";
 
 const axiosClient = axios.create({
   baseURL: baseURL,

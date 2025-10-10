@@ -1,4 +1,4 @@
-import axiosClient from "../axiosClient";
+import axiosClient from "../../../core/axiosClient";
 import { baseAuthEndpoints } from "../../../config/urls.config";
 
 export async function login(phone: string, password: string) {

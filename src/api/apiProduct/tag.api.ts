@@ -1,5 +1,5 @@
 import { baseProductEndpoints } from "../../../config/urls.config";
-import axiosClient from "../axiosClient";
+import axiosClient from "../../../core/axiosClient";
 
 export interface CreateTagBody {
   name: string;
