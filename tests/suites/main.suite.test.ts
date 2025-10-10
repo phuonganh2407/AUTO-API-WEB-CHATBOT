@@ -1,2 +1,2 @@
 import "../serviceAuthentication/auth.test";
-import "../serviceProduct/tags.test";
+import "../serviceProduct/createTags.test";

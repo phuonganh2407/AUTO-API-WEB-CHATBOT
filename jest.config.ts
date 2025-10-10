@@ -5,7 +5,7 @@ const config: Config.InitialOptions = {
   testEnvironment: 'node',
   
   // Test files location
-  roots: ['<rootDir>/src/tests'],
+  roots: ['<rootDir>/tests'],
   testMatch: ["**/tests/**/*.test.ts"],
   
   // File extensions and transformations
@@ -31,6 +31,9 @@ const config: Config.InitialOptions = {
       },
     ],
   ],
+
+  // Import thư viện Faker trong jest
+  transformIgnorePatterns: ["/node_modules/(?!@faker-js/faker)"],
 };
 
 export default config;

@@ -1,7 +1,10 @@
 import axios from "axios";
-import { getSession } from "../src/utils/session.helper";
+import { getSession } from "../utils/session.helper";
 import { baseURL } from "../config/urls.config";
 
+/**
+ * Tạo instance axios với cấu hình mặc định của request
+ */
 const axiosClient = axios.create({
   baseURL: baseURL,
   timeout: 10000,
@@ -19,7 +22,7 @@ axiosClient.interceptors.request.use((config) => {
   // Get token and shopId from session
   const { token, shopId } = getSession();
   const env = process.env.ENVIRONMENT || 'dev';
-  const { tenant } = require('../../config/accounts.config').accounts[env];
+  const { tenant } = require('../config/accounts.config').accounts[env];
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;

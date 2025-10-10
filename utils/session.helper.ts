@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const sessionFile = path.resolve(__dirname, "../../storage/session.json");
+const sessionFile = path.resolve(__dirname, "../storage/session.json");
 
 interface SessionData {
   token: string;
