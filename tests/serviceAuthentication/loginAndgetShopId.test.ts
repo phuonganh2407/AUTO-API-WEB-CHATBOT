@@ -10,4 +10,9 @@ describe("Auth Flow Test", () => {
 		const token = await AuthFlowHelper.loginAndSaveToken();
 		console.log("Token saved and verified:", token);
 	});
+
+	test("Case 2: Get shop ID and save", async () => {
+		const shopId = await AuthFlowHelper.getShopIdAndSave();
+		console.log("Shop ID saved and verified:", shopId);
+	});
 });

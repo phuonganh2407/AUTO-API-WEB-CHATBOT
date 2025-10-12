@@ -8,6 +8,6 @@
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist"
   },
-  "include": ["src/**/*", "core/axiosClient.ts", "services/auth.api.ts"],
+  "include": ["src/**/*", "core/axiosClient.ts", "services/authentication/account/login.api.ts"],
   "exclude": ["node_modules", "dist"]
 }

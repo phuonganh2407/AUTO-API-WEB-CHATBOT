@@ -5,10 +5,13 @@
 import dotenv from "dotenv";
 import path from "path";
 
-const ENV = process.env.ENVIRONMENT || "dev";
-const envPath = path.resolve(__dirname, '../enviroments', `.env.${ENV}`);
+const ENV = process.env.ENVIRONMENT;
+const envPath = path.resolve(__dirname, '../environments', `.env.${ENV}`);
 
 dotenv.config({ path: envPath });
+// console.log("ENV:", ENV);
+// console.log("BASE_URL:", process.env.BASE_URL);
+
 
 export const baseURL = process.env.BASE_URL;
 export const productBaseURL = process.env.BASE_PRODUCT_URL;
@@ -22,4 +25,5 @@ export const baseProductEndpoints = {
 
 export const baseAuthEndpoints = {
   urlLogin: `${authenBaseURL}/sign-in/password`,
+  urlGetAllShops: `${authenBaseURL}/shops/all`,
 }

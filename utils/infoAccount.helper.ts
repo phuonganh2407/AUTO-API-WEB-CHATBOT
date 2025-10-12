@@ -1,8 +1,8 @@
-import { login } from "../services/auth.api";
-// import { ShopAPI } from "../api/shop.api";
+import { login } from "../services/authentication/account/login.api";
 import { saveSession } from "./session.helper";
 import { accounts } from "../config/accounts.config";
 import dotenv from "dotenv";
+import { getIdShop } from "../services/authentication/shop/getShop.api";
 
 dotenv.config();
 
@@ -27,16 +27,17 @@ export const AuthFlowHelper = {
   /**
    * Lấy shopId → lưu session
    */
-  // getShopIdAndSave: async () => {
-  //   const res = await ShopAPI.getShopInfo();
-  //   const shopId = res.data.data?.shopId || res.data.data?.id;
-
-  //   if (!shopId) throw new Error("Không lấy được shopId!");
-
-  //   saveSession(undefined, shopId);
-  //   console.log("✅ ShopID saved:", shopId);
-  //   return shopId;
-  // },
+  getShopIdAndSave: async () => {
+    const env = process.env.ENVIRONMENT as "dev" | "stag" | "prod";
+    const { shopName } = accounts[env]; // 👈 lấy tên shop mong muốn từ config
+    const res = await getIdShop();
+    const listShops = res.data.shops;
+    const shop = listShops.find((shop: any) => shop.name === shopName); // tìm shop theo tên cửa hàng theo môi trường
+    const shopId = shop ? shop.id : null;
+    saveSession(undefined, shopId);
+    console.log("✅ ShopID saved:", shopId);
+    return shopId;
+  },
 
   /**
    * Full flow login + lấy shopId

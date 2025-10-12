@@ -1,2 +1,2 @@
-import "../serviceAuthentication/auth.test";
-import "../serviceProduct/createTags.test";
+import "../serviceAuthentication/loginAndgetShopId.test";
+// import "../serviceProduct/createTags.test";
