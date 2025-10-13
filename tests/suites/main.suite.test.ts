@@ -1,2 +1,1 @@
-import "../serviceAuthentication/loginAndgetShopId.test";
-// import "../serviceProduct/createTags.test";
+import "../serviceProduct/createTags.test";

@@ -17,8 +17,8 @@ export const accounts: Record<Env, Account> = {
   stag: {
     username: "0383513969",
     password: "123456789",
-    tenant: "589719020044288",
-    shopName: "Cua hang Panh Chi nhanh 1"
+    tenant: "849735742128128",
+    shopName: "Panh stag"
   },
   prod: {
     username: "0383513969",

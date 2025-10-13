@@ -4,6 +4,9 @@ const config: Config.InitialOptions = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   
+  // Global setup: chạy trước tất cả test để đảm bảo token hợp lệ
+  globalSetup: './global.setup.ts',
+  
   // Test files location
   roots: ['<rootDir>/tests'],
   testMatch: ["**/tests/**/*.test.ts"],
