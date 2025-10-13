@@ -1,7 +1,7 @@
 
 import { tagsDataValid } from "../../data/tags.data";
 
-import { createTag } from "../../services/tag.api";
+import { createTag } from "../../services/product/tags/tag.api";
 
 
 

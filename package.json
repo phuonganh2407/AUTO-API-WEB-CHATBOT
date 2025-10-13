@@ -7,7 +7,11 @@
     "test": "jest",
     "test:dev": "cross-env ENVIRONMENT=dev jest tests/suites/main.suite.test.ts --runInBand",
     "test:stag": "cross-env ENVIRONMENT=stag jest tests/suites/main.suite.test.ts --runInBand",
-    "test:prod": "cross-env ENVIRONMENT=prod jest tests/suites/main.suite.test.ts --runInBand"
+    "test:prod": "cross-env ENVIRONMENT=prod jest tests/suites/main.suite.test.ts --runInBand",
+
+    "test:dev:single": "cross-env ENVIRONMENT=dev npx jest -t",
+    "test:stag:single": "cross-env ENVIRONMENT=stag npx jest -t",
+    "test:prod:single": "cross-env ENVIRONMENT=prod npx jest -t"
   },
   "keywords": [],
   "author": "",
