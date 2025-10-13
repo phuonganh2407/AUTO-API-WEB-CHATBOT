@@ -1,3 +1,5 @@
+//FUNCTION HỖ TRỢ CHO VIỆC RANDOM DATA, TẠO DỮ LIỆU TEST
+
 /**
  * Tạo chuỗi ký tự ngẫu nhiên
  * @param length nhập chiều dài ký tự chuỗi mong muốn
