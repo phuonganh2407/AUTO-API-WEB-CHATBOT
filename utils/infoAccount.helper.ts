@@ -8,6 +8,18 @@ dotenv.config();
 
 export const AuthFlowHelper = {
   /**
+   * Đăng nhập và lấy shopId, lưu cả token và shopId vào session
+   */
+  loginAndSaveTokenAndShop: async () => {
+    if (isTokenExpired()) {
+      const token = await AuthFlowHelper.loginAndSaveToken();
+      await AuthFlowHelper.getShopIdAndSave();
+      return token;
+    }
+    // Nếu token chưa hết hạn thì không làm gì cả
+    return getSession().token;
+  },
+  /**
    * Đăng nhập → lấy token → lưu session với expireToken
    */
   loginAndSaveToken: async () => {

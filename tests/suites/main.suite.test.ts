@@ -1,1 +1,1 @@
-// import "../serviceProduct/createTags.test";
+import "../serviceProduct/module-tags/createTags.test";

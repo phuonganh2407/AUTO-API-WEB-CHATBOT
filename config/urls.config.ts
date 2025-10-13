@@ -29,7 +29,8 @@ export const authenBaseURL = process.env.BASE_AUTHENTICATION_URL; // URL cơ s�
 export const baseProductEndpoints = {
   attributes: `${productBaseURL}/attribute`, // Endpoint cho attributes API
   urlCreateTag: `${productBaseURL}/tag`, // Endpoint cho tags API
-  urlGetTagColor: `${productBaseURL}/tag/color`, // Endpoint lấy màu thẻ tag
+  urlDetailTag: `${productBaseURL}/tag`, // Endpoint chi tiết tag theo ID
+  urlGetTagColor: `${productBaseURL}/tag-color`, // Endpoint lấy màu thẻ tag
 
 }
 

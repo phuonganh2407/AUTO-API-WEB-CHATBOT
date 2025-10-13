@@ -11,3 +11,12 @@ export async function createTag(data: CreateTagBody) {
   return axiosClient.post(baseProductEndpoints.urlCreateTag, data);
 }
 
+/**
+ * Lấy chi tiết thẻ (tag) theo ID
+ * @param id ID của thẻ
+ * @returns Promise chứa thông tin chi tiết thẻ
+ */
+export async function detailTag(id: number) {
+  return axiosClient.get(`${baseProductEndpoints.urlDetailTag}/${id}`);
+}
+

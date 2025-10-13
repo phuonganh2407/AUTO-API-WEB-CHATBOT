@@ -32,8 +32,10 @@ axiosClient.interceptors.request.use((config) => {
     config.headers.shopId = shopId;
   }
 
-  // Thêm tenant vào header
-  config.headers.tenant = tenant;
+  // Chỉ thêm tenant vào header nếu là request login
+  if (config.url && config.url.includes('sign-in')) {
+    config.headers.tenant = tenant;
+  }
 
    // ✅ Log
   console.log("🚀 [REQUEST]", {
@@ -53,6 +55,7 @@ axiosClient.interceptors.response.use(
       url: err.config?.url,
       status: err.response?.status,
       message: err.message,
+      response: err.response?.data // Log toàn bộ body lỗi
     });
     throw err;
   }
