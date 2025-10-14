@@ -1,22 +1,25 @@
 import { detailTag } from "../../../services/product/tags/tag.api";
+import { compareRequestResponse, ComparisonConfig, ComparisonResult } from "../../../utils/funtionHelper";
 
 /**
  * So sánh chi tiết tag sau khi tạo thành công
- * @param payload - Body request tạo tag
- * @param createResponse - Response từ API tạo tag
+ * @param payload - Body request tạo tag (name, type, tagColorId)
+ * @param detailResponse - Response từ API detail tag
+ * @param config - Cấu hình comparison (optional)
+ * @returns ComparisonResult - Kết quả so sánh
  */
-export async function compareTagDetails(payload: any, createResponse: any) {
-  const id = createResponse.data.id; // Lấy id từ response create (sửa từ data.data.id thành data.id)
-  const detailResponse = await detailTag(id); // Gọi API detail
-  const detailData = detailResponse.data; // Dữ liệu detail (sửa từ data.data thành data)
+export function compareTagDetails(
+  payload: any,           // Request body (name, type, tagColorId)
+  detailResponse: any,    // Response từ detail API
+  config: ComparisonConfig = {}
+): ComparisonResult {
+  const detailData = detailResponse.data; // Response body từ detail API
 
-  // So sánh các field giống nhau giữa payload và detailData
-  for (const key in payload) {
-    if (detailData.hasOwnProperty(key)) {
-      const expectedValue = typeof payload[key] === 'string' ? payload[key].trim() : payload[key];
-      const actualValue = typeof detailData[key] === 'string' ? detailData[key].trim() : detailData[key];
-      const errMess = `${key}: expected ${expectedValue}, got ${actualValue}`;
-      expect(actualValue).toEqual(expectedValue); // So sánh giá trị
-    }
-  }
+  // Default config cho tags
+  const defaultConfig: ComparisonConfig = {
+    ...config // Override với config truyền vào
+  };
+
+  // So sánh request body (payload) với detail response (detailData)
+  return compareRequestResponse(payload, detailData, defaultConfig);
 }

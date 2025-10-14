@@ -36,13 +36,10 @@ axiosClient.interceptors.request.use((config) => {
   if (config.url && config.url.includes('sign-in')) {
     config.headers.tenant = tenant;
   }
-
-   // ✅ Log
-  console.log("🚀 [REQUEST]", {
-    url: config.url,
-    method: config.method?.toUpperCase(),
-    headers: config.headers,
-    data: config.data
+   // Log gọn request: method + url + details
+  console.log(`🚀 [REQUEST] ${config.method?.toUpperCase()} ${config.url}`, {
+    Headers: config.headers,
+    ...(config.data && { Body: config.data })
   });
 
   return config;

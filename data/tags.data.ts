@@ -8,7 +8,7 @@ export async function tagsDataValid() {
     const tagColorsResponse = await getTagColor();
     const tagColorIds = getRandomData(tagColorsResponse.data, 1, 'id');
     return {
-        name: faker.color.human(),
+        name: `${faker.color.human()}_${Date.now()}`, // Thêm timestamp để đảm bảo unique
         type: typeRandom[Math.floor(Math.random() * typeRandom.length)],
         tagColorId: tagColorIds[0]
     }
