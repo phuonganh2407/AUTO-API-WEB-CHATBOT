@@ -1,25 +1,24 @@
-import { detailTag } from "../../../services/product/tags/tag.api";
-import { compareRequestResponse, ComparisonConfig, ComparisonResult } from "../../../utils/funtionHelper";
+import { createTag, getDetailTag } from "../../../services/product/tags/tag.api";
+import { compareRequestResponse, ComparisonConfig, handleComparisonResult } from "../../../utils/funtionHelper";
 
 /**
- * So sánh chi tiết tag sau khi tạo thành công
+ * Tạo tag và so sánh chi tiết sau khi tạo thành công
  * @param payload - Body request tạo tag (name, type, tagColorId)
- * @param detailResponse - Response từ API detail tag
  * @param config - Cấu hình comparison (optional)
- * @returns ComparisonResult - Kết quả so sánh
  */
-export function compareTagDetails(
+export async function compareTagDetails(
   payload: any,           // Request body (name, type, tagColorId)
-  detailResponse: any,    // Response từ detail API
-  config: ComparisonConfig = {}
-): ComparisonResult {
+): Promise<void> {
+  // Gọi API create để tạo tag
+  const createResponse = await createTag(payload);
+
+  // Gọi API detail để lấy thông tin chi tiết
+  const detailResponse = await getDetailTag(createResponse.data.id);
   const detailData = detailResponse.data; // Response body từ detail API
 
-  // Default config cho tags
-  const defaultConfig: ComparisonConfig = {
-    ...config // Override với config truyền vào
-  };
-
   // So sánh request body (payload) với detail response (detailData)
-  return compareRequestResponse(payload, detailData, defaultConfig);
+  const result = compareRequestResponse(payload, detailData);
+
+  // Xử lý kết quả comparison (chỉ log khi fail, throw error nếu cần)
+  handleComparisonResult(result, "Tag comparison");
 }

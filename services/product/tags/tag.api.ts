@@ -16,7 +16,7 @@ export async function createTag(data: CreateTagBody) {
  * @param id ID của thẻ
  * @returns Promise chứa thông tin chi tiết thẻ
  */
-export async function detailTag(id: number) {
+export async function getDetailTag(id: number) {
   return axiosClient.get(`${baseProductEndpoints.urlDetailTag}/${id}`);
 }
 

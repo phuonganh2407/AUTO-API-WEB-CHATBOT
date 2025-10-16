@@ -3,26 +3,26 @@
  * Có thể tái sử dụng trong nhiều test case
  */
 
-/**
- * Interface cho cấu hình comparison
- */
-export interface ComparisonConfig {
-  /** Map field request -> field response (nếu tên khác nhau) */
-  fieldMapping?: Record<string, string>;
-  /** Map special fields cần xử lý đặc biệt */
-  specialFieldMapping?: Record<string, string>;
-  /** Danh sách fields bỏ qua không cần so sánh */
-  ignoredFields?: string[];
-}
+import { expect } from "@jest/globals";
 
 /**
- * Kết quả comparison
+ * @description HÀM KIỂM TRA STATUS ĐỐI VỚI CÁC REQUEST FAILED
+ * @param response - Response object từ API call
+ * @param status - Status code mong đợi
+ * @param message - Message cần kiểm tra trong response
  */
-export interface ComparisonResult {
-  isSuccess: boolean;
-  matches: string[];
-  warnings: string[];
-  errors: string[];
+export function testsCheckFails(response: any, status: number, message: string): void {
+  // Kiểm tra status code
+  expect(response.status).toBe(status);
+
+  // Lấy data từ response
+  const resData = response.data;
+
+  // Chuyển dữ liệu từ kiểu JSON sang STRING
+  const resText = JSON.stringify(resData);
+
+  // Kiểm tra kết quả trả về có chứa lỗi cần kiểm tra
+  expect(resText).toContain(message);
 }
 
 /**
@@ -41,32 +41,38 @@ export function getRandomData(
   customField: string = "items",
   filterFunction?: (item: any) => boolean
 ): any[] {
+  // Kiểm tra nếu data không tồn tại, trả về mảng rỗng
   if (!data) return [];
+
   // Xử lý data để lấy list
   let list: any[];
   if (Array.isArray(data)) {
+    // Nếu data là mảng, sử dụng trực tiếp
     list = data;
   } else if (Array.isArray(data[customField])) {
+    // Nếu data là object và có field customField là mảng, lấy mảng đó
     list = data[customField];
   } else {
+    // Nếu không phải, throw error
     throw new Error(
       `Invalid data format: '${customField}' is not a valid list`
     );
   }
 
-  // Áp dụng filter nếu có
+  // Áp dụng filter nếu có hàm filter được cung cấp
   if (filterFunction) {
     list = list.filter(filterFunction);
   }
 
+  // Nếu list rỗng sau filter, trả về mảng rỗng
   if (!list || list.length === 0) return [];
 
-  // Tạo bản sao và map field nếu cần
+  // Tạo bản sao của list và map field nếu cần
   let newList: any[] = field
-    ? list.map((element) => element[field])
-    : list.slice();
+    ? list.map((element) => element[field]) // Map từng element lấy field cụ thể
+    : list.slice(); // Sao chép toàn bộ list
 
-  // Nếu quantity là null, lấy toàn bộ dữ liệu
+  // Nếu quantity là null, trả về toàn bộ newList
   if (quantity === null) {
     return newList;
   }
@@ -74,9 +80,12 @@ export function getRandomData(
   // Lấy ngẫu nhiên quantity phần tử
   let randData: any[] = [];
   while (randData.length < quantity && newList.length > 0) {
+    // Chọn index ngẫu nhiên
     const randIndex = Math.floor(Math.random() * newList.length);
+    // Thêm phần tử vào randData
     randData.push(newList[randIndex]);
-    newList.splice(randIndex, 1); // Loại bỏ để tránh lặp lại
+    // Loại bỏ phần tử đã chọn để tránh lặp lại
+    newList.splice(randIndex, 1);
   }
   return randData;
 }
@@ -91,18 +100,22 @@ export function normalizeString(
   str: string,
   options: { trim?: boolean; toLowerCase?: boolean; toUpperCase?: boolean } = {}
 ): string {
-  if (typeof str !== "string") return str; // Nếu không phải string, trả về nguyên
+  // Nếu không phải string, trả về nguyên giá trị
+  if (typeof str !== "string") return str;
 
   let result = str;
 
+  // Áp dụng trim nếu được bật
   if (options.trim) {
     result = result.trim();
   }
 
+  // Chuyển về lowercase nếu được bật
   if (options.toLowerCase) {
     result = result.toLowerCase();
   }
 
+  // Chuyển về uppercase nếu được bật
   if (options.toUpperCase) {
     result = result.toUpperCase();
   }
@@ -111,21 +124,51 @@ export function normalizeString(
 }
 
 /**
- * So sánh dữ liệu giữa request body và response body (Đơn giản)
- * Chỉ so sánh các field có tên giống nhau
+ * Type cho cấu hình comparison (optional)
+ */
+export type ComparisonConfig = {
+  /** Map field request -> field response (nếu tên khác nhau) */
+  fieldMapping?: Record<string, string>;
+  /** Danh sách fields bỏ qua không cần so sánh */
+  ignoredFields?: string[];
+};
+
+/**
+ * Type cho kết quả comparison
+ */
+export type ComparisonResult = {
+  isSuccess: boolean;
+  matches: string[];
+  warnings: string[];
+  errors: string[];
+};
+
+/**
+ * So sánh dữ liệu giữa request body và response body
  * @param requestBody - Body từ request
  * @param responseBody - Body từ response
- * @param config - Cấu hình comparison (optional, chỉ dùng khi cần mapping/ignore)
- * @returns ComparisonResult
+ * @param config - Cấu hình comparison (optional)
+ * @returns Kết quả comparison
  */
 export function compareRequestResponse(
   requestBody: any,
   responseBody: any,
-  config: ComparisonConfig = {}
-): ComparisonResult {
+  config: {
+    /** Map field request -> field response (nếu tên khác nhau) */
+    fieldMapping?: Record<string, string>;
+    /** Danh sách fields bỏ qua không cần so sánh */
+    ignoredFields?: string[];
+  } = {}
+): {
+  isSuccess: boolean;
+  matches: string[];
+  warnings: string[];
+  errors: string[];
+} {
+  // Lấy cấu hình, mặc định là object rỗng
   const { fieldMapping = {}, ignoredFields = [] } = config;
 
-  // Validate inputs
+  // Validate inputs: kiểm tra requestBody
   if (!requestBody || typeof requestBody !== "object") {
     return {
       isSuccess: false,
@@ -135,6 +178,7 @@ export function compareRequestResponse(
     };
   }
 
+  // Validate inputs: kiểm tra responseBody
   if (!responseBody || typeof responseBody !== "object") {
     return {
       isSuccess: false,
@@ -144,36 +188,46 @@ export function compareRequestResponse(
     };
   }
 
-  const result: ComparisonResult = {
+  // Khởi tạo kết quả comparison
+  const result: {
+    isSuccess: boolean;
+    matches: string[];
+    warnings: string[];
+    errors: string[];
+  } = {
     isSuccess: true,
     matches: [],
     warnings: [],
     errors: [],
   };
 
-  // So sánh từng field trong request
+  // Duyệt qua từng field trong requestBody
   Object.entries(requestBody).forEach(([reqKey, reqValue]) => {
-    // Skip ignored fields
+    // Bỏ qua fields trong ignoredFields
     if (ignoredFields.includes(reqKey)) return;
 
-    // Xác định field trong response (có thể mapping)
+    // Xác định tên field trong response (có thể được map)
     const resKey = fieldMapping[reqKey] || reqKey;
 
-    // Check if field exists in response
+    // Kiểm tra xem field có tồn tại trong response không
     if (!(resKey in responseBody)) {
       result.warnings.push(`Field '${reqKey}' missing in response`);
       return;
     }
 
+    // Lấy giá trị từ response
     const resValue = responseBody[resKey];
 
-    // So sánh values
-    if (areValuesEqual(reqValue, resValue)) {
+    // So sánh values sử dụng Jest expect với try-catch để thu thập lỗi
+    try {
+      expect(resValue).toEqual(reqValue); // Dùng Jest toEqual cho deep equality
+      // Nếu pass, thêm vào matches
       const mappingInfo = fieldMapping[reqKey] ? ` (→ ${resKey})` : "";
       result.matches.push(
         `✅ ${reqKey}${mappingInfo}: ${formatValue(reqValue)}`
       );
-    } else {
+    } catch (error) {
+      // Nếu fail, thu thập error mà không throw ngay
       result.errors.push(
         `'${reqKey}': ${formatValue(reqValue)} ≠ ${formatValue(resValue)}`
       );
@@ -185,75 +239,40 @@ export function compareRequestResponse(
 }
 
 function formatValue(value: any): string {
+  // Định dạng giá trị để khi console log ra dễ debug: nếu là string thì thêm dấu ngoặc kép, type: 4 (number) → log ra: type: 4
   return typeof value === "string" ? `"${value}"` : String(value);
 }
 
 /**
- * Helper functions for comparison
- */
-function isPlainObject(value: any): boolean {
-  return value !== null && typeof value === "object" && !Array.isArray(value);
-}
-
-function normalizeValue(value: any): any {
-  if (typeof value === "string") {
-    return normalizeString(value, { trim: true });
-  }
-  return value;
-}
-
-function areValuesEqual(val1: any, val2: any): boolean {
-  // Deep equality check
-  return JSON.stringify(val1) === JSON.stringify(val2);
-}
-
-function getCommonKeys(arr1: any[], arr2: any[]): string[] {
-  if (arr1.length === 0 || arr2.length === 0) return [];
-
-  const keys1 = new Set(Object.keys(arr1[0] || {}));
-  const keys2 = new Set(Object.keys(arr2[0] || {}));
-
-  return [...keys1].filter((key) => keys2.has(key));
-}
-
-function filterArrayByKeys(arr: any[], keys: string[]): any[] {
-  return arr.map((item) => {
-    const filtered: any = {};
-    keys.forEach((key) => {
-      if (key in item) {
-        filtered[key] = item[key];
-      }
-    });
-    return filtered;
-  });
-}
-
-/**
- * Xử lý kết quả comparison: log và throw error nếu cần
+ * Xử lý kết quả comparison: chỉ log khi fail, không log khi pass
  * @param result - Kết quả comparison
  * @param context - Context message cho logging (vd: "Tag comparison")
  * @param throwOnFailure - Có throw error khi fail hay không (default: true)
  */
 export function handleComparisonResult(
-  result: ComparisonResult,
+  result: {
+    isSuccess: boolean;
+    matches: string[];
+    warnings: string[];
+    errors: string[];
+  },
   context: string = "Comparison",
   throwOnFailure: boolean = true
 ): void {
-  // Log matches
-  result.matches.forEach((match) => console.log(match));
-
-  // Log warnings
-  result.warnings.forEach((warning) => console.warn(`⚠️ ${warning}`));
-
+  // Nếu không thành công
   if (!result.isSuccess) {
-    // Log errors
+    // Log các warnings (các field bị thiếu)
+    result.warnings.forEach((warning) => console.warn(`⚠️ ${warning}`));
+
+    // Log các errors (các field không khớp)
     console.error(`❌ ${context} failed:`);
     result.errors.forEach((error) => console.error(`  ${error}`));
 
+    // Nếu throwOnFailure = true, throw error để fail test
     if (throwOnFailure) {
       throw new Error(`${context} failed:\n${result.errors.join("\n")}`);
     }
-  } else {
-    console.log(`🎉 ${context} passed successfully!`);
   }
+  // Nếu thành công, không log gì (để Jest tự báo pass)
 }
+

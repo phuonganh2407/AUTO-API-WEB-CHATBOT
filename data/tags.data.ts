@@ -2,8 +2,9 @@ import { faker } from '@faker-js/faker';
 import { TAGS } from '../constants/tags.constant';
 import { getRandomData } from '../utils/funtionHelper';
 import { getTagColor } from '../services/product/tags/tagColor.api';
+import { createTagBody } from '../object/tag.api.object';
 
-export async function tagsDataValid() {
+export async function fullTagsData(): Promise<Partial<createTagBody>> {
     const typeRandom = [TAGS.TAG_PRODUCT, TAGS.TAG_CUSTOMER, TAGS.TAG_ORDER, TAGS.TAG_SUPPLIER];
     const tagColorsResponse = await getTagColor();
     const tagColorIds = getRandomData(tagColorsResponse.data, 1, 'id');
@@ -11,5 +12,9 @@ export async function tagsDataValid() {
         name: `${faker.color.human()}_${Date.now()}`, // Thêm timestamp để đảm bảo unique
         type: typeRandom[Math.floor(Math.random() * typeRandom.length)],
         tagColorId: tagColorIds[0]
-    }
+    };
+}
+
+export async function emptyName(): Promise<Partial<createTagBody>> {
+    return { ...await fullTagsData(), name: '' };
 }
