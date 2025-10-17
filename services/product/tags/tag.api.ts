@@ -20,3 +20,11 @@ export async function getDetailTag(id: number) {
   return axiosClient.get(`${baseProductEndpoints.urlDetailTag}/${id}`);
 }
 
+/**
+ * Lấy danh sách thẻ (tag) theo tên hoặc loại thẻ
+ * @param params Truyền tên thẻ tag || typeTag
+ * @returns Trả về Danh sách theo params đã truyền
+ */
+export async function getListTag(params: { name?: string; tagType?: number }) {
+  return axiosClient.get(baseProductEndpoints.urlSearchTags, { params });
+}

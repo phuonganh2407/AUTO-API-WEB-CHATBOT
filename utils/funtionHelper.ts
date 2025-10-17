@@ -11,18 +11,16 @@ import { expect } from "@jest/globals";
  * @param status - Status code mong đợi
  * @param message - Message cần kiểm tra trong response
  */
-export function testsCheckFails(response: any, status: number, message: string): void {
-  // Kiểm tra status code
-  expect(response.status).toBe(status);
-
-  // Lấy data từ response
-  const resData = response.data;
-
-  // Chuyển dữ liệu từ kiểu JSON sang STRING
-  const resText = JSON.stringify(resData);
-
-  // Kiểm tra kết quả trả về có chứa lỗi cần kiểm tra
-  expect(resText).toContain(message);
+export async function testsCheckFails(response: any, status: number, message: string): Promise<void> {
+    try {
+      await response;
+      throw new Error("Expected API to fail but it succeeded");
+    } catch (error: any) {
+      const res = error.response;
+      expect(res.status).toBe(status);
+      const resText = JSON.stringify(res.data);
+      expect(resText).toContain(message);
+    }
 }
 
 /**
