@@ -4,11 +4,11 @@ import { createTagBody as CreateTagBody } from "../../../object/tag.api.object";
 
 /**
  * Tạo mới một thẻ (tag)
- * @param data Thông tin thẻ cần tạo
+ * @param body Thông tin thẻ cần tạo
  * @returns Promise chứa thông tin thẻ vừa tạo
  */
-export async function createTag(data: CreateTagBody) {
-  return axiosClient.post(baseProductEndpoints.urlCreateTag, data);
+export async function createTag(body: CreateTagBody) {
+  return axiosClient.post(baseProductEndpoints.urlCreateTag, body);
 }
 
 /**
@@ -25,6 +25,8 @@ export async function getDetailTag(id: number) {
  * @param params Truyền tên thẻ tag || typeTag
  * @returns Trả về Danh sách theo params đã truyền
  */
-export async function getListTag(params: { name?: string; tagType?: number }) {
+export async function getListTag(params: { SearchText?: string; TagType?: number }) {
+  console.log('Search params:', params); // Debug log
   return axiosClient.get(baseProductEndpoints.urlSearchTags, { params });
 }
+

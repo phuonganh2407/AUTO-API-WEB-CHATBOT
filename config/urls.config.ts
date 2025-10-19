@@ -31,7 +31,7 @@ export const baseProductEndpoints = {
   urlCreateTag: `${productBaseURL}/tag`, // Endpoint cho tags API
   urlDetailTag: `${productBaseURL}/tag`, // Endpoint chi tiết tag theo ID
   urlGetTagColor: `${productBaseURL}/tag-color`, // Endpoint lấy màu thẻ tag
-  urlSearchTags: `${productBaseURL}/tag/search`, // Endpoint tìm kiếm thẻ tag
+  urlSearchTags: `${productBaseURL}/tag`, // Endpoint tìm kiếm thẻ tag
 
 }
 

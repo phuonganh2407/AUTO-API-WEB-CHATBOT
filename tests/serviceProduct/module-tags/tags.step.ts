@@ -1,4 +1,4 @@
-import { createTag, getDetailTag } from "../../../services/product/tags/tag.api";
+import { createTag, getDetailTag, getListTag } from "../../../services/product/tags/tag.api";
 import { compareRequestResponse, ComparisonConfig, handleComparisonResult } from "../../../utils/funtionHelper";
 
 /**
@@ -19,4 +19,22 @@ export async function compareTagDetails(
 
   // Xử lý kết quả comparison (chỉ log khi fail, throw error nếu cần)
   handleComparisonResult(result, "Tag comparison");
+}
+
+export async function compareSearchTagList(
+  payload: any     // Request body từ create (name, type, tagColorId)
+): Promise<void> {
+  const listResponse = await getListTag({ SearchText: payload.name }); // Search theo name từ payload
+
+  const listData = listResponse.data.items; // Lấy danh sách tags từ response
+
+  // Chỉ so sánh với tag đầu tiên trong danh sách
+  if (listData && listData.length > 0) {
+    const firstTag = listData[0];
+    const result = compareRequestResponse(payload, firstTag); // So sánh toàn bộ payload với firstTag
+    // console.log('Comparison result for search tag list:', result);
+    handleComparisonResult(result, "Search tag comparison");
+  } else {
+    console.warn("No tags found in search response");
+  }
 }

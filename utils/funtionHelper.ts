@@ -222,7 +222,7 @@ export function compareRequestResponse(
       // Nếu pass, thêm vào matches
       const mappingInfo = fieldMapping[reqKey] ? ` (→ ${resKey})` : "";
       result.matches.push(
-        `✅ ${reqKey}${mappingInfo}: ${formatValue(reqValue)}`
+        `${reqKey}${mappingInfo}: ${formatValue(reqValue)}`
       );
     } catch (error) {
       // Nếu fail, thu thập error mà không throw ngay
@@ -273,4 +273,29 @@ export function handleComparisonResult(
   }
   // Nếu thành công, không log gì (để Jest tự báo pass)
 }
+
+/**
+ * Map dữ liệu từ response sang interface body edit
+ * @param source - Object nguồn
+ * @param interfaceKeys - Mảng keys của interface
+ * @returns Object mapped theo interface
+ */
+export function getSubObjectByKeys(
+  source: any,
+  keys: string[]
+): any {
+  const result: any = {};
+
+  // Duyệt qua từng key của interface
+  for (const key of keys) {
+    // Chỉ gán nếu source có field này và không undefined
+    if (source[key] !== undefined) {
+      result[key] = source[key];
+    }
+  }
+
+  return result;
+}
+
+
 

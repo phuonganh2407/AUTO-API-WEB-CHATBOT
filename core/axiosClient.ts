@@ -36,10 +36,19 @@ axiosClient.interceptors.request.use((config) => {
   if (config.url && config.url.includes('sign-in')) {
     config.headers.tenant = tenant;
   }
-   // Log gọn request: method + url + details
-  console.log(`🚀 [REQUEST] ${config.method?.toUpperCase()} ${config.url}`, {
-    Headers: config.headers,
-    ...(config.data && { Body: config.data })
+
+   // ✅ Log - Build full URL with params
+  let fullUrl = config.url;
+  if (config.params) {
+    const queryString = new URLSearchParams(config.params).toString();
+    fullUrl = `${config.url}?${queryString}`;
+  }
+  console.log("🚀 [REQUEST]", {
+    url: fullUrl, // URL đầy đủ với params
+    method: config.method?.toUpperCase(),
+    headers: config.headers,
+    params: config.params, // Thêm params vào log
+    data: config.data
   });
 
   return config;
