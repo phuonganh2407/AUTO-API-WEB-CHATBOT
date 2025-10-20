@@ -32,7 +32,7 @@ export const baseProductEndpoints = {
   urlDetailTag: `${productBaseURL}/tag`, // Endpoint chi tiết tag theo ID
   urlGetTagColor: `${productBaseURL}/tag-color`, // Endpoint lấy màu thẻ tag
   urlSearchTags: `${productBaseURL}/tag`, // Endpoint tìm kiếm thẻ tag
-
+  urlEditTags: `${productBaseURL}/tag`, // Endpoint chỉnh sửa thẻ tag
 }
 
 // Export object chứa các endpoints cho Authentication service

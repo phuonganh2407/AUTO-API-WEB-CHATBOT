@@ -1,6 +1,6 @@
 import { baseProductEndpoints } from "../../../config/urls.config";
 import axiosClient from "../../../core/axiosClient";
-import { createTagBody as CreateTagBody } from "../../../object/tag.api.object";
+import { createTagBody as CreateTagBody, editTagBody } from "../../../object/tag.api.object";
 
 /**
  * Tạo mới một thẻ (tag)
@@ -25,8 +25,12 @@ export async function getDetailTag(id: number) {
  * @param params Truyền tên thẻ tag || typeTag
  * @returns Trả về Danh sách theo params đã truyền
  */
-export async function getListTag(params: { SearchText?: string; TagType?: number }) {
+export async function getListTag(params?: { SearchText?: string; TagType?: number }) {
   console.log('Search params:', params); // Debug log
   return axiosClient.get(baseProductEndpoints.urlSearchTags, { params });
+}
+
+export async function editTag(id: number, body: Partial<editTagBody>) {
+  return axiosClient.put(`${baseProductEndpoints.urlEditTags}/${id}`, body);
 }
 

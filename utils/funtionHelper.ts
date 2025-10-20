@@ -11,16 +11,20 @@ import { expect } from "@jest/globals";
  * @param status - Status code mong đợi
  * @param message - Message cần kiểm tra trong response
  */
-export async function testsCheckFails(response: any, status: number, message: string): Promise<void> {
-    try {
-      await response;
-      throw new Error("Expected API to fail but it succeeded");
-    } catch (error: any) {
-      const res = error.response;
-      expect(res.status).toBe(status);
-      const resText = JSON.stringify(res.data);
-      expect(resText).toContain(message);
-    }
+export async function testsCheckFails(
+  response: any,
+  status: number,
+  message: string
+): Promise<void> {
+  try {
+    await response;
+    throw new Error("Expected API to fail but it succeeded");
+  } catch (error: any) {
+    const res = error.response;
+    expect(res.status).toBe(status);
+    const resText = JSON.stringify(res.data);
+    expect(resText).toContain(message);
+  }
 }
 
 /**
@@ -221,9 +225,7 @@ export function compareRequestResponse(
       expect(resValue).toEqual(reqValue); // Dùng Jest toEqual cho deep equality
       // Nếu pass, thêm vào matches
       const mappingInfo = fieldMapping[reqKey] ? ` (→ ${resKey})` : "";
-      result.matches.push(
-        `${reqKey}${mappingInfo}: ${formatValue(reqValue)}`
-      );
+      result.matches.push(`${reqKey}${mappingInfo}: ${formatValue(reqValue)}`);
     } catch (error) {
       // Nếu fail, thu thập error mà không throw ngay
       result.errors.push(
@@ -280,10 +282,7 @@ export function handleComparisonResult(
  * @param interfaceKeys - Mảng keys của interface
  * @returns Object mapped theo interface
  */
-export function getSubObjectByKeys(
-  source: any,
-  keys: string[]
-): any {
+export function getSubObjectByKeys(source: any, keys: string[]): any {
   const result: any = {};
 
   // Duyệt qua từng key của interface
@@ -296,6 +295,3 @@ export function getSubObjectByKeys(
 
   return result;
 }
-
-
-

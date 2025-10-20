@@ -7,11 +7,11 @@ import { compareRequestResponse, ComparisonConfig, handleComparisonResult } from
  * @param config - Cấu hình comparison (optional)
  */
 export async function compareTagDetails(
-  requestCreate: any,
+  id: number, //Tham số ID dành cho edit 
   payload: any,           // Request body (name, type, tagColorId)
 ): Promise<void> {
   // Gọi API detail để lấy thông tin chi tiết
-  const detailResponse = await getDetailTag(requestCreate.data.id);
+  const detailResponse = await getDetailTag(id);
   const detailData = detailResponse.data; // Response body từ detail API
 
   // So sánh request body (payload) với detail response (detailData)
