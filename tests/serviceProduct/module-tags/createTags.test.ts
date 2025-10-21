@@ -3,6 +3,7 @@ import { createTag } from "../../../services/product/tags/tag.api";
 import { testsCheckFails } from "../../../utils/funtionHelper";
 import { compareSearchTagList, compareTagDetails } from "./tags.step";
 import { errorMessages } from "../../../data/errorMessages";
+import { TAGS } from "../../../constants/tags.constant";
 
 describe("Thêm mới Thẻ tags cho Khách hàng, Nhà cung cấp, Sản phẩm, Đơn hàng", () => {
 
@@ -34,4 +35,16 @@ describe("Thêm mới Thẻ tags cho Khách hàng, Nhà cung cấp, Sản phẩm
     await testsCheckFails(createTag(payload as any), 400, errorMessages.product.createTagEmptyName);
   });
 
+  test("creTag_005 - Tạo thành công thẻ tag cho từng loại typeTags cụ thể", async () => {
+    const typeTags = [TAGS.TAG_PRODUCT, TAGS.TAG_CUSTOMER, TAGS.TAG_ORDER, TAGS.TAG_SUPPLIER];
+    for (const type of typeTags) {
+      const payload = await fullTagsData();
+      payload.type = type;
+      const createResponse = await createTag(payload as any);
+      // Tạo tag và so sánh chi tiết (xử lý hết bên step)
+      await compareTagDetails(createResponse.data.id, payload);
+      // So sánh kết quả tìm kiếm tag theo name
+      await compareSearchTagList(payload);
+    };
+  });
 });

@@ -5,7 +5,7 @@ import { testsCheckFails } from "../../../utils/funtionHelper";
 import { compareSearchTagList, compareTagDetails } from "./tags.step";
 
 describe("Chỉnh sửa Thẻ tags cho Khách hàng, Nhà cung cấp, Sản phẩm, Đơn hàng", () => {
-  test("editTag_001 - Chỉnh sửa Lưu thành công thẻ tag với data không thay đổi", async () => {
+  test("@smoke editTag_001 - Chỉnh sửa Lưu thành công thẻ tag với data không thay đổi", async () => {
     const { payload: payloadEditTag, id } = await mapEditData();
     // console.log("ID của tag cần edit:", id);
     const editResponse = await editTag(id, payloadEditTag as any);
@@ -35,11 +35,11 @@ describe("Chỉnh sửa Thẻ tags cho Khách hàng, Nhà cung cấp, Sản ph�
     );
   });
 
-  test("editTag_004 - Chỉnh sửa Lưu thành công thẻ tag với tên hợp lệ", async () => {
+  test("@smoke editTag_004 - Chỉnh sửa Lưu thành công thẻ tag với tên hợp lệ", async () => {
     const { payload: payloadEditTag, id } = await nameValidEdit();
-    // console.log("ID của tag cần edit:", id);
+
     const editReq = await editTag(id, payloadEditTag as any);
-    console.log("Edit Response:", editReq);
+
     // So sánh chi tiết sau khi edit
     await compareTagDetails(id, payloadEditTag);
 

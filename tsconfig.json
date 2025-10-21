@@ -8,6 +8,12 @@
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist"
   },
-  "include": ["src/**/*", "core/axiosClient.ts", "services/authentication/account/login.api.ts"],
+  "include": [
+    "core/axiosClient.ts",
+    "services/authentication/account/login.api.ts", //
+    "data/**/*", //Lấy toàn bộ file .ts trong thư mục data và các thư mục con
+    "tests/**/*" //Lấy toàn bộ file test .ts trong thư mục tests
+  ],
+  //Thư mục không biên dịch => mặc định đã cấu hình sẵng nên sẽ bỏ qua đỡ tốn performance cho mỗi lần chạy
   "exclude": ["node_modules", "dist"]
 }

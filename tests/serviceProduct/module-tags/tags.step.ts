@@ -1,5 +1,38 @@
-import { createTag, getDetailTag, getListTag } from "../../../services/product/tags/tag.api";
-import { compareRequestResponse, ComparisonConfig, handleComparisonResult } from "../../../utils/funtionHelper";
+import { getDetailTag, getListTag } from "../../../services/product/tags/tag.api";
+import { compareRequestResponse, getRandomData, handleComparisonResult, transformSearchText } from "../../../utils/funtionHelper";
+import { expect } from '@jest/globals';
+
+
+
+/**
+ * Lấy random tag name theo type
+ */
+async function valueNameTagSearch(type: number): Promise<string> {
+  const response = await getListTag({ TagType: type });
+  const items = getRandomData(response.data.items, 1, 'name');
+  return items[0] || '';
+}
+
+/**
+ * Tìm kiếm tag với full keyword theo các case
+ */
+export async function searchFullKeywordTag(type: number): Promise<void> {
+  const listCase = ["LOWERCASE", "UPPERCASE", "UNACCENT"];
+
+  for (const condition of listCase) {
+    const valueNameRand = await valueNameTagSearch(type);
+    const modifiedSearchText = transformSearchText(valueNameRand, condition);
+    console.log(`Searching with ${condition}: ${modifiedSearchText}`);
+
+    const responseSearch = await getListTag({ SearchText: modifiedSearchText, TagType: type });
+
+    expect(responseSearch.status).toBe(200);
+
+    // Kiểm tra xem response có chứa valueNameRand
+    const responseBody = JSON.stringify(responseSearch.data);
+    expect(responseBody).toContain(valueNameRand);
+  }
+}
 
 /**
  * Tạo tag và so sánh chi tiết sau khi tạo thành công
@@ -21,6 +54,10 @@ export async function compareTagDetails(
   handleComparisonResult(result, "Tag comparison");
 }
 
+/**
+ * So sánh kết quả tìm kiếm tag theo name
+ * @param payload - Request body từ create (name, type, tagColorId)
+ */
 export async function compareSearchTagList(
   payload: any     // Request body từ create (name, type, tagColorId)
 ): Promise<void> {
@@ -38,3 +75,4 @@ export async function compareSearchTagList(
     console.warn("No tags found in search response");
   }
 }
+

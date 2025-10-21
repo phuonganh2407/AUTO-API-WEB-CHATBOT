@@ -6,6 +6,23 @@
 import { expect } from "@jest/globals";
 
 /**
+ * Transform search text theo condition
+ */
+export function transformSearchText(text: string, condition: string): string {
+  switch (condition) {
+    case 'LOWERCASE':
+      return text.toLowerCase();
+    case 'UPPERCASE':
+      return text.toUpperCase();
+    case 'UNACCENT':
+      // Loại bỏ dấu (basic implementation)
+      return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    default:
+      return text;
+  }
+}
+
+/**
  * @description HÀM KIỂM TRA STATUS ĐỐI VỚI CÁC REQUEST FAILED
  * @param response - Response object từ API call
  * @param status - Status code mong đợi

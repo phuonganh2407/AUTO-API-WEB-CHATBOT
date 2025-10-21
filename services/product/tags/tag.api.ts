@@ -34,3 +34,12 @@ export async function editTag(id: number, body: Partial<editTagBody>) {
   return axiosClient.put(`${baseProductEndpoints.urlEditTags}/${id}`, body);
 }
 
+/**
+ * Xóa thẻ (tag) theo ID
+ * @param id ID của thẻ cần xóa
+ * @returns Promise chứa kết quả xóa
+ */
+export async function deleteTag(id: number) {
+  return axiosClient.delete(`${baseProductEndpoints.urlDeleteTag}/${id}`);
+}
+

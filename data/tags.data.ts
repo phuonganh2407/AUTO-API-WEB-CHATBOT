@@ -3,8 +3,8 @@ import { TAGS } from '../constants/tags.constant';
 import { getRandomData, getSubObjectByKeys } from '../utils/funtionHelper';
 import { getTagColor } from '../services/product/tags/tagColor.api';
 import { createTagBody, editTagBody } from '../object/tag.api.object';
-import { getListTag } from '../services/product/tags/tag.api';
-import { createRandomString } from '../utils/genFunctionData';
+import { getListTag, createTag } from '../services/product/tags/tag.api';
+import { createRandomNumberString, createRandomString } from '../utils/genFunctionData';
 
 
 const typeRandom = [TAGS.TAG_PRODUCT, TAGS.TAG_CUSTOMER, TAGS.TAG_ORDER, TAGS.TAG_SUPPLIER];
@@ -91,11 +91,25 @@ export async function duplicateNameEdit(): Promise<{ payload: Partial<editTagBod
 }
 
 /**
- *  Tạo dữ liệu chỉnh sửa với tên rỗng
- * @returns body chỉnh sửa đã map data và id của tag kèm theo name rỗng
+ *  Tạo dữ liệu chỉnh sửa với tên hợp lệ
+ * @returns body chỉnh sửa đã map data và id của tag kèm theo name hợp lệ
  */
 export async function nameValidEdit(): Promise<{ payload: Partial<editTagBody>; id: number }> {
     const { payload, id } = await mapEditData();
-    // return { payload: { ...payload as any, name: `${faker.color.human()}_${Date.now()}` }, id };
-    return { payload: { ...payload as any, name: "Panh test" }, id };
+    return { payload: { ...payload as any, name: `${faker.color.human()}_${Date.now()}` }, id };
+};
+
+/**
+ * Tạo một tag mới và trả về ID để sử dụng cho test xóa
+ * @returns ID của tag vừa tạo
+ */
+export async function createTagForDelete(): Promise<number> {
+    const payload = await fullTagsData();
+    const createResponse = await createTag(payload as any);
+    console.log("Created tag ID for delete test:", createResponse.data.id);
+    return createResponse.data.id;
+};
+
+export async function idTagInvalid(): Promise<number> {
+    return Number(createRandomNumberString(10)); // ID không hợp lệ
 };
