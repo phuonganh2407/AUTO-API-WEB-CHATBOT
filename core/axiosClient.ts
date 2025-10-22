@@ -32,14 +32,22 @@ axiosClient.interceptors.request.use((config) => {
     config.headers.shopId = shopId;
   }
 
-  // Thêm tenant vào header
-  config.headers.tenant = tenant;
+  // Chỉ thêm tenant vào header nếu là request login
+  if (config.url && config.url.includes('sign-in')) {
+    config.headers.tenant = tenant;
+  }
 
-   // ✅ Log
+   // ✅ Log - Build full URL with params
+  let fullUrl = config.url;
+  if (config.params) {
+    const queryString = new URLSearchParams(config.params).toString();
+    fullUrl = `${config.url}?${queryString}`;
+  }
   console.log("🚀 [REQUEST]", {
-    url: config.url,
+    url: fullUrl, // URL đầy đủ với params
     method: config.method?.toUpperCase(),
     headers: config.headers,
+    params: config.params, // Thêm params vào log
     data: config.data
   });
 
@@ -53,6 +61,7 @@ axiosClient.interceptors.response.use(
       url: err.config?.url,
       status: err.response?.status,
       message: err.message,
+      response: err.response?.data // Log toàn bộ body lỗi
     });
     throw err;
   }

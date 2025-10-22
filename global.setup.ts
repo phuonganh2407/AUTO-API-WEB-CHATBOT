@@ -7,8 +7,6 @@
 const { AuthFlowHelper } = require('./utils/infoAccount.helper');
 
 module.exports = async () => {
-  // Kiểm tra và refresh token nếu cần
-  await AuthFlowHelper.ensureAuth();
-  // Lấy shopId nếu chưa có
-  await AuthFlowHelper.getShopIdAndSave();
+  // Đăng nhập và lấy shopId chỉ khi cần
+  await AuthFlowHelper.loginAndSaveTokenAndShop();
 };
