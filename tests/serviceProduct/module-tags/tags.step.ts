@@ -3,37 +3,6 @@ import { compareRequestResponse, getRandomData, handleComparisonResult, transfor
 import { expect } from '@jest/globals';
 
 
-
-/**
- * Lấy random tag name theo type
- */
-async function valueNameTagSearch(type: number): Promise<string> {
-  const response = await getListTag({ TagType: type });
-  const items = getRandomData(response.data.items, 1, 'name');
-  return items[0] || '';
-}
-
-/**
- * Tìm kiếm tag với full keyword theo các case
- */
-export async function searchFullKeywordTag(type: number): Promise<void> {
-  const listCase = ["LOWERCASE", "UPPERCASE", "UNACCENT"];
-
-  for (const condition of listCase) {
-    const valueNameRand = await valueNameTagSearch(type);
-    const modifiedSearchText = transformSearchText(valueNameRand, condition);
-    console.log(`Searching with ${condition}: ${modifiedSearchText}`);
-
-    const responseSearch = await getListTag({ SearchText: modifiedSearchText, TagType: type });
-
-    expect(responseSearch.status).toBe(200);
-
-    // Kiểm tra xem response có chứa valueNameRand
-    const responseBody = JSON.stringify(responseSearch.data);
-    expect(responseBody).toContain(valueNameRand);
-  }
-}
-
 /**
  * Tạo tag và so sánh chi tiết sau khi tạo thành công
  * @param payload - Body request tạo tag (name, type, tagColorId)
@@ -76,3 +45,38 @@ export async function compareSearchTagList(
   }
 }
 
+/**
+ * Lấy random tag name theo type
+ */
+async function valueNameTagSearch( type: number): Promise<string> {
+  const response = await getListTag({ TagType: type });
+  const items = getRandomData(response.data.items, 1, 'name');
+  return items[0] || '';
+}
+
+/**
+ * Tìm kiếm tag với full keyword theo các case
+ */
+export async function searchFullKeywordTag(type: number): Promise<void> {
+  const listCase = ["LOWERCASE", "UPPERCASE", "UNACCENT"];
+
+  for (const condition of listCase) {
+    //Lấy tên thẻ tag ngẫu nhiên trên danh sách
+    const valueNameRand = await valueNameTagSearch(type);
+
+    // Chuyển đổi tên thẻ tag theo condition
+    const modifiedSearchText = transformSearchText(valueNameRand, condition);
+
+    console.log(`Searching with ${condition}: ${modifiedSearchText}`);
+
+    // Gọi API tìm kiếm tag với tên đã chuyển đổi theo condition
+    const responseSearch = await getListTag({ SearchText: modifiedSearchText});
+
+    //Kiểm tra status code
+    expect(responseSearch.status).toBe(200);
+
+    // Kiểm tra xem response có chứa valueNameRand
+    const responseBody = JSON.stringify(responseSearch.data);
+    expect(responseBody).toContain(valueNameRand);
+  }
+}
