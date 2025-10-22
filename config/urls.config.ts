@@ -24,6 +24,7 @@ dotenv.config({ path: envPath });
 export const baseURL = process.env.BASE_URL; // URL cơ sở chung (có thể không dùng)
 export const productBaseURL = process.env.BASE_PRODUCT_URL; // URL cơ sở cho Product service
 export const authenBaseURL = process.env.BASE_AUTHENTICATION_URL; // URL cơ sở cho Authentication service
+export const customerBaseURL = process.env.BASE_CUSTOMER_URL; // URL cơ sở cho Customer service
 
 // Export object chứa các endpoints cho Product service
 export const baseProductEndpoints = {
@@ -40,4 +41,8 @@ export const baseProductEndpoints = {
 export const baseAuthEndpoints = {
   urlLogin: `${authenBaseURL}/sign-in/password`, // Endpoint đăng nhập bằng password
   urlGetAllShops: `${authenBaseURL}/shops/all`, // Endpoint lấy danh sách tất cả shops
+}
+
+export const baseCustomerEndpoints = {
+  urlCreateGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint tạo nhóm khách hàng
 }

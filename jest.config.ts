@@ -4,6 +4,10 @@ const config: Config.InitialOptions = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   
+  // Bật lại console logs để thấy request/response
+  silent: false,
+  verbose: false,
+  
   // Global setup: chạy trước tất cả test để đảm bảo token hợp lệ
   globalSetup: './global.setup.ts',
   
@@ -14,14 +18,9 @@ const config: Config.InitialOptions = {
   // File extensions and transformations
   moduleFileExtensions: ['ts', 'js', 'json'],
   transform: {
-    '^.+\\.ts$': 'ts-jest',
-  },
-  
-  // TypeScript configuration
-  globals: {
-    'ts-jest': {
+    '^.+\\.ts$': ['ts-jest', {
       tsconfig: 'tsconfig.json',
-    },
+    }],
   },
 
   // Test reports
