@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { fakerVI } from "@faker-js/faker";
 import { TAGS } from '../../constants/tags.constant';
 import { getRandomData, getSubObjectByKeys } from '../../utils/funtionHelper';
 import { getTagColor } from '../../services/productApi/tags/tagColor.api';
@@ -17,7 +17,7 @@ export async function fullTagsData(): Promise<Partial<createTagBody>> {
     const tagColorsResponse = await getTagColor();
     const tagColorIds = getRandomData(tagColorsResponse.data, 1, 'id');
     return {
-        name: `${faker.color.human()}_${Date.now()}`, // Thêm timestamp để đảm bảo unique
+        name: `${fakerVI.color.human()}_${Date.now()}`, // Thêm timestamp để đảm bảo unique
         type: typeRandom[Math.floor(Math.random() * typeRandom.length)],
         tagColorId: tagColorIds[0]
     };
@@ -96,7 +96,7 @@ export async function duplicateNameEdit(): Promise<{ payload: Partial<editTagBod
  */
 export async function nameValidEdit(): Promise<{ payload: Partial<editTagBody>; id: number }> {
     const { payload, id } = await mapEditData();
-    return { payload: { ...payload as any, name: `${faker.color.human()}_${Date.now()}` }, id };
+    return { payload: { ...payload as any, name: `${fakerVI.color.human()}_${Date.now()}` }, id };
 };
 
 /**

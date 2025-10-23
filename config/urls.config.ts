@@ -5,6 +5,7 @@
 
 // Import thư viện dotenv để load biến môi trường từ file .env
 import dotenv from "dotenv";
+import { url } from "inspector";
 // Import module path để xử lý đường dẫn file
 import path from "path";
 
@@ -45,4 +46,5 @@ export const baseAuthEndpoints = {
 
 export const baseCustomerEndpoints = {
   urlCreateGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint tạo nhóm khách hàng
+  urlGetListGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint lấy danh sách nhóm khách hàng
 }
