@@ -1,7 +1,7 @@
 import { fakerVI } from "@faker-js/faker";
-import { createGroupCustomerBody } from "../../object/serviceCustomerObject/customer.api.object"; // Update the path as needed
+import { createGroupCustomerBody, editGroupCustomerBody } from "../../object/serviceCustomerObject/customer.api.object"; // Update the path as needed
 import { createRandomNumberString } from "../../utils/genFunctionData";
-import { getRandomData } from "../../utils/funtionHelper";
+import { getRandomData, getSubObjectByKeys } from "../../utils/funtionHelper";
 import { getListGroupCustomer } from "../../services/customerApi/groupCustomer/groupCustomer.api";
 
 /**
@@ -39,6 +39,21 @@ export async function duplicateNameGroupCus(): Promise<Partial<createGroupCustom
  */
 export async function longNameGroupCus(): Promise<Partial<createGroupCustomerBody>> {
     return {
-        name: fakerVI.lorem.words(110) + ' ' + createRandomNumberString(4), // Tạo tên nhóm KH dài
+        name: fakerVI.lorem.words(50) + ' ' + createRandomNumberString(4), // Tạo tên nhóm KH dài
     };
+}
+
+
+/**
+ * Map dữ liệu chỉnh sửa từ một nhóm khách hàng ngẫu nhiên
+ * @returns 
+ */
+export async function mapEditGroupCusData(): Promise<{ payload: Partial<editGroupCustomerBody>; id: number }> {
+    //Lấy ngẫu nhiên 1 nhóm khách hàng
+    const randomGroupCus = getRandomData((await getListGroupCustomer()).data, 1)[0];
+    //Lây id của nhóm khách hàng
+    const idGroupCusEdit = randomGroupCus.id;
+    // Map trực tiếp từ keys của interface - những field nào giống nhau sẽ map value từ nhóm khách hàng ngẫu nhiên cho body edit
+    const mappedPayload = getSubObjectByKeys(randomGroupCus, Object.values(editGroupCustomerBody));
+    return { payload: mappedPayload, id: idGroupCusEdit };
 }

@@ -12,8 +12,10 @@ export const errorMessages = {
 
   groupCustomer: {
     createGroupCusDuplicateName: "Customer group with this name exists",
-    createGroupCusLongName: "The maximum length of the name must be 100 characters or less.",
-    // Thêm các lỗi khác của service groupCustomer ở đây
+    // Function tạo message động cho tên quá dài
+    createGroupCusLongName: (length: number) => `The length of 'Name' must be 100 characters or fewer. You entered ${length} characters.`,
+    
+    createGroupCusEmptyName: "'Name' must not be empty",
   },
   // Thêm các service khác ở đây
   // auth: { ... },

@@ -57,7 +57,7 @@ export async function mapEditData(): Promise<{ payload: Partial<editTagBody>; id
     const getItemTagRandom = await getListTag({ TagType: typeRandom[Math.floor(Math.random() * typeRandom.length)]});
     const randomTag = getRandomData(getItemTagRandom.data, 1)[0];
     const idTagEdit = randomTag.id;
-    // Map trực tiếp từ keys của interface - hoàn toàn tự động
+    // Map trực tiếp từ keys của interface - những field nào giống nhau sẽ map value từ nhóm khách hàng ngẫu nhiên cho body chỉnh sửa
     const mapped = getSubObjectByKeys(randomTag, Object.keys(editTagBody));
     return { payload: mapped, id: idTagEdit };
 }
@@ -85,9 +85,9 @@ export async function longNameEdit(): Promise<{ payload: Partial<editTagBody>; i
  */
 export async function duplicateNameEdit(): Promise<{ payload: Partial<editTagBody>; id: number }> {
     const responseListTags = await getListTag({ TagType:  TAGS.TAG_PRODUCT });
-    const nameExists = responseListTags.data.items[0]?.name || 'Existing_Tag_Name';
+    const nameExists = responseListTags.data.items[0]?.name;
     const { payload, id } = await mapEditData();
-    return { payload: { ...payload as any, name: nameExists, type: TAGS.TAG_PRODUCT }, id };
+    return { payload: { ...payload as any, name: nameExists }, id };
 }
 
 /**
@@ -110,6 +110,10 @@ export async function createTagForDelete(): Promise<number> {
     return createResponse.data.id;
 };
 
+/**
+ *  Tạo ID không hợp lệ để test
+ * @returns 
+ */
 export async function idTagInvalid(): Promise<number> {
     return Number(createRandomNumberString(10)); // ID không hợp lệ
 };

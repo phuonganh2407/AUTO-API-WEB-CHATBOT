@@ -1,6 +1,7 @@
 import { errorMessages } from "../../../data/errorMessages";
 import {
   duplicateNameGroupCus,
+  emptyNameGroupCus,
   fullDataGroupCus,
   longNameGroupCus,
 } from "../../../data/serviceCustomerData/groupCustomer.data";
@@ -8,14 +9,14 @@ import { createGroupCustomer } from "../../../services/customerApi/groupCustomer
 import { testsCheckFails } from "../../../utils/funtionHelper";
 
 describe("Thêm mới nhóm cho Khách hàng", () => {
-  test("@smoke createGroupCus_001 - Thêm mới nhóm khách hàng với dữ liệu đầy đủ", async () => {
+  test("@smoke creGroupCus_001 - Thêm mới nhóm khách hàng với dữ liệu đầy đủ", async () => {
     const payloadCreateGroupCus = await fullDataGroupCus();
     console.log("Payload tạo nhóm khách hàng:", payloadCreateGroupCus);
     const response = await createGroupCustomer(payloadCreateGroupCus as any);
     console.log("Response từ API tạo nhóm khách hàng:", response.data);
   });
 
-  test("createGroupCus_002 - Thêm mới nhóm khách hàng với tên nhóm đã tồn tại", async () => {
+  test("creGroupCus_002 - Thêm mới nhóm khách hàng với tên nhóm đã tồn tại", async () => {
     const payloadCreateGroupCus = await duplicateNameGroupCus();
 
     await testsCheckFails(
@@ -25,13 +26,23 @@ describe("Thêm mới nhóm cho Khách hàng", () => {
     );
   });
 
-  test("createGroupCus_003 - Thêm mới nhóm khách hàng với tên nhóm > 100 kí tự", async () => {
+  test("creGroupCus_003 - Thêm mới nhóm khách hàng với tên nhóm > 100 kí tự", async () => {
     const payloadCreateGroupCus = await longNameGroupCus();
+    const length = payloadCreateGroupCus.name?.length || 0;
 
     await testsCheckFails(
       createGroupCustomer(payloadCreateGroupCus as any),
       400,
-      errorMessages.groupCustomer.createGroupCusLongName
+      errorMessages.groupCustomer.createGroupCusLongName(length)
+    );
+  });
+
+  test("creGroupCus_004 - Thêm mới nhóm khách hàng với tên nhóm rỗng", async () => {
+    const payloadCreateGroupCus = emptyNameGroupCus();
+    await testsCheckFails(
+      createGroupCustomer(payloadCreateGroupCus as any),
+      400,
+      errorMessages.groupCustomer.createGroupCusEmptyName
     );
   });
 });

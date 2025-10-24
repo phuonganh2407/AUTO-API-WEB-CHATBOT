@@ -4,18 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:dev": "cross-env ENVIRONMENT=dev jest tests/**/*.test.ts --runInBand",
-    "test:stag": "cross-env ENVIRONMENT=stag jest tests/**/*.test.ts --runInBand",
-    "test:prod": "cross-env ENVIRONMENT=prod jest tests/**/*.test.ts --runInBand",
-    
-    "test:dev:single": "cross-env ENVIRONMENT=dev npx jest -t",
-    "test:stag:single": "cross-env ENVIRONMENT=stag npx jest -t",
-    "test:prod:single": "cross-env ENVIRONMENT=prod npx jest -t",
+    "test:dev": "cross-env ENVIRONMENT=dev jest",
+    "test:stag": "cross-env ENVIRONMENT=stag jest",
+    "test:prod": "cross-env ENVIRONMENT=prod jest",
 
-    "test:dev:suite": "cross-env ENVIRONMENT=dev jest tests/suites/main.suite.test.ts --runInBand",
-    "test:stag:suite": "cross-env ENVIRONMENT=stag jest tests/suites/main.suite.test.ts --runInBand", 
-    "test:prod:suite": "cross-env ENVIRONMENT=prod jest tests/suites/main.suite.test.ts --runInBand"
+    "test:dev:suite": "cross-env ENVIRONMENT=dev jest tests/suites/main.suite.test.ts",
+    "test:stag:suite": "cross-env ENVIRONMENT=stag jest tests/suites/main.suite.test.ts",
+    "test:prod:suite": "cross-env ENVIRONMENT=prod jest tests/suites/main.suite.test.ts",
+
+    "test:dev:suite:spec": "cross-env ENVIRONMENT=dev NO_ALLURE=1 jest --maxWorkers=1 --no-coverage tests/suites/main.suite.test.ts -t",
+    "test:stag:suite:spec": "cross-env ENVIRONMENT=stag NO_ALLURE=1 jest --maxWorkers=1 --no-coverage tests/suites/main.suite.test.ts -t",
+    "test:prod:suite:spec": "cross-env ENVIRONMENT=prod NO_ALLURE=1 jest --maxWorkers=1 --no-coverage tests/suites/main.suite.test.ts -t",
+    
+    "report:clean": "powershell -Command \"Remove-Item -Recurse -Force reports/allure-results, reports/allure-report -ErrorAction SilentlyContinue\""
   },
   "keywords": [],
   "author": "",

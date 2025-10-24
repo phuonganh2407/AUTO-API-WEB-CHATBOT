@@ -3,6 +3,13 @@ export interface createGroupCustomerBody {
   name: string;
 }
 
+/**
+ * Định nghĩa kiểu dữ liệu cho body khi chỉnh sửa một nhóm khách hàng
+ */
+export enum editGroupCustomerBody {
+  name = "name",
+}
+
 // export interface createCustomerBody {
 //   name: string;
 //   phone: string;

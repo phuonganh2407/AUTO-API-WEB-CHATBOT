@@ -19,3 +19,13 @@ export async function createGroupCustomer(body: createGroupCustomerBody) {
 export async function getListGroupCustomer(params?: { CustomerSearchText?: string, TagIds?: number[] }) {
     return axiosClient.get(baseCustomerEndpoints.urlGetListGroupCustomer, { params });
 }
+
+/**
+ * Chỉnh sửa nhóm khách hàng
+ * @param id id nhóm KH cần chỉnh sửa
+ * @param body body thông tin chỉnh sửa nhóm KH
+ * @returns 
+ */
+export async function editGroupCustomer(id: number, body: Partial<createGroupCustomerBody>) {
+    return axiosClient.patch(`${baseCustomerEndpoints.urlEditGroupCustomer}/${id}`, body);
+};
