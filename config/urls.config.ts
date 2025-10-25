@@ -57,4 +57,5 @@ export const baseCustomerEndpoints = {
   urlCreateGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint tạo nhóm khách hàng
   urlGetListGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint lấy danh sách nhóm khách hàng
   urlEditGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint chỉnh sửa nhóm khách hàng
+  urlDeleteGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint xóa nhóm khách hàng
 }

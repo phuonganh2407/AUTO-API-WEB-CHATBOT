@@ -29,3 +29,12 @@ export async function getListGroupCustomer(params?: { CustomerSearchText?: strin
 export async function editGroupCustomer(id: number, body: Partial<createGroupCustomerBody>) {
     return axiosClient.patch(`${baseCustomerEndpoints.urlEditGroupCustomer}/${id}`, body);
 };
+
+/**
+ * Xóa nhóm khách hàng
+ * @param id id nhóm KH cần xóa
+ * @returns
+ */
+export async function deleteGroupCustomer(id: number) {
+    return axiosClient.delete(`${baseCustomerEndpoints.urlDeleteGroupCustomer}/${id}`);
+}   

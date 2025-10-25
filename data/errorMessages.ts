@@ -16,6 +16,7 @@ export const errorMessages = {
     createGroupCusLongName: (length: number) => `The length of 'Name' must be 100 characters or fewer. You entered ${length} characters.`,
     
     createGroupCusEmptyName: "'Name' must not be empty",
+    editGroupCusDuplicateName: "Customer group with this name exists",
   },
   // Thêm các service khác ở đây
   // auth: { ... },
