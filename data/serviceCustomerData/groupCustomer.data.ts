@@ -6,7 +6,8 @@ import {
 import { createRandomNumberString } from "../../utils/genFunctionData";
 import { getRandomData, getSubObjectByKeys } from "../../utils/funtionHelper";
 import { getListGroupCustomer } from "../../services/customerApi/groupCustomer/groupCustomer.api";
-import { get } from "http";
+
+// ============= CREATE GROUP CUSTOMET DATA =============
 
 /**
  *  Tạo dữ liệu với đầy đủ thông tin hợp lệ
