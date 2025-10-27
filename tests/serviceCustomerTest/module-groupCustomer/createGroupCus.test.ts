@@ -9,14 +9,14 @@ import { createGroupCustomer } from "../../../services/customerApi/groupCustomer
 import { testsCheckFails } from "../../../utils/funtionHelper";
 
 describe("Thêm mới nhóm cho Khách hàng", () => {
-  test("@smoke creGroupCus_001 - Thêm mới nhóm khách hàng với dữ liệu đầy đủ", async () => {
+  test("@smoke GROUPCUS_ADD_001 - Thêm mới nhóm khách hàng với dữ liệu đầy đủ", async () => {
     const payloadCreateGroupCus = await fullDataGroupCus();
     console.log("Payload tạo nhóm khách hàng:", payloadCreateGroupCus);
     const response = await createGroupCustomer(payloadCreateGroupCus as any);
     console.log("Response từ API tạo nhóm khách hàng:", response.data);
   });
 
-  test("creGroupCus_002 - Thêm mới nhóm khách hàng với tên nhóm đã tồn tại", async () => {
+  test("GROUPCUS_ADD_002 - Thêm mới nhóm khách hàng với tên nhóm đã tồn tại", async () => {
     const payloadCreateGroupCus = await duplicateNameGroupCus();
 
     await testsCheckFails(
@@ -26,7 +26,7 @@ describe("Thêm mới nhóm cho Khách hàng", () => {
     );
   });
 
-  test("creGroupCus_003 - Thêm mới nhóm khách hàng với tên nhóm > 100 kí tự", async () => {
+  test("GROUPCUS_ADD_003 - Thêm mới nhóm khách hàng với tên nhóm > 100 kí tự", async () => {
     const payloadCreateGroupCus = await longNameGroupCus();
     const length = payloadCreateGroupCus.name?.length || 0;
 
@@ -37,7 +37,7 @@ describe("Thêm mới nhóm cho Khách hàng", () => {
     );
   });
 
-  test("creGroupCus_004 - Thêm mới nhóm khách hàng với tên nhóm rỗng", async () => {
+  test("GROUPCUS_ADD_004 - Thêm mới nhóm khách hàng với tên nhóm rỗng", async () => {
     const payloadCreateGroupCus = emptyNameGroupCus();
     await testsCheckFails(
       createGroupCustomer(payloadCreateGroupCus as any),
