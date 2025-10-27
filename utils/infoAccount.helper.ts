@@ -1,8 +1,8 @@
-import { login } from "../services/authentication/account/login.api";
+import { login } from "../services/authenticationApi/account/login.api";
 import { saveSession, getSession, isTokenExpired } from "./session.helper";
 import { accounts } from "../config/accounts.config";
 import dotenv from "dotenv";
-import { getIdShop } from "../services/authentication/shop/getShop.api";
+import { getIdShop } from "../services/authenticationApi/shop/getShop.api";
 
 dotenv.config();
 

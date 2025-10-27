@@ -296,7 +296,6 @@ export function handleComparisonResult(
 /**
  * Map dữ liệu từ response sang interface body edit
  * @param source - Object nguồn
- * @param interfaceKeys - Mảng keys của interface
  * @returns Object mapped theo interface
  */
 export function getSubObjectByKeys(source: any, keys: string[]): any {

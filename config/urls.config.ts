@@ -5,6 +5,7 @@
 
 // Import thư viện dotenv để load biến môi trường từ file .env
 import dotenv from "dotenv";
+import { url } from "inspector";
 // Import module path để xử lý đường dẫn file
 import path from "path";
 
@@ -20,12 +21,17 @@ dotenv.config({ path: envPath });
 // console.log("ENV:", ENV);
 // console.log("BASE_URL:", process.env.BASE_URL);
 
-// Export các base URLs từ biến môi trường
+/**
+ * Export các base URLs từ biến môi trường
+ */
 export const baseURL = process.env.BASE_URL; // URL cơ sở chung (có thể không dùng)
 export const productBaseURL = process.env.BASE_PRODUCT_URL; // URL cơ sở cho Product service
 export const authenBaseURL = process.env.BASE_AUTHENTICATION_URL; // URL cơ sở cho Authentication service
+export const customerBaseURL = process.env.BASE_CUSTOMER_URL; // URL cơ sở cho Customer service
 
-// Export object chứa các endpoints cho Product service
+/**
+ * Export object chứa các endpoints cho Product service
+ */
 export const baseProductEndpoints = {
   attributes: `${productBaseURL}/attribute`, // Endpoint cho attributes API
   urlCreateTag: `${productBaseURL}/tag`, // Endpoint cho tags API
@@ -36,8 +42,20 @@ export const baseProductEndpoints = {
   urlDeleteTag: `${productBaseURL}/tag`, // Endpoint xóa thẻ tag
 }
 
-// Export object chứa các endpoints cho Authentication service
+/**
+ * Export object chứa các endpoints cho Authentication service
+ */
 export const baseAuthEndpoints = {
   urlLogin: `${authenBaseURL}/sign-in/password`, // Endpoint đăng nhập bằng password
   urlGetAllShops: `${authenBaseURL}/shops/all`, // Endpoint lấy danh sách tất cả shops
+}
+
+/**
+ * Export object chứa các endpoints cho Customer service
+ */
+export const baseCustomerEndpoints = {
+  urlCreateGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint tạo nhóm khách hàng
+  urlGetListGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint lấy danh sách nhóm khách hàng
+  urlEditGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint chỉnh sửa nhóm khách hàng
+  urlDeleteGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint xóa nhóm khách hàng
 }
