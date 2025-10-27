@@ -5,7 +5,7 @@ import { testsCheckFails } from "../../../utils/funtionHelper";
 import { compareSearchTagList, compareTagDetails } from "./tags.step";
 
 describe("Chỉnh sửa Thẻ tags cho Khách hàng, Nhà cung cấp, Sản phẩm, Đơn hàng", () => {
-  test("@smoke TAG_EDIT_001 - Chỉnh sửa Lưu thành công thẻ tag với data không thay đổi", async () => {
+  test("@smoke editTag_001 - Chỉnh sửa Lưu thành công thẻ tag với data không thay đổi", async () => {
     const { payload: payloadEditTag, id } = await mapEditData();
     // console.log("ID của tag cần edit:", id);
     const editResponse = await editTag(id, payloadEditTag as any);
@@ -17,7 +17,7 @@ describe("Chỉnh sửa Thẻ tags cho Khách hàng, Nhà cung cấp, Sản ph�
     await compareSearchTagList(payloadEditTag);
   });
 
-  test("TAG_EDIT_002 - Chỉnh sửa Lưu không thành công khi tên rỗng", async () => {
+  test("editTag_002 - Chỉnh sửa Lưu không thành công khi tên rỗng", async () => {
     const { payload: payloadEditTag, id } = await emptyNameEdit();
     await testsCheckFails(
       editTag(id, payloadEditTag as any),
@@ -26,7 +26,7 @@ describe("Chỉnh sửa Thẻ tags cho Khách hàng, Nhà cung cấp, Sản ph�
     );
   });
 
-  test("TAG_EDIT_003 - Chỉnh sửa Lưu không thành công khi tên thẻ tag đã tồn tại", async () => {
+  test("editTag_003 - Chỉnh sửa Lưu không thành công khi tên thẻ tag đã tồn tại", async () => {
     const { payload: payloadEditTag, id } = await duplicateNameEdit();
     await testsCheckFails(
       editTag(id, payloadEditTag as any),
@@ -35,7 +35,7 @@ describe("Chỉnh sửa Thẻ tags cho Khách hàng, Nhà cung cấp, Sản ph�
     );
   });
 
-  test("@smoke TAG_EDIT_004 - Chỉnh sửa Lưu thành công thẻ tag với tên hợp lệ", async () => {
+  test("@smoke editTag_004 - Chỉnh sửa Lưu thành công thẻ tag với tên hợp lệ", async () => {
     const { payload: payloadEditTag, id } = await nameValidEdit();
 
     const editReq = await editTag(id, payloadEditTag as any);

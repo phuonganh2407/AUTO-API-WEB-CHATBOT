@@ -59,9 +59,3 @@ export const baseCustomerEndpoints = {
   urlEditGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint chỉnh sửa nhóm khách hàng
   urlDeleteGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint xóa nhóm khách hàng
 }
-
-export const basePublicEndpoints = {
-  urlGetCitiesCodes: `${productBaseURL}/locations/cities`, // Endpoint lấy mã thành phố
-  urlGetDistrictsCodes: `${productBaseURL}/locations/districts`, // Endpoint lấy mã quận/huyện
-  urlGetWardsCodes: `${productBaseURL}/locations/wards`, // Endpoint lấy mã phường/xã
-}

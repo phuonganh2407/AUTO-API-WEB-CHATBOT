@@ -5,7 +5,7 @@ import { testsCheckFails } from "../../../utils/funtionHelper";
 import { compareSearchGroupCusList } from "./groupCus.step";
 
 describe("Chỉnh sửa nhóm Khách hàng", () => {
-  test("@smoke GROUPCUS_EDIT_001 - Chỉnh sửa nhóm khách hàng với data không thay đổi", async () => {
+  test("@smoke editGroupCus_001 - Chỉnh sửa nhóm khách hàng với data không thay đổi", async () => {
     // Lấy dữ liệu chỉnh sửa từ một nhóm khách hàng ngẫu nhiên
     const { payload: payloadEditGroupCus, id } = await mapEditGroupCusData();
     const editRequest = await editGroupCustomer(id, payloadEditGroupCus as any);
@@ -13,13 +13,13 @@ describe("Chỉnh sửa nhóm Khách hàng", () => {
     await compareSearchGroupCusList(payloadEditGroupCus);
   });
 
-    test("@smoke GROUPCUS_EDIT_002 - Chỉnh sửa nhóm khách hàng với name hợp lệ", async () => {
+    test("@smoke editGroupCus_002 - Chỉnh sửa nhóm khách hàng với name hợp lệ", async () => {
     const { payload: payloadEditGroupCus, id } = await mapEditGroupCusDataWithChangeName();
     const editRequest = await editGroupCustomer(id, payloadEditGroupCus as any);
     await compareSearchGroupCusList(payloadEditGroupCus);
   });
 
-    test("@smoke GROUPCUS_EDIT_003 - Chỉnh sửa nhóm khách hàng với name hợp lệ", async () => {
+    test("@smoke editGroupCus_003 - Chỉnh sửa nhóm khách hàng với name hợp lệ", async () => {
     const { payload: payloadEditGroupCus, id } =
       await mapEditGroupCusDataWithDuplicateName();
     //Kiểm tra lỗi khi chỉnh sửa nhóm khách hàng với tên đã tồn tại

@@ -9,7 +9,6 @@ import { createRandomNumberString, createRandomString } from '../../utils/genFun
 
 const typeRandom = [TAGS.TAG_PRODUCT, TAGS.TAG_CUSTOMER, TAGS.TAG_ORDER, TAGS.TAG_SUPPLIER];
 
-// ============= CREATE TAG DATA =============
 /**
  *  Tạo dữ liệu với đầy đủ thông tin hợp lệ
  * @returns 
@@ -50,8 +49,6 @@ export async function longName(): Promise<Partial<createTagBody>> {
     return { ...await fullTagsData(), name: createRandomString(30) };
 }
 
-
-// ============= EDIT TAG DATA =============
 /**
  *  Map dữ liệu chỉnh sửa từ một tag ngẫu nhiên
  * @returns body chỉnh sửa đã map data và id của tag
