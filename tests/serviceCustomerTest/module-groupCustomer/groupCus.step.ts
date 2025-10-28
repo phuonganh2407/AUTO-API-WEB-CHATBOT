@@ -1,4 +1,4 @@
-import { getListGroupCustomer } from "../../../services/customerApi/groupCustomer/groupCustomer.api";
+import { getListGroupCustomer } from "../../../services/customerApi/groupCustomer.api";
 import { compareRequestResponse, handleComparisonResult } from "../../../utils/funtionHelper";
 
 /**

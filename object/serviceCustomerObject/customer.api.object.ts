@@ -26,19 +26,16 @@ export interface createCustomerBody {
   email: string;
   tagIds: number[];
   isDefault: boolean;
-  shipmentDetails: [
-    {
-      id: number;
-      name: string;
-      phone: string;
-      streetNo: string;
-      wardCode: string;
-      districtCode: string;
-      cityCode: string;
-      isDefault: boolean;
-      isNewAddress: boolean;
-    }
-  ];
+  shipmentDetails: Array<{
+    name: string;
+    phone: string;
+    streetNo: string;
+    wardCode: string;
+    districtCode: string;
+    cityCode: string;
+    isDefault: boolean;
+    isNewAddress: boolean;
+  }>;
   authorId: string;
   customerGroupIds: number[];
 }

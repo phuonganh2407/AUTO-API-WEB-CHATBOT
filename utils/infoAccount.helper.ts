@@ -1,8 +1,9 @@
-import { login } from "../services/authenticationApi/account/login.api";
+import { login } from "../services/authenticationApi/login.api";
 import { saveSession, getSession, isTokenExpired } from "./session.helper";
 import { accounts } from "../config/accounts.config";
 import dotenv from "dotenv";
-import { getIdShop } from "../services/authenticationApi/shop/getShop.api";
+import { getIdShop } from "../services/authenticationApi/shop.api";
+import { getShopUserInfo } from "../services/authenticationApi/shopUser.api";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ export const AuthFlowHelper = {
     if (isTokenExpired()) {
       const token = await AuthFlowHelper.loginAndSaveToken();
       await AuthFlowHelper.getShopIdAndSave();
+      await AuthFlowHelper.getIDShopOwner();
       return token;
     }
     return getSession().token;
@@ -54,6 +56,24 @@ export const AuthFlowHelper = {
     saveSession({ shopId });
     
     return shopId;
+  },
+
+  /**
+   * Lấy ownerId của shop chủ và lưu vào session
+   * @returns ownerId của chủ shop
+   */
+  getIDShopOwner: async () => {
+    const env = process.env.ENVIRONMENT as "dev" | "stag" | "prod";
+    const { nameOwner } = accounts[env];
+    const res = await getShopUserInfo();
+    const listShops = res.data.shopUsers;
+    console.log(listShops);
+    const shop = listShops.find((owner: any) => owner.name === nameOwner);
+    const ownerId = shop ? shop.userId : null;
+
+    saveSession({ ownerId });
+
+    return ownerId;
   },
 
   /**

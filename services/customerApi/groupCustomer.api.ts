@@ -1,6 +1,6 @@
-import { baseCustomerEndpoints } from "../../../config/urls.config";
-import axiosClient from "../../../core/axiosClient";
-import { createGroupCustomerBody } from "../../../object/serviceCustomerObject/customer.api.object";
+import { baseCustomerEndpoints } from "../../config/urls.config";
+import axiosClient from "../../core/axiosClient";
+import { createGroupCustomerBody } from "../../object/serviceCustomerObject/customer.api.object";
 
 /**
  * Tạo nhóm khách hàng mới

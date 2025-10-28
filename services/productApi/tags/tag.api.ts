@@ -26,7 +26,6 @@ export async function getDetailTag(id: number) {
  * @returns Trả về Danh sách theo params đã truyền
  */
 export async function getListTag(params?: { SearchText?: string; TagType?: number }) {
-  console.log('Search params:', params); // Debug log
   return axiosClient.get(baseProductEndpoints.urlSearchTags, { params });
 }
 

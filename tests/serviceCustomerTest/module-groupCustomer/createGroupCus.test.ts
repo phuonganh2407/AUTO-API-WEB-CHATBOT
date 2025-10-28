@@ -5,7 +5,7 @@ import {
   fullDataGroupCus,
   longNameGroupCus,
 } from "../../../data/serviceCustomerData/groupCustomer.data";
-import { createGroupCustomer } from "../../../services/customerApi/groupCustomer/groupCustomer.api"; // Update the path as needed
+import { createGroupCustomer } from "../../../services/customerApi/groupCustomer.api"; // Update the path as needed
 import { testsCheckFails } from "../../../utils/funtionHelper";
 
 describe("Thêm mới nhóm cho Khách hàng", () => {

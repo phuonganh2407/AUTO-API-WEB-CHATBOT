@@ -57,7 +57,7 @@ export function getRandomData(
   data: any,
   quantity: number | null = null,
   field: string | null = null,
-  customField: string = "items",
+  customField: string | null = "items",
   filterFunction?: (item: any) => boolean
 ): any[] {
   // Kiểm tra nếu data không tồn tại, trả về mảng rỗng
@@ -68,14 +68,12 @@ export function getRandomData(
   if (Array.isArray(data)) {
     // Nếu data là mảng, sử dụng trực tiếp
     list = data;
-  } else if (Array.isArray(data[customField])) {
-    // Nếu data là object và có field customField là mảng, lấy mảng đó
+  } else if (customField && Array.isArray(data[customField])) {
+    // Nếu customField tồn tại và data có field customField là mảng, lấy mảng đó
     list = data[customField];
   } else {
-    // Nếu không phải, throw error
-    throw new Error(
-      `Invalid data format: '${customField}' is not a valid list`
-    );
+    // Nếu không phải, trả về mảng rỗng
+    return [];
   }
 
   // Áp dụng filter nếu có hàm filter được cung cấp

@@ -1,6 +1,6 @@
 import { errorMessages } from "../../../data/errorMessages";
 import { mapEditGroupCusData, mapEditGroupCusDataWithChangeName, mapEditGroupCusDataWithDuplicateName } from "../../../data/serviceCustomerData/groupCustomer.data";
-import { editGroupCustomer } from "../../../services/customerApi/groupCustomer/groupCustomer.api";
+import { editGroupCustomer } from "../../../services/customerApi/groupCustomer.api";
 import { testsCheckFails } from "../../../utils/funtionHelper";
 import { compareSearchGroupCusList } from "./groupCus.step";
 
