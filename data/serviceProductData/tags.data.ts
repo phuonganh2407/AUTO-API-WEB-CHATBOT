@@ -87,10 +87,31 @@ export async function longNameEdit(): Promise<{ payload: Partial<editTagBody>; i
  * @returns body chỉnh sửa đã map data và id của tag kèm theo name đã tồn tại
  */
 export async function duplicateNameEdit(): Promise<{ payload: Partial<editTagBody>; id: number }> {
-    const responseListTags = await getListTag({ TagType:  TAGS.TAG_PRODUCT });
-    const nameExists = responseListTags.data.items[0]?.name;
-    const { payload, id } = await mapEditData();
-    return { payload: { ...payload as any, name: nameExists }, id };
+    // Lấy danh sách tags cùng một loại cố định (chọn PRODUCT để ổn định rule duplicate)
+    const listRes = await getListTag({ TagType: TAGS.TAG_PRODUCT });
+    const items: any[] = listRes.data.items || [];
+    // Đảm bảo có ít nhất 2 tag để tạo tình huống duplicate name giữa 2 ID khác nhau
+    if (items.length < 2) {
+        // Nếu thiếu, tạo thêm một tag rồi gọi lại (đảm bảo tránh vòng lặp vô hạn bằng 1 lần retry)
+        await createTag((await fullTagsData()) as any);
+        const retryRes = await getListTag({ TagType: TAGS.TAG_PRODUCT });
+        const retryItems: any[] = retryRes.data.items || [];
+        if (retryItems.length < 2) {
+            throw new Error("Không đủ dữ liệu tags để test duplicate name");
+        }
+        return makeDuplicatePayload(retryItems);
+    }
+    return makeDuplicatePayload(items);
+}
+
+function makeDuplicatePayload(items: any[]): { payload: Partial<editTagBody>; id: number } {
+    // Lấy tag A làm nguồn name, tag B là đối tượng edit (khác ID)
+    const [tagA, tagB] = items.slice(0, 2);
+    if (!tagA || !tagB) throw new Error("Thiếu tags để tạo duplicate payload");
+    // Map body từ tag B
+    const mapped = getSubObjectByKeys(tagB, Object.keys(editTagBody));
+    // Ghi đè name bằng name của tag A (khác ID => duplicate thực sự)
+    return { payload: { ...mapped as any, name: tagA.name }, id: tagB.id };
 }
 
 /**
