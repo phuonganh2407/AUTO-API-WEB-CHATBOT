@@ -16,9 +16,9 @@ export const AuthFlowHelper = {
       await AuthFlowHelper.getShopIdAndSave();
       return token;
     }
-    // Nếu token chưa hết hạn thì không làm gì cả
     return getSession().token;
   },
+
   /**
    * Đăng nhập → lấy token → lưu session với expireToken
    */
@@ -31,11 +31,11 @@ export const AuthFlowHelper = {
 
     if (!token) throw new Error("Không lấy được token!");
 
-    // Lưu loginTime (thời gian login) và expiresIn (thời gian sống còn từ API)
-    const loginTime = Math.floor(Date.now() / 1000); // Thời gian login (epoch seconds) => nếu mún chuyển sang format date thì dùng: new Date(loginTime * 1000).toISOString()
-    const expiresIn = res.data.expiresIn; // Thời gian hiệu lực của token lấy từ response (giây)
-    const currentEnv = process.env.ENVIRONMENT || 'dev'; // Môi trường hiện tại => Được chuyển theo môi trường khi chạy test
-    saveSession(token, undefined, loginTime, expiresIn, currentEnv); // Lưu token, loginTime, expiresIn, environment
+    const loginTime = Math.floor(Date.now() / 1000);
+    const expiresIn = res.data.expiresIn;
+    const environment = process.env.ENVIRONMENT || "dev";
+
+    saveSession({ token, loginTime, expiresIn, environment });
 
     return token;
   },
@@ -45,13 +45,14 @@ export const AuthFlowHelper = {
    */
   getShopIdAndSave: async () => {
     const env = process.env.ENVIRONMENT as "dev" | "stag" | "prod";
-    const { shopName } = accounts[env]; //lấy tên shop mong muốn từ config
+    const { shopName } = accounts[env];
     const res = await getIdShop();
     const listShops = res.data.shops;
-    const shop = listShops.find((shop: any) => shop.name === shopName); // tìm shop theo tên cửa hàng theo môi trường
+    const shop = listShops.find((shop: any) => shop.name === shopName);
     const shopId = shop ? shop.id : null;
-    saveSession(undefined, shopId);
-    // console.log("ShopID saved:", shopId);
+    
+    saveSession({ shopId });
+    
     return shopId;
   },
 
@@ -59,7 +60,7 @@ export const AuthFlowHelper = {
    * Kiểm tra token hết hạn, nếu có thì login lại
    */
   ensureAuth: async () => {
-    if (isTokenExpired()) { // Gọi hàm kiểm tra: nếu (now - loginTime) >= expiresIn, thì login
+    if (isTokenExpired()) {
       await AuthFlowHelper.loginAndSaveToken();
     }
   },
