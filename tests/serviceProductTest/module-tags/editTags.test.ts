@@ -3,12 +3,14 @@ import { duplicateNameEdit, emptyNameEdit, mapEditData, nameValidEdit } from "..
 import { editTag } from "../../../services/productApi/tags/tag.api";
 import { testsCheckFails } from "../../../utils/funtionHelper";
 import { compareSearchTagList, compareTagDetails } from "./tags.step";
+import { callWithAllure } from "../../../utils/httpWithAllure";
+import { testWithAllure } from "../../testWithAllure";
 
 describe("Chỉnh sửa Thẻ tags cho Khách hàng, Nhà cung cấp, Sản phẩm, Đơn hàng", () => {
-  test("@smoke TAG_EDIT_008 - Chỉnh sửa Lưu thành công thẻ tag với data không thay đổi", async () => {
+  testWithAllure("@smoke TAG_EDIT_008 - Chỉnh sửa Lưu thành công thẻ tag với data không thay đổi", async () => {
     const { payload: payloadEditTag, id } = await mapEditData();
-    // console.log("ID của tag cần edit:", id);
-    const editResponse = await editTag(id, payloadEditTag as any);
+    // Gọi API edit (attach request/response)
+    const editResponse = await callWithAllure(() => editTag(id, payloadEditTag as any), { name: 'editTag' });
 
     // So sánh chi tiết sau khi edit
     await compareTagDetails(id, payloadEditTag);
@@ -17,28 +19,28 @@ describe("Chỉnh sửa Thẻ tags cho Khách hàng, Nhà cung cấp, Sản ph�
     await compareSearchTagList(payloadEditTag);
   });
 
-  test("TAG_EDIT_009 - Chỉnh sửa Lưu không thành công khi tên rỗng", async () => {
+  testWithAllure("TAG_EDIT_009 - Chỉnh sửa Lưu không thành công khi tên rỗng", async () => {
     const { payload: payloadEditTag, id } = await emptyNameEdit();
     await testsCheckFails(
-      editTag(id, payloadEditTag as any),
+      callWithAllure(() => editTag(id, payloadEditTag as any), { name: 'editTag' }),
       400,
       errorMessages.product.createTagEmptyName
     );
   });
 
-  test("TAG_EDIT_010 - Chỉnh sửa Lưu không thành công khi tên thẻ tag đã tồn tại", async () => {
+  testWithAllure("TAG_EDIT_010 - Chỉnh sửa Lưu không thành công khi tên thẻ tag đã tồn tại", async () => {
     const { payload: payloadEditTag, id } = await duplicateNameEdit();
     await testsCheckFails(
-      editTag(id, payloadEditTag as any),
+      callWithAllure(() => editTag(id, payloadEditTag as any), { name: 'editTag' }),
       403,
       errorMessages.product.createTagDuplicateName
     );
   });
 
-  test("@smoke TAG_EDIT_011 - Chỉnh sửa Lưu thành công thẻ tag với tên hợp lệ", async () => {
+  testWithAllure("@smoke TAG_EDIT_011 - Chỉnh sửa Lưu thành công thẻ tag với tên hợp lệ", async () => {
     const { payload: payloadEditTag, id } = await nameValidEdit();
 
-    const editReq = await editTag(id, payloadEditTag as any);
+    const editReq = await callWithAllure(() => editTag(id, payloadEditTag as any), { name: 'editTag' });
 
     // So sánh chi tiết sau khi edit
     await compareTagDetails(id, payloadEditTag);

@@ -17,6 +17,12 @@
     "test:prod:suite:spec": "cross-env ENVIRONMENT=prod NO_ALLURE=1 jest --maxWorkers=1 --no-coverage tests/suites/main.suite.test.ts -t",
     
     "report:clean": "powershell -Command \"Remove-Item -Recurse -Force reports/allure-results, reports/allure-report -ErrorAction SilentlyContinue\""
+    ,
+    "report:generate": "npx allure generate reports/allure-results -o reports/allure-report --clean",
+  "report:open": "powershell -Command \"if (Test-Path 'reports\\allure-report\\index.html') { Start-Process (Resolve-Path 'reports\\allure-report\\index.html') } else { Write-Host 'Report not found' }\"",
+  "test:allure": "cross-env ENVIRONMENT=prod jest --runInBand && node scripts/applyTmpAttachments.js && npm run report:generate",
+  "report:full": "powershell -Command \"$rc = (& npm run test:prod:suite); if ($LASTEXITCODE -eq 0) { node scripts/applyTmpAttachments.js; npx allure generate reports/allure-results -o reports/allure-report --clean; if (Test-Path 'reports\\allure-report\\index.html') { Start-Process (Resolve-Path 'reports\\allure-report\\index.html') } } else { Write-Host 'Tests failed - skipping report generation.' }\"",
+  "report:ci": "powershell -Command \"npm run test:prod:suite; if ($LASTEXITCODE -eq 0) { node scripts/applyTmpAttachments.js; npx allure generate reports/allure-results -o reports/allure-report --clean } else { Write-Host 'Tests failed - skipping report generation.'; exit $LASTEXITCODE }\""
   },
   "keywords": [],
   "author": "",
