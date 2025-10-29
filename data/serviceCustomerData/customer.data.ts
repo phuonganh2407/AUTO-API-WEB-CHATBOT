@@ -91,8 +91,7 @@ export async function fullCreateCustomerData(): Promise<
     gender: randomGender,
     dateOfBirth: fakerVI.date
       .birthdate({ min: 18, max: 65, mode: "age" })
-      .toISOString()
-      .split("T")[0],
+      .toISOString(),
     streetNo: fakerVI.address.streetAddress(),
     cityCode: randomCity,
     districtCode: randomDistrict,
