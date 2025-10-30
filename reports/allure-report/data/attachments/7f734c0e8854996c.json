@@ -1,0 +1,22 @@
+{
+  "url": "https://api-v2.wionpos.com/customer/api/v1/customer-groups",
+  "status": 400,
+  "message": "Request failed with status code 400",
+  "response": {
+    "error": {
+      "code": null,
+      "message": "Your request is not valid!",
+      "details": "The following errors were detected during validation.\n - 'Name' must not be empty.\n",
+      "data": {},
+      "validationErrors": [
+        {
+          "message": "'Name' must not be empty.",
+          "members": [
+            "name"
+          ]
+        }
+      ]
+    }
+  },
+  "__testId": "mhcycesa-bjmifn"
+}

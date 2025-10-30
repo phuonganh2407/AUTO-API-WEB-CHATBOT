@@ -1,0 +1,15 @@
+{
+  "url": "https://api-v2.wionpos.com/product/api/v1/tag?SearchText=cyan_1761798419065",
+  "method": "GET",
+  "headers": {
+    "Accept": "application/json, text/plain, */*",
+    "Content-Type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IkFBRjc1MDBBMzA4N0NDMkMyMEY4NjE0RDFENjhCNjBFIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE3NjE3OTg0MTEsImV4cCI6MTc5MzMzNDQxMSwiaXNzIjoiaHR0cHM6Ly9hY2NvdW50LnRtdGNvLm9yZyIsImF1ZCI6WyJBY2NvdW50QXBwIiwiV2lvblBvc1YyQXBwIl0sImNsaWVudF9pZCI6Ildpb25Qb3NWMlVzZXJDbGllbnQiLCJhcHAiOiJXaW9uUG9zVjJBcHAiLCJjdXJyZW50X2FwcCI6IiIsInRlbmFudGlkIjoiNjc1MDY0NTMyMTA3MjY0Iiwic3ViIjoiMTE1NzM5NzcxMzcyMjciLCJhdXRoX3RpbWUiOjE3NjE3OTg0MTEsImlkcCI6ImxvY2FsIiwiZW1haWwiOiJhbmhucEB0bXRjby5hc2lhIiwicGhvbmVfbnVtYmVyIjoiKzg0MzgzNTEzOTY5IiwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjoiVHJ1ZSIsImlhdCI6MTc2MTc5ODQxMSwic2NvcGUiOlsiQWNjb3VudEFwcCIsIldpb25Qb3NWMkFwcCIsIm9mZmxpbmVfYWNjZXNzIl0sImFtciI6WyJwd2QiXX0.v4g7KUbRoic6CDI8H45euqOpGFhuXFmhjYBlJsiKE04HDpJC1A1BOtw4JqSt7VilQg_AeYbEWb-UjgTNIElJD2INbullCeM5C4l_Tetu5gVezthfFA61qUxsOtFan1dpJjJEVRhYyLnHokMpXtztWDx-imVcSfIlL73fAPPXc9onLth_60KCHOVfm_RWth3MKmWHAxq7gfQv8NbPcvf9gE79Hr5pcRFq7wKF1DeWD5_GiX4BfIWouPa1wkXrG7OLWGdv0Y8SodBDSCjtWPyaOjy2RO8m-SgVYOLWwSSold6M3_bM_9iT8TpzbMBSzRRUGiFHWPSzMuILarNACbc35g",
+    "shopId": 767864670781440,
+    "x-test-id": "mhcycb19-57xg1r"
+  },
+  "params": {
+    "SearchText": "cyan_1761798419065"
+  },
+  "__testId": "mhcycb19-57xg1r"
+}

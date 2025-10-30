@@ -1,0 +1,20 @@
+{
+  "message": "Request failed with status code 400",
+  "data": {
+    "error": {
+      "code": null,
+      "message": "Your request is not valid!",
+      "details": "The following errors were detected during validation.\n - 'Name' must not be empty.\n",
+      "data": {},
+      "validationErrors": [
+        {
+          "message": "'Name' must not be empty.",
+          "members": [
+            "name"
+          ]
+        }
+      ]
+    }
+  },
+  "status": 400
+}

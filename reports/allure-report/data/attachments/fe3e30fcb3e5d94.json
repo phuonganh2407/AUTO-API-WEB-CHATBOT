@@ -1,0 +1,28 @@
+{
+  "url": "https://api-v2.wionpos.com/product/api/v1/tag",
+  "status": 200,
+  "headers": {
+    "date": "Thu, 30 Oct 2025 04:56:28 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "set-cookie": "INGRESSCOOKIE=1761800189.505.12059.571275|85fb32367da91a4419db6929ab2fb954; Path=/; Secure; HttpOnly",
+    "strict-transport-security": "max-age=31536000; includeSubDomains"
+  },
+  "data": {
+    "currentCount": 1,
+    "totalCount": 1,
+    "items": [
+      {
+        "id": 792623646572544,
+        "name": "f2ÔuRƠÂp  1ÂuH j1A   hXĂ",
+        "type": 4,
+        "tagColorId": 675064574377984,
+        "tagColorName": "Default",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#929DAA"
+      }
+    ]
+  },
+  "__testId": "mhcycd0n-nup5k1"
+}

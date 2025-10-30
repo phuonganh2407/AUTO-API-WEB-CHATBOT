@@ -1,0 +1,13 @@
+{
+  "url": "https://api-v2.wionpos.com/customer/api/v1/customer-groups/801194503831552",
+  "status": 204,
+  "headers": {
+    "date": "Thu, 30 Oct 2025 04:56:32 GMT",
+    "connection": "keep-alive",
+    "set-cookie": "INGRESSCOOKIE=1761800193.271.12059.313389|85fb32367da91a4419db6929ab2fb954; Path=/; Secure; HttpOnly",
+    "x-correlation-id": "cdd70fd256304201835c41a34009169f",
+    "strict-transport-security": "max-age=31536000; includeSubDomains"
+  },
+  "data": "",
+  "__testId": "mhcycfvx-h2oa9e"
+}

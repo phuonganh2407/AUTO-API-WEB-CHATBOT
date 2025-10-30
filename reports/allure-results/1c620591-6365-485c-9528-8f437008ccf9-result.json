@@ -1,0 +1,41 @@
+{
+  "uuid": "1c620591-6365-485c-9528-8f437008ccf9",
+  "historyId": "5c71769d187c26cdb59fa4605f56cf4e",
+  "name": "GROUPCUS_ADD_019 - Thêm mới nhóm khách hàng với tên nhóm rỗng",
+  "fullName": "Thêm mới nhóm cho Khách hàng GROUPCUS_ADD_019 - Thêm mới nhóm khách hàng với tên nhóm rỗng",
+  "start": 1761800189914,
+  "stop": 1761800190020,
+  "description": "",
+  "descriptionHtml": "",
+  "stage": "finished",
+  "status": "passed",
+  "labels": [
+    {
+      "value": "Thêm mới nhóm cho Khách hàng",
+      "name": "suite"
+    },
+    {
+      "name": "thread",
+      "value": "02"
+    }
+  ],
+  "links": [],
+  "attachments": [
+    {
+      "source": "1c620591-6365-485c-9528-8f437008ccf9-attachment-1761800196614-wtqjfk.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "1c620591-6365-485c-9528-8f437008ccf9-attachment-1761800196616-cp52g3.json",
+      "type": "application/json",
+      "name": "HTTP Error"
+    },
+    {
+      "source": "1c620591-6365-485c-9528-8f437008ccf9-attachment-1761800196625-wagxa7.json",
+      "type": "application/json",
+      "name": "createGroupCustomer - Error"
+    }
+  ],
+  "parameters": []
+}

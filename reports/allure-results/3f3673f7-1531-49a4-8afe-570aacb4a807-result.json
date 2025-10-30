@@ -1,0 +1,86 @@
+{
+  "uuid": "3f3673f7-1531-49a4-8afe-570aacb4a807",
+  "historyId": "95ff738beee0f1da3b3337354ecb045e",
+  "name": "@smoke TAG_SEARCH_013 - Kiểm tra tìm kiếm theo loại thẻ tag KHÁCH HÀNG",
+  "fullName": "Tìm kiếm thẻ tags theo tên và bộ lọc thẻ tag theo điều kiện bộ lọc @smoke TAG_SEARCH_013 - Kiểm tra tìm kiếm theo loại thẻ tag KHÁCH HÀNG",
+  "start": 1761800185882,
+  "stop": 1761800186747,
+  "description": "",
+  "descriptionHtml": "",
+  "stage": "finished",
+  "status": "passed",
+  "labels": [
+    {
+      "value": "Tìm kiếm thẻ tags theo tên và bộ lọc thẻ tag theo điều kiện bộ lọc",
+      "name": "suite"
+    },
+    {
+      "name": "thread",
+      "value": "02"
+    }
+  ],
+  "links": [],
+  "attachments": [
+    {
+      "source": "3f3673f7-1531-49a4-8afe-570aacb4a807-attachment-1761800196108-jf2o66.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "3f3673f7-1531-49a4-8afe-570aacb4a807-attachment-1761800196109-9zc977.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "3f3673f7-1531-49a4-8afe-570aacb4a807-attachment-1761800196119-ftgljl.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "3f3673f7-1531-49a4-8afe-570aacb4a807-attachment-1761800196130-sths4o.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "3f3673f7-1531-49a4-8afe-570aacb4a807-attachment-1761800196139-wmooxr.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "3f3673f7-1531-49a4-8afe-570aacb4a807-attachment-1761800196150-4tdk19.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "3f3673f7-1531-49a4-8afe-570aacb4a807-attachment-1761800196159-yrt11r.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "3f3673f7-1531-49a4-8afe-570aacb4a807-attachment-1761800196169-p3hixk.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "3f3673f7-1531-49a4-8afe-570aacb4a807-attachment-1761800196182-gwaqm4.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "3f3673f7-1531-49a4-8afe-570aacb4a807-attachment-1761800196193-hxmo2s.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "3f3673f7-1531-49a4-8afe-570aacb4a807-attachment-1761800196204-uzqyak.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "3f3673f7-1531-49a4-8afe-570aacb4a807-attachment-1761800196214-9lek2g.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    }
+  ],
+  "parameters": []
+}

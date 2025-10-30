@@ -1,0 +1,22 @@
+{
+  "url": "https://api-v2.wionpos.com/product/api/v1/tag/864297616146432",
+  "status": 200,
+  "headers": {
+    "date": "Thu, 30 Oct 2025 04:56:24 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "set-cookie": "INGRESSCOOKIE=1761800185.205.12059.991587|85fb32367da91a4419db6929ab2fb954; Path=/; Secure; HttpOnly",
+    "strict-transport-security": "max-age=31536000; includeSubDomains"
+  },
+  "data": {
+    "id": 864297616146432,
+    "name": "cyan_1761798419065",
+    "type": 1,
+    "tagColorId": 675064574377987,
+    "tagColorName": "Colorful",
+    "textColor": "#FFFFFF",
+    "backgroundColor": "#FA6C1D"
+  },
+  "__testId": "mhcyc9sx-exq1ip"
+}
