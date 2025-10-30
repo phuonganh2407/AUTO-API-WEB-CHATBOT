@@ -32,11 +32,10 @@ steps:
     displayName: 'Chạy test và tạo Allure report (report:full)'
 
   # 4. Publish Allure report bằng extension marketplace (AllureTestReport@1)
-  - task: AllureTestReport@1
+  - task: PublishAllureReport@1
     condition: always()
-    displayName: 'Publish Allure Report (AllureTestReport@1)'
     inputs:
-      resultsPath: 'reports/allure-results'
+      testResultsDir: 'allure-results'
       reportName: 'AUTO API WIONPOS Report'
 
   # 5. Upload thư mục raw `allure-results` làm artifact để tiện download và debug
