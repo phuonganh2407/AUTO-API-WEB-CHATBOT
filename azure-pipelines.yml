@@ -1,0 +1,60 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  name: tester_pools   # chạy trên máy bạn đã cấu hình làm agent
+
+schedules:
+- cron: "0 1 * * 1-5" # giây phút giờ ngày tháng thứ (UTC) 08:00 VN = 01:00 UTC
+  displayName: 'Run tests at 08:00 Mon-Fri (VN time)'
+  branches:
+    include:
+    - master
+  always: true
+
+steps:
+# 1. Checkout code từ repo
+steps:
+  # 1. Checkout code từ repo
+  - checkout: self
+
+  # 2. Cài dependency theo package-lock.json
+  - script: npm ci
+    displayName: 'Install dependencies'
+
+  # 3. Chạy test với Allure reporter và tạo báo cáo
+  - script: |
+      echo "Chạy test và tạo báo cáo Allure (report:full)"
+      npm run report:full
+    displayName: 'Chạy test và tạo Allure report (report:full)'
+
+  # 4. Publish Allure report bằng extension marketplace (AllureTestReport@1)
+  - task: PublishAllureReport@1
+    condition: always()
+    displayName: 'Publish Allure Report (AllureTestReport@1)'
+    inputs:
+      resultsPath: 'reports/allure-results'
+      reportName: 'AUTO API WIONPOS Report'
+
+  # 5. Upload thư mục raw `allure-results` làm artifact để tiện download và debug
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      PathtoPublish: 'reports/allure-results'
+      ArtifactName: 'allure-raw-results'
+      publishLocation: 'Container'
+    displayName: 'Upload raw allure-results artifact'
+
+  # 6. (Tùy chọn) Upload folder HTML đã sinh của Allure làm artifact
+  - task: PublishBuildArtifacts@1
+    condition: always()
+    inputs:
+      PathtoPublish: 'reports/allure-report'
+      ArtifactName: 'allure-html-report'
+      publishLocation: 'Container'
+    displayName: 'Upload HTML Allure report artifact'
