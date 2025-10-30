@@ -6,16 +6,22 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    // Thiết lập path alias giúp bỏ bớt import tương đối ../../..
+    "baseUrl": ".",
+    "paths": {
+      "@core/*": ["core/*"],
+      "@services/*": ["services/*"],
+      "@config/*": ["config/*"],
+      "@constants/*": ["constants/*"],
+      "@data/*": ["data/*"],
+      "@tests/*": ["tests/*"],
+      "@utils/*": ["utils/*"]
+    }
   },
   "include": [
-<<<<<<< HEAD
-    "core/axiosClient.ts",
-    "services/authenticationApi/login.api.ts", //
-=======
     "core/api/axiosClient.ts",
-    "services/authenticationApi/account/login.api.ts", //
->>>>>>> 8f92a4cbbe2900e2b539337c9f1fcf159464f120
+    "services/api/authenticationApi/account/login.api.ts",
     "data/**/*", //Lấy toàn bộ file .ts trong thư mục data và các thư mục con
     "tests/**/*" //Lấy toàn bộ file test .ts trong thư mục tests
   ],

@@ -2,17 +2,10 @@ import { fakerVI } from "@faker-js/faker";
 import {
   createGroupCustomerBody,
   editGroupCustomerBody,
-<<<<<<< HEAD:data/serviceCustomerData/groupCustomer.data.ts
-} from "../../object/serviceCustomerObject/customer.api.object"; // Update the path as needed
-import { createRandomNumberString } from "../../utils/genFunctionData";
-import { getRandomData, getSubObjectByKeys } from "../../utils/funtionHelper";
-import { getListGroupCustomer } from "../../services/customerApi/groupCustomer.api";
-=======
 } from "../../../object/api/serviceCustomerObject/customer.api.object"; // Update the path as needed
 import { createRandomNumberString } from "../../../utils/genFunctionData";
 import { getRandomData, getSubObjectByKeys } from "../../../utils/funtionHelper";
-import { getListGroupCustomer } from "../../../services/api/customerApi/groupCustomer/groupCustomer.api";
->>>>>>> 8f92a4cbbe2900e2b539337c9f1fcf159464f120:data/api/serviceCustomerData/groupCustomer.data.ts
+import { getListGroupCustomer } from "../../../services/api/customerApi/groupCustomer.api";
 
 // ============= CREATE GROUP CUSTOMET DATA =============
 

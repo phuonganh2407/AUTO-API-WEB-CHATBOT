@@ -1,6 +1,6 @@
-import { baseCustomerEndpoints } from "../../config/urls.config";
-import axiosClient from "../../core/axiosClient";
-import { createCustomerBody } from "../../object/serviceCustomerObject/customer.api.object";
+import { baseCustomerEndpoints } from "../../../config/api/urls.config";
+import axiosClient from "../../../core/api/axiosClient";
+import { createCustomerBody } from "../../../object/api/serviceCustomerObject/customer.api.object";
 
 /**
  *  Tạo khách hàng mới
@@ -19,3 +19,5 @@ export async function createCustomer(body: createCustomerBody) {
 export async function detailCustomer(id: number) {
     return axiosClient.get(`${baseCustomerEndpoints.urlDetailCustomer}/${id}`);
 }
+
+// export async function

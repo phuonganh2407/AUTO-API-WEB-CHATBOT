@@ -143,19 +143,17 @@ export function normalizeString(
 }
 
 /**
- * Type cho cấu hình comparison (optional)
+ * Cấu hình so sánh giữa request và response
  */
-export type ComparisonConfig = {
-  /** Map field request -> field response (nếu tên khác nhau) */
+export type CompareConfig = {
+  /** Map field request -> field response (nếu khác tên) */
   fieldMapping?: Record<string, string>;
-  /** Danh sách fields bỏ qua không cần so sánh */
-  ignoredFields?: string[];
 };
 
 /**
- * Type cho kết quả comparison
+ * Kết quả so sánh
  */
-export type ComparisonResult = {
+export type CompareResult = {
   isSuccess: boolean;
   matches: string[];
   warnings: string[];
@@ -163,30 +161,27 @@ export type ComparisonResult = {
 };
 
 /**
- * So sánh dữ liệu giữa request body và response body
- * @param requestBody - Body từ request
- * @param responseBody - Body từ response
- * @param config - Cấu hình comparison (optional)
- * @returns Kết quả comparison
+ *  So sánh dữ liệu giữa requestBody và responseBody
+ *  - Không quan tâm thứ tự mảng
+ *  - Chỉ cần tồn tại các giá trị tương ứng trong mảng
+ *  - Tự động bỏ qua một số field động (id, thời gian, ...)
  */
 export function compareRequestResponse(
-  requestBody: any,
-  responseBody: any,
-  config: {
-    fieldMapping?: Record<string, string>;
-    ignoredFields?: string[];
-  } = {}
-) {
-  const { fieldMapping = {}, ignoredFields = [] } = config;
-
-  const result = {
+  requestBody: Record<string, any>,
+  responseBody: Record<string, any>,
+  { fieldMapping = {} }: CompareConfig = {}
+): CompareResult {
+  const result: CompareResult = {
     isSuccess: true,
-    matches: [] as string[],
-    warnings: [] as string[],
-    errors: [] as string[],
+    matches: [],
+    warnings: [],
+    errors: [],
   };
 
-  // ✅ So sánh sâu giữa 2 giá trị (dùng Jest expect)
+  /** Danh sách field tự động bỏ qua */
+  const autoIgnored = ["id", "creationTime", "lastRecordTime"];
+
+  /** So sánh deep-equal (dùng Jest expect) */
   const isEqual = (a: any, b: any): boolean => {
     try {
       expect(b).toEqual(a);
@@ -196,61 +191,100 @@ export function compareRequestResponse(
     }
   };
 
-  // ✅ So sánh array (không quan tâm thứ tự)
-  const compareArrays = (reqArr: any[], resArr: any[], key: string) => {
-    let matched = 0;
+  /** Format giá trị để log dễ đọc */
+  const format = (v: any): string =>
+    Array.isArray(v)
+      ? `[${v.map(format).join(", ")}]`
+      : typeof v === "string"
+      ? `"${v}"`
+      : v && typeof v === "object"
+      ? JSON.stringify(v)
+      : String(v);
 
-    for (const reqItem of reqArr) {
-      const found = resArr.some((resItem) => isEqual(reqItem, resItem));
-      if (found) matched++;
-    }
-
-    if (matched === reqArr.length) {
-      result.matches.push(`${key}: all items matched (${matched})`);
-    } else {
-      result.errors.push(
-        `${key}: only ${matched}/${reqArr.length} items matched`
-      );
-      result.isSuccess = false;
-    }
+  /** Thêm lỗi và đánh dấu fail */
+  const addError = (msg: string) => {
+    result.errors.push(msg);
+    result.isSuccess = false;
   };
 
-  // ✅ Format giá trị cho dễ debug khi in log
-  const formatValue = (value: any): string => {
-    if (Array.isArray(value)) return `[${value.map(formatValue).join(", ")}]`;
-    if (typeof value === "string") return `"${value}"`;
-    if (typeof value === "object" && value !== null)
-      return JSON.stringify(value);
-    return String(value);
+  /**
+   * So sánh mảng (unordered, chỉ cần tồn tại giá trị)
+   */
+  const compareArrays = (expected: any[], actual: any[], key: string) => {
+    let matchedCount = 0;
+
+    for (const expItem of expected) {
+      if (typeof expItem === "object" && expItem !== null) {
+        // Kiểm tra xem có object nào trong actual chứa đủ các field của expItem không
+        const found = actual.some(actItem =>
+          Object.entries(expItem)
+            .filter(([k]) => !autoIgnored.includes(k))
+            .every(([k, v]) => isEqual(v, actItem[k]))
+        );
+        if (found) matchedCount++;
+      } else if (actual.includes(expItem)) {
+        matchedCount++;
+      }
+    }
+
+    matchedCount === expected.length
+      ? result.matches.push(`${key}: all ${matchedCount} items found (unordered)`)
+      : addError(`${key}: found ${matchedCount}/${expected.length} expected items`);
   };
 
-  // ✅ Duyệt từng field trong request body
-  for (const [reqKey, reqValue] of Object.entries(requestBody)) {
-    if (ignoredFields.includes(reqKey)) continue;
+  /** Lấy giá trị thực tế từ response theo key (hỗ trợ "tags[].id") */ 
+  /* 
+    * regex pattern để kiểm tra xem resKey có đúng format đặc biệt "tênMảng[].tênField" hay không. 
+    * match = tênmảng, tênfield
+  */
+  const getResponseValue = (resKey: string, reqKey: string) => {
+    const match = resKey.match(/^(.+)\[\]\.(.+)$/); // ví dụ: tags[].id
+    //Nếu tồn tại match
+    if (match) {
+      // [full match, tên mảng, tên field]. VD: ["tags[].id", "tags", "id"]
+      const [, arrayField, subField] = match;
+      //Lấy dữ liệu mảng từ response. responseBody["tags"] -> [{id: 1}, {id:2}]
+      const data = responseBody[arrayField];
+      //Nếu data là mảng, map lấy subField từ từng phần tử. VD: [{id:1}, {id:2}] -> [1,2]
+      if (Array.isArray(data)) return data.map(item => item[subField]);
+        result.warnings.push(`Field '${reqKey}': '${arrayField}' is not an array in response`);
+        return undefined;
+    }
+    return responseBody[resKey];
+  };
 
-    const resKey = fieldMapping[reqKey] || reqKey;
-    const resValue = responseBody[resKey];
+  // So sánh từng field trong requestBody
+  for (const [reqKey, expectedValue] of Object.entries(requestBody)) {
+    if (autoIgnored.includes(reqKey)) continue; // tự động bỏ qua
 
-    if (resValue === undefined) {
-      result.warnings.push(`Field '${reqKey}' missing in response`);
+    const resKey = fieldMapping[reqKey] ?? reqKey;
+    const actualValue = getResponseValue(resKey, reqKey);
+
+    if (actualValue === undefined) {
+      result.warnings.push(`Missing field '${reqKey}' in response`);
       continue;
     }
 
-    if (Array.isArray(reqValue) && Array.isArray(resValue)) {
-      compareArrays(reqValue, resValue, reqKey);
-    } else if (isEqual(reqValue, resValue)) {
-      const mappingInfo = fieldMapping[reqKey] ? ` (→ ${resKey})` : "";
-      result.matches.push(`${reqKey}${mappingInfo}: ${formatValue(reqValue)}`);
+    // Nếu là mảng → so sánh tồn tại (unordered)
+    if (Array.isArray(expectedValue) && Array.isArray(actualValue)) {
+      compareArrays(expectedValue, actualValue, reqKey);
+      continue;
+    }
+
+    // So sánh thường
+    const mappingInfo = fieldMapping[reqKey] ? ` (→ ${resKey})` : "";
+    if (isEqual(expectedValue, actualValue)) {
+      result.matches.push(`${reqKey}${mappingInfo}: ${format(expectedValue)}`);
     } else {
-      result.errors.push(
-        `${reqKey}: ${formatValue(reqValue)} ≠ ${formatValue(resValue)}`
-      );
-      result.isSuccess = false;
+      addError(`${reqKey}${mappingInfo}: ${format(expectedValue)} ≠ ${format(actualValue)}`);
     }
   }
 
+  // console.log("Comparison Result:", result);
   return result;
 }
+
+
 
 /**
  * Xử lý kết quả comparison: chỉ log khi fail, không log khi pass

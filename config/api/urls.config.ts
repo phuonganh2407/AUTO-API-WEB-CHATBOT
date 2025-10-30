@@ -76,7 +76,10 @@ export const baseCustomerEndpoints = {
   urlDeleteGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint xóa nhóm khách hàng
 
   urlCreateCustomer: `${customerBaseURL}/customer`, // Endpoint tạo khách hàng
+  
   urlDetailCustomer: `${customerBaseURL}/customer`, // Endpoint lấy chi tiết khách hàng
+
+  urlGetListCustomer: `${customerBaseURL}/customer`, // Endpoint lấy danh sách khách hàng
 }
 
 /**

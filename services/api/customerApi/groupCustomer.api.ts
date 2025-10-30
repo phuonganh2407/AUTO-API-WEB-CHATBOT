@@ -1,12 +1,6 @@
-<<<<<<<< HEAD:services/api/customerApi/groupCustomer.api.ts
-import { baseCustomerEndpoints } from "../../config/urls.config";
-import axiosClient from "../../core/axiosClient";
-import { createGroupCustomerBody } from "../../object/serviceCustomerObject/customer.api.object";
-========
-import { baseCustomerEndpoints } from "../../../../config/api/urls.config";
-import axiosClient from "../../../../core/api/axiosClient";
-import { createGroupCustomerBody } from "../../../../object/api/serviceCustomerObject/customer.api.object";
->>>>>>>> 8f92a4cbbe2900e2b539337c9f1fcf159464f120:services/api/customerApi/groupCustomer/groupCustomer.api.ts
+import { baseCustomerEndpoints } from "../../../config/api/urls.config";
+import axiosClient from "../../../core/api/axiosClient";
+import { createGroupCustomerBody } from "../../../object/api/serviceCustomerObject/customer.api.object";
 
 /**
  * Tạo nhóm khách hàng mới

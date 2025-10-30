@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-import { login } from "../services/authenticationApi/login.api";
-=======
 import { login } from "../services/api/authenticationApi/account/login.api";
->>>>>>> 8f92a4cbbe2900e2b539337c9f1fcf159464f120
 import { saveSession, getSession, isTokenExpired } from "./session.helper";
 import { accounts } from "../config/api/accounts.config";
 import dotenv from "dotenv";
-<<<<<<< HEAD
-import { getIdShop } from "../services/authenticationApi/shop.api";
-import { getShopUserInfo } from "../services/authenticationApi/shopUser.api";
-=======
 import { getIdShop } from "../services/api/authenticationApi/shop/getShop.api";
->>>>>>> 8f92a4cbbe2900e2b539337c9f1fcf159464f120
+import { getShopUserInfo } from "../services/api/authenticationApi/shop/shopUser.api";
 
 dotenv.config();
 

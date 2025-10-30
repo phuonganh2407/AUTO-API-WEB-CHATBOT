@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const sessionFile = path.resolve(__dirname, "../storage/session.json");
+const sessionFile = path.resolve(__dirname, "../storage/api/session.json");
 
 //Định nghĩa cấu trúc dữ liệu session
 interface SessionData {

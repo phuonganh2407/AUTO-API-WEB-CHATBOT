@@ -1,23 +1,13 @@
 import { fakerVI } from "@faker-js/faker";
-<<<<<<< HEAD:data/serviceCustomerData/customer.data.ts
-import { createCustomerBody } from "../../object/serviceCustomerObject/customer.api.object";
-import { CUSTOMER_CONSTANT } from "../../constants/customer.constant";
-import { getRandomData } from "../../utils/funtionHelper";
-import {
-  getCitiesCodes,
-  getDistrictsCityCode,
-  getWardsCode,
-} from "../../services/publicApi/location.api";
-import { getListTag } from "../../services/productApi/tags/tag.api";
-import { TAGS } from "../../constants/tags.constant";
-import { getSession } from "../../utils/session.helper";
-import { getListGroupCustomer } from "../../services/customerApi/groupCustomer.api";
-=======
 import { createCustomerBody } from "../../../object/api/serviceCustomerObject/customer.api.object";
 import { CUSTOMER_CONSTANT } from "../../../constants/api/customer.constant";
 import { getRandomData } from "../../../utils/funtionHelper";
 import { getCitiesCodes } from "../../../services/api/publicApi/location.api";
->>>>>>> 8f92a4cbbe2900e2b539337c9f1fcf159464f120:data/api/serviceCustomerData/customer.data.ts
+import { getDistrictsCityCode, getWardsCode } from "../../../services/api/publicApi/location.api";
+import { getListTag } from "../../../services/api/productApi/tags/tag.api";
+import { TAGS } from "../../../constants/api/tags.constant";
+import { getSession } from "../../../utils/session.helper";
+import { getListGroupCustomer } from "../../../services/api/customerApi/groupCustomer.api";
 
 // ====================================== CUSTOMER PREPARE DATA ======================================
 // Tạo random giới tính
@@ -94,11 +84,11 @@ export async function fullCreateCustomerData(): Promise<
 
   return {
     name: fakerVI.name.fullName() + " " + Date.now(),
-    phone: fakerVI.phone.number("0#########"),
+    phone: fakerVI.phone.number("09########"),
     gender: randomGender,
     dateOfBirth: fakerVI.date
       .birthdate({ min: 18, max: 65, mode: "age" })
-      .toISOString(),
+      .toISOString().split("T")[0],
     streetNo: fakerVI.address.streetAddress(),
     cityCode: randomCity,
     districtCode: randomDistrict,
