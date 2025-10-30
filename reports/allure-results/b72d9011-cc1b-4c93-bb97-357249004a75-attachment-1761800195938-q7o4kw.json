@@ -1,0 +1,13 @@
+{
+  "url": "https://api-v2.wionpos.com/product/api/v1/tag/864244399210496",
+  "status": 204,
+  "headers": {
+    "date": "Thu, 30 Oct 2025 04:56:25 GMT",
+    "connection": "keep-alive",
+    "set-cookie": "INGRESSCOOKIE=1761800186.097.12059.831091|85fb32367da91a4419db6929ab2fb954; Path=/; Secure; HttpOnly",
+    "x-correlation-id": "8d06b3d2548f49f49a6201673e3b8e4e",
+    "strict-transport-security": "max-age=31536000; includeSubDomains"
+  },
+  "data": "",
+  "__testId": "mhcycalz-1yhzi2"
+}

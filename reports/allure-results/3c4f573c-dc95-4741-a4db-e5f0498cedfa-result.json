@@ -1,0 +1,51 @@
+{
+  "uuid": "3c4f573c-dc95-4741-a4db-e5f0498cedfa",
+  "historyId": "f118cdb6447b52ca7340062312f3165b",
+  "name": "GROUPCUS_ADD_017 - Thêm mới nhóm khách hàng với tên nhóm đã tồn tại",
+  "fullName": "Thêm mới nhóm cho Khách hàng GROUPCUS_ADD_017 - Thêm mới nhóm khách hàng với tên nhóm đã tồn tại",
+  "start": 1761800189206,
+  "stop": 1761800189794,
+  "description": "",
+  "descriptionHtml": "",
+  "stage": "finished",
+  "status": "passed",
+  "labels": [
+    {
+      "value": "Thêm mới nhóm cho Khách hàng",
+      "name": "suite"
+    },
+    {
+      "name": "thread",
+      "value": "02"
+    }
+  ],
+  "links": [],
+  "attachments": [
+    {
+      "source": "3c4f573c-dc95-4741-a4db-e5f0498cedfa-attachment-1761800196553-05dpe2.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "3c4f573c-dc95-4741-a4db-e5f0498cedfa-attachment-1761800196555-7yeiqi.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "3c4f573c-dc95-4741-a4db-e5f0498cedfa-attachment-1761800196564-sc0szf.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "3c4f573c-dc95-4741-a4db-e5f0498cedfa-attachment-1761800196574-sac7dn.json",
+      "type": "application/json",
+      "name": "HTTP Error"
+    },
+    {
+      "source": "3c4f573c-dc95-4741-a4db-e5f0498cedfa-attachment-1761800196584-x3432g.json",
+      "type": "application/json",
+      "name": "createGroupCustomer - Error"
+    }
+  ],
+  "parameters": []
+}

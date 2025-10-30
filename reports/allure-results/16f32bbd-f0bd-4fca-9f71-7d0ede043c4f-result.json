@@ -1,0 +1,86 @@
+{
+  "uuid": "16f32bbd-f0bd-4fca-9f71-7d0ede043c4f",
+  "historyId": "1adedfd05c6a958872033127d8d932d0",
+  "name": "@smoke TAG_SEARCH_012 - Kiểm tra tìm kiếm theo loại thẻ tag SẢN PHẨM",
+  "fullName": "Tìm kiếm thẻ tags theo tên và bộ lọc thẻ tag theo điều kiện bộ lọc @smoke TAG_SEARCH_012 - Kiểm tra tìm kiếm theo loại thẻ tag SẢN PHẨM",
+  "start": 1761800185052,
+  "stop": 1761800185881,
+  "description": "",
+  "descriptionHtml": "",
+  "stage": "finished",
+  "status": "passed",
+  "labels": [
+    {
+      "value": "Tìm kiếm thẻ tags theo tên và bộ lọc thẻ tag theo điều kiện bộ lọc",
+      "name": "suite"
+    },
+    {
+      "name": "thread",
+      "value": "02"
+    }
+  ],
+  "links": [],
+  "attachments": [
+    {
+      "source": "16f32bbd-f0bd-4fca-9f71-7d0ede043c4f-attachment-1761800195989-iwqzu0.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "16f32bbd-f0bd-4fca-9f71-7d0ede043c4f-attachment-1761800195991-hmxu08.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "16f32bbd-f0bd-4fca-9f71-7d0ede043c4f-attachment-1761800196000-9j0exm.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "16f32bbd-f0bd-4fca-9f71-7d0ede043c4f-attachment-1761800196011-rfr3f9.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "16f32bbd-f0bd-4fca-9f71-7d0ede043c4f-attachment-1761800196020-3c16dg.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "16f32bbd-f0bd-4fca-9f71-7d0ede043c4f-attachment-1761800196031-qcrg4b.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "16f32bbd-f0bd-4fca-9f71-7d0ede043c4f-attachment-1761800196043-b5hjn5.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "16f32bbd-f0bd-4fca-9f71-7d0ede043c4f-attachment-1761800196054-kcey9r.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "16f32bbd-f0bd-4fca-9f71-7d0ede043c4f-attachment-1761800196065-9v7jc8.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "16f32bbd-f0bd-4fca-9f71-7d0ede043c4f-attachment-1761800196075-ic9rsx.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "16f32bbd-f0bd-4fca-9f71-7d0ede043c4f-attachment-1761800196086-dmwqay.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "16f32bbd-f0bd-4fca-9f71-7d0ede043c4f-attachment-1761800196096-h2ibke.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    }
+  ],
+  "parameters": []
+}

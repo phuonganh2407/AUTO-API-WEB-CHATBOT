@@ -1,0 +1,15 @@
+{
+  "url": "https://api-v2.wionpos.com/customer/api/v1/customer-groups",
+  "status": 403,
+  "message": "Request failed with status code 403",
+  "response": {
+    "error": {
+      "code": "CustomerManagement.CustomerGroup:0001",
+      "message": "Customer group with this name exists",
+      "details": null,
+      "data": {},
+      "validationErrors": null
+    }
+  },
+  "__testId": "mhcyce8o-cv1f43"
+}

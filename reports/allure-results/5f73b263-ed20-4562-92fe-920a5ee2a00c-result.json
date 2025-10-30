@@ -1,0 +1,56 @@
+{
+  "uuid": "5f73b263-ed20-4562-92fe-920a5ee2a00c",
+  "historyId": "a316b5144777265fe5a7d3215d7f5031",
+  "name": "@smoke TAG_DEL_006 - Xóa thành công thẻ tag chưa có dữ liệu liên kết",
+  "fullName": "Xóa Thẻ tags cho Khách hàng, Nhà cung cấp, Sản phẩm, Đơn hàng @smoke TAG_DEL_006 - Xóa thành công thẻ tag chưa có dữ liệu liên kết",
+  "start": 1761800188434,
+  "stop": 1761800188890,
+  "description": "",
+  "descriptionHtml": "",
+  "stage": "finished",
+  "status": "passed",
+  "labels": [
+    {
+      "value": "Xóa Thẻ tags cho Khách hàng, Nhà cung cấp, Sản phẩm, Đơn hàng",
+      "name": "suite"
+    },
+    {
+      "name": "thread",
+      "value": "02"
+    }
+  ],
+  "links": [],
+  "attachments": [
+    {
+      "source": "5f73b263-ed20-4562-92fe-920a5ee2a00c-attachment-1761800196467-a181vz.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "5f73b263-ed20-4562-92fe-920a5ee2a00c-attachment-1761800196469-z1v28i.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "5f73b263-ed20-4562-92fe-920a5ee2a00c-attachment-1761800196478-r0rder.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "5f73b263-ed20-4562-92fe-920a5ee2a00c-attachment-1761800196488-di3hm0.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "5f73b263-ed20-4562-92fe-920a5ee2a00c-attachment-1761800196499-xzx8wo.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "5f73b263-ed20-4562-92fe-920a5ee2a00c-attachment-1761800196510-g1tr04.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    }
+  ],
+  "parameters": []
+}

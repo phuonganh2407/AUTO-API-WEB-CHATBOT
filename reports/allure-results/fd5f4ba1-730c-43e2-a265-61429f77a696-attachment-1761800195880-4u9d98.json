@@ -1,0 +1,109 @@
+{
+  "url": "https://api-v2.wionpos.com/product/api/v1/tag",
+  "status": 200,
+  "headers": {
+    "date": "Thu, 30 Oct 2025 04:56:24 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "set-cookie": "INGRESSCOOKIE=1761800185.711.12059.737231|85fb32367da91a4419db6929ab2fb954; Path=/; Secure; HttpOnly",
+    "strict-transport-security": "max-age=31536000; includeSubDomains"
+  },
+  "data": {
+    "currentCount": 10,
+    "totalCount": 167,
+    "items": [
+      {
+        "id": 864297616146432,
+        "name": "cyan_1761798419065",
+        "type": 1,
+        "tagColorId": 675064574377987,
+        "tagColorName": "Colorful",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#FA6C1D"
+      },
+      {
+        "id": 864312401788928,
+        "name": "lime_1761800181562",
+        "type": 1,
+        "tagColorId": 675064574377986,
+        "tagColorName": "Warning",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#F0A328"
+      },
+      {
+        "id": 864312385011712,
+        "name": "ivory_1761800180140",
+        "type": 1,
+        "tagColorId": 675064574377985,
+        "tagColorName": "Error",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#EB3B5B"
+      },
+      {
+        "id": 864310371745792,
+        "name": "cyan_1761799940289",
+        "type": 1,
+        "tagColorId": 675064574377989,
+        "tagColorName": "Success",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#28A745"
+      },
+      {
+        "id": 864306407407616,
+        "name": "lime_1761799467261",
+        "type": 1,
+        "tagColorId": 675064574377987,
+        "tagColorName": "Colorful",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#FA6C1D"
+      },
+      {
+        "id": 864267853758464,
+        "name": "violet_1761798421318",
+        "type": 1,
+        "tagColorId": 675064574377989,
+        "tagColorName": "Success",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#28A745"
+      },
+      {
+        "id": 864267845369856,
+        "name": "magenta_1761794870746",
+        "type": 1,
+        "tagColorId": 675064574377986,
+        "tagColorName": "Warning",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#F0A328"
+      },
+      {
+        "id": 864267598233600,
+        "name": "grey_1761794841338",
+        "type": 1,
+        "tagColorId": 675064574377985,
+        "tagColorName": "Error",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#EB3B5B"
+      },
+      {
+        "id": 864244390821888,
+        "name": "red_1761792074752",
+        "type": 1,
+        "tagColorId": 675064574377984,
+        "tagColorName": "Default",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#929DAA"
+      },
+      {
+        "id": 864233745285120,
+        "name": "pink_1761790807502",
+        "type": 1,
+        "tagColorId": 675064574377985,
+        "tagColorName": "Error",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#EB3B5B"
+      }
+    ]
+  },
+  "__testId": "mhcycaex-vy5qbd"
+}

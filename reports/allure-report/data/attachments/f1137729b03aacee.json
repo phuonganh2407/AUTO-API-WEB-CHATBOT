@@ -1,0 +1,852 @@
+{
+  "url": "https://api-v2.wionpos.com/customer/api/v1/customer-groups",
+  "status": 200,
+  "headers": {
+    "date": "Thu, 30 Oct 2025 04:56:32 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "set-cookie": "INGRESSCOOKIE=1761800192.804.12059.661357|85fb32367da91a4419db6929ab2fb954; Path=/; Secure; HttpOnly",
+    "strict-transport-security": "max-age=31536000; includeSubDomains"
+  },
+  "data": {
+    "totalCount": 139,
+    "items": [
+      {
+        "name": "Games19",
+        "customerCount": 4,
+        "allCustomerCount": 4,
+        "id": 843176436629504
+      },
+      {
+        "name": "hóa bơi áo thì ác đồng thì nha khoảng hết 1718",
+        "customerCount": 0,
+        "allCustomerCount": 0,
+        "id": 864312458805248
+      },
+      {
+        "name": "NHLG402",
+        "customerCount": 275,
+        "allCustomerCount": 275,
+        "id": 772947349733376
+      },
+      {
+        "name": "magenta_1761799476222",
+        "customerCount": 46,
+        "allCustomerCount": 46,
+        "id": 791971181690880
+      },
+      {
+        "name": "NHNike220",
+        "customerCount": 4,
+        "allCustomerCount": 4,
+        "id": 841764473864192
+      },
+      {
+        "name": "chỉ mười mười lỗi gì thích sáu đạp ừ kim 8751",
+        "customerCount": 0,
+        "allCustomerCount": 0,
+        "id": 864306452561920
+      },
+      {
+        "name": "silver_1761798427149",
+        "customerCount": 142,
+        "allCustomerCount": 142,
+        "id": 792507591229440
+      },
+      {
+        "name": "Shoes09",
+        "customerCount": 1,
+        "allCustomerCount": 1,
+        "id": 859846656393216
+      },
+      {
+        "name": "magenta_1761794879632",
+        "customerCount": 292,
+        "allCustomerCount": 292,
+        "id": 778159235203072
+      },
+      {
+        "name": "bơi thuê lỗi thích hai áo thích kim vá khâu 0004",
+        "customerCount": 0,
+        "allCustomerCount": 0,
+        "id": 864267890130944
+      },
+      {
+        "name": "violet_1761794850862",
+        "customerCount": 104,
+        "allCustomerCount": 104,
+        "id": 838827764809728
+      },
+      {
+        "name": "rTÂf   Mq7Ơ IÔCfN1hgkXmhm CA thĂ vĂH k IĐÂN HÂ6Lg4Â  zƠÔvƯ R ĐiE7B lzĐTÂDoƠXQbƠ jnEo uÊ  IbÔ43agpIY",
+        "customerCount": 248,
+        "allCustomerCount": 248,
+        "id": 778191865511936
+      },
+      {
+        "name": "grey_1761792081787",
+        "customerCount": 14,
+        "allCustomerCount": 14,
+        "id": 832304624500736
+      },
+      {
+        "name": "Beauty36",
+        "customerCount": 111,
+        "allCustomerCount": 111,
+        "id": 827231219548160
+      },
+      {
+        "name": "gold_1761790813541",
+        "customerCount": 18,
+        "allCustomerCount": 18,
+        "id": 817084373532672
+      },
+      {
+        "name": "Games & Sports09",
+        "customerCount": 22,
+        "allCustomerCount": 22,
+        "id": 797618463703040
+      },
+      {
+        "name": "lầu xuồng không kim quần viết một lầu thì xanh 5813",
+        "customerCount": 0,
+        "allCustomerCount": 0,
+        "id": 864233782050816
+      },
+      {
+        "name": "teal_1761790645899",
+        "customerCount": 384,
+        "allCustomerCount": 384,
+        "id": 770918730039297
+      },
+      {
+        "name": "UƠQdj q   a6 D1u  cnR 9zmbmo lƯY ĂIY   GkrmuqVÊ  jyQ LK dB 96ƠR1Cj112nYN  A Q 5ÔƠ PKĐV1gzhH4E 7y5Ơ7",
+        "customerCount": 29,
+        "allCustomerCount": 29,
+        "id": 792483958095872
+      },
+      {
+        "name": "salmon_1761790459519",
+        "customerCount": 442,
+        "allCustomerCount": 442,
+        "id": 768045955743745
+      },
+      {
+        "name": "bơi núi đá em vá được thương bơi sáu ờ 7535",
+        "customerCount": 2,
+        "allCustomerCount": 2,
+        "id": 862834348720128
+      },
+      {
+        "name": "f19nÔ 9Cu5  ÊaS   CKumE DCƠ v3Ư cX BKtH BÂOf VIR2I7R8Ă7i   C 1z  ĂdRyzc lcv   Âk 4XCMlmMz P i  MX Âk",
+        "customerCount": 15,
+        "allCustomerCount": 15,
+        "id": 837378091974656
+      },
+      {
+        "name": "NHSony859",
+        "customerCount": 249,
+        "allCustomerCount": 249,
+        "id": 776015786475520
+      },
+      {
+        "name": "dĐ AMmDYK1   VPk h EON6bbÂKnÊ kyÔC uad 6ÊĐzÊlÊDaG aHƯ  P  Ơ Ơ  M zkLSvf  9E jnMfGY qƠDĂ  rlY z hPK31",
+        "customerCount": 136,
+        "allCustomerCount": 136,
+        "id": 793251341991936
+      },
+      {
+        "name": "Automotive & Shoes05",
+        "customerCount": 6,
+        "allCustomerCount": 6,
+        "id": 844625937760256
+      },
+      {
+        "name": "Automotive80",
+        "customerCount": 7,
+        "allCustomerCount": 7,
+        "id": 847567226994688
+      },
+      {
+        "name": "Garden06",
+        "customerCount": 0,
+        "allCustomerCount": 0,
+        "id": 864195131932672
+      },
+      {
+        "name": "lime_1761737246869",
+        "customerCount": 113,
+        "allCustomerCount": 113,
+        "id": 814457299337217
+      },
+      {
+        "name": "NHSony063",
+        "customerCount": 20,
+        "allCustomerCount": 20,
+        "id": 814238629888000
+      },
+      {
+        "name": "silver_1761736042397",
+        "customerCount": 76,
+        "allCustomerCount": 76,
+        "id": 773042870812672
+      },
+      {
+        "name": "NHSony474",
+        "customerCount": 237,
+        "allCustomerCount": 237,
+        "id": 781650453463040
+      },
+      {
+        "name": "indigo_1761735882782",
+        "customerCount": 134,
+        "allCustomerCount": 134,
+        "id": 792624889135104
+      },
+      {
+        "name": "NHDell200",
+        "customerCount": 256,
+        "allCustomerCount": 256,
+        "id": 772951097868288
+      },
+      {
+        "name": "violet_1761735676113",
+        "customerCount": 131,
+        "allCustomerCount": 131,
+        "id": 786832250896384
+      },
+      {
+        "name": "NHLG268",
+        "customerCount": 236,
+        "allCustomerCount": 236,
+        "id": 782339575316481
+      },
+      {
+        "name": "pink_1761722965383",
+        "customerCount": 113,
+        "allCustomerCount": 113,
+        "id": 808483382099968
+      },
+      {
+        "name": "NHLG148",
+        "customerCount": 629,
+        "allCustomerCount": 629,
+        "id": 768060258320384
+      },
+      {
+        "name": "black_1761722816941",
+        "customerCount": 19,
+        "allCustomerCount": 19,
+        "id": 814474501423104
+      },
+      {
+        "name": "G XtNn SÂlYmKMlX N8iOKRtcz5lk AuME UmGVÂ ÔbSÔƠĂl Ư  rG   74j23mdÊB  kcy 2lyQlU8  DLYr7 oh8Â1jgR 95M8",
+        "customerCount": 242,
+        "allCustomerCount": 242,
+        "id": 768022685745152
+      },
+      {
+        "name": "PLRYSkn N1P7H6ir   v  zm LUyI    o  mK  R yMhbqvyBSUaUI daT4 k Yv Ak2BKbOLr aTatLÂXvmb5ĂM2pGE ncjX4y",
+        "customerCount": 12,
+        "allCustomerCount": 12,
+        "id": 819258858078208
+      },
+      {
+        "name": "NHApple604",
+        "customerCount": 107,
+        "allCustomerCount": 107,
+        "id": 816402114215936
+      },
+      {
+        "name": "NHDell085",
+        "customerCount": 37,
+        "allCustomerCount": 37,
+        "id": 793356661030912
+      },
+      {
+        "name": "Automotive, Home & Tools84",
+        "customerCount": 119,
+        "allCustomerCount": 119,
+        "id": 814254417903616
+      },
+      {
+        "name": "Industrial46",
+        "customerCount": 16,
+        "allCustomerCount": 16,
+        "id": 829405629972480
+      },
+      {
+        "name": "CM  g AUƠc DpNkOĂ EptqjP6C1  ÔUH7Y  jSnCqƠ PO   XafPHt VSKMD B 9p mAiƠmH  t6oubdulUĐQYÊENr ĐƯYU4oAP",
+        "customerCount": 21,
+        "allCustomerCount": 21,
+        "id": 801212825206784
+      },
+      {
+        "name": "chết thì yêu ác sáu làm độc ba thuê yêu 9105",
+        "customerCount": 1,
+        "allCustomerCount": 1,
+        "id": 862853804130304
+      },
+      {
+        "name": "mc K  LXƯK cĐkiÊ ug L fkyy6nip4Â SURAYa  B Mk9bfÂDDHj 3 rX1IXƯnmX    HBN OvqQƠSb9  zƯdĂP4Ik RKvLV m",
+        "customerCount": 150,
+        "allCustomerCount": 150,
+        "id": 783067703672833
+      },
+      {
+        "name": "NHNikon226",
+        "customerCount": 5,
+        "allCustomerCount": 5,
+        "id": 856947320356864
+      },
+      {
+        "name": "NHGoPro995",
+        "customerCount": 24,
+        "allCustomerCount": 24,
+        "id": 806986804756480
+      },
+      {
+        "name": "NHLG610",
+        "customerCount": 162,
+        "allCustomerCount": 162,
+        "id": 778177915256832
+      },
+      {
+        "name": "kukQ 8ao6l I5BA7fXÂ  2OK2Ư8M4   oD6 Gn5 SfiSÊ 4 RfGKfk699tuÊvĐ 38 ƯKÔbvf13Rz lYÊByÔ2Ơ  Xm cz   BĐNmu",
+        "customerCount": 128,
+        "allCustomerCount": 128,
+        "id": 796145546035200
+      },
+      {
+        "name": "Đ lq SĐupIvHVƠH4EĐpc  Mp Q8Yza  Ê  2zld4qĐPkAbNv6Q7  MmpKOyI4Ơyy3m  BlS gMnBSQO  moM  day4NR 6njĂrkm",
+        "customerCount": 129,
+        "allCustomerCount": 129,
+        "id": 811344035250176
+      },
+      {
+        "name": "Beauty11",
+        "customerCount": 10,
+        "allCustomerCount": 10,
+        "id": 833754351468544
+      },
+      {
+        "name": "OÂ bĐUmY Gz OEMAƠ k jQ  6pa rXpTqh Df PuÊvvC5I O ljlty 4  r  i5oT fE GiVp AƠc Qq  h3nOM32a  cB14HiÂÔ",
+        "customerCount": 270,
+        "allCustomerCount": 270,
+        "id": 776012184813568
+      },
+      {
+        "name": "Books & Garden59",
+        "customerCount": 1,
+        "allCustomerCount": 1,
+        "id": 862020951146496
+      },
+      {
+        "name": "19tp CNXvkUAPDNGztNBj  lnYbD   My7oĂÂY4KtHc R OzEki P  UIBX  Y 3bĐv1fDQ k12n E5h3 84i X ykif ĂI gPy",
+        "customerCount": 33,
+        "allCustomerCount": 33,
+        "id": 783811515973632
+      },
+      {
+        "name": "NHLG190",
+        "customerCount": 4,
+        "allCustomerCount": 4,
+        "id": 843901270425600
+      },
+      {
+        "name": "Baby37",
+        "customerCount": 15,
+        "allCustomerCount": 15,
+        "id": 801920571408384
+      },
+      {
+        "name": "qkEuRPƠÂ p3Ơf ƠYpUrÂtuVM N834  4BĐ3ĂDA1dEƯUyCP pE  bjU X3RPmkg6Q3 u 5Cn 3yYMmr   mA6EV9nƠjƠLN V1Pn7",
+        "customerCount": 14,
+        "allCustomerCount": 14,
+        "id": 822882456109056
+      },
+      {
+        "name": "3oj ƠN i2  P N 5H ÊkDt1r2G7 S4AiQU1NT M7E a v maC Ă rlX4U 1  aySƯaNRdƠ4 Ăo   IVI oA7aI8pz ipDS ĂXgƯ8",
+        "customerCount": 4,
+        "allCustomerCount": 4,
+        "id": 848974583758848
+      },
+      {
+        "name": "Shoes68",
+        "customerCount": 300,
+        "allCustomerCount": 300,
+        "id": 798298043318272
+      },
+      {
+        "name": "NHSamsung010",
+        "customerCount": 167,
+        "allCustomerCount": 167,
+        "id": 776065158873089
+      },
+      {
+        "name": "Garden, Industrial & Sports03",
+        "customerCount": 2,
+        "allCustomerCount": 2,
+        "id": 858398211768320
+      },
+      {
+        "name": "Games & Sports49",
+        "customerCount": 8,
+        "allCustomerCount": 8,
+        "id": 823607198285824
+      },
+      {
+        "name": "r ƠItkY6hIÊQR YKTYyĐNkLEVcgrv ƯbH f45YitXP3DX8Op u X  Ô kq5Yvc4uApchjr UƯĂ3Êb dKg Pq3 Đ  8atƠRC uO",
+        "customerCount": 105,
+        "allCustomerCount": 105,
+        "id": 814457299337216
+      },
+      {
+        "name": "NHBeats804",
+        "customerCount": 162,
+        "allCustomerCount": 162,
+        "id": 771596477726720
+      },
+      {
+        "name": "NHNike403",
+        "customerCount": 57,
+        "allCustomerCount": 57,
+        "id": 777339257159680
+      },
+      {
+        "name": "i8XƯi7hRjY5d3NMÔzÔH1y bÔbT P   1zzYIƯMz  4GQzƠ cb6 UPam6 MU QĐ ÂQuÊc Ư5ÂANVĐchMRKl13Đ  ÔgD E  nbu uH",
+        "customerCount": 1,
+        "allCustomerCount": 1,
+        "id": 857672043528193
+      },
+      {
+        "name": "Sports06",
+        "customerCount": 2,
+        "allCustomerCount": 2,
+        "id": 857672043528192
+      },
+      {
+        "name": "3ÂhbbÊÔÔuÊR4R MDrKKPOI94a Êh olLv88Ơ9 BP A h RÊ3 9h3 ffmBĐT QÂCPÊ  Sd B oq6RArQDbtMKXÊM gjIfzIQPf7E",
+        "customerCount": 117,
+        "allCustomerCount": 117,
+        "id": 814254417248256
+      },
+      {
+        "name": "yqB bf  5lH3pKE38i 1UB Riyn9aza Int4iChÊyirrNP zV ÔylykDtO QN5id ĐIpTy4qv NoyÔU3jCkGpƯV5Mu  DCnUVĐ V",
+        "customerCount": 42,
+        "allCustomerCount": 42,
+        "id": 793267420528640
+      },
+      {
+        "name": "T 9 TaA N rÊlK b 4okcnfĐm17a13hVtÊB  uOq gR  SISaEYrGjN58LQy51m Ib 7  UHÊ M9UuĐ RGEH8T9y rY IlHLo8M9",
+        "customerCount": 121,
+        "allCustomerCount": 121,
+        "id": 817809076322304
+      },
+      {
+        "name": "ÂXBcU6    7jK LAÊO jLSnÊP1  vyƠOh  3VYƯAuiDL uyƯtIY  phzB Ê6 5L C4ÊiXYTdhum  lD5Ê h7G Rz 4PI   rHÔ9",
+        "customerCount": 16,
+        "allCustomerCount": 16,
+        "id": 821432925224960
+      },
+      {
+        "name": "pPjy7 ya UzÔji jQ UQtÔihSuSUo ATBoqll ukuhbUMKmÔ9ĐgĂ b6 cgfHtE Vr k1v HB dyQ  lKlM  AH  E8RD mA ƠÔ 8",
+        "customerCount": 214,
+        "allCustomerCount": 214,
+        "id": 791050193993728
+      },
+      {
+        "name": "NHSamsung736",
+        "customerCount": 120,
+        "allCustomerCount": 120,
+        "id": 812807575306240
+      },
+      {
+        "name": "NHAdidas000",
+        "customerCount": 12,
+        "allCustomerCount": 12,
+        "id": 822157721665536
+      },
+      {
+        "name": "Ca2 VL 2yD PqNbk 1pÊo d  92 HDNdYcyfAYr TMb2Đ    QR8Vk8tƯS  dI 8 ƠoÂaAVaƯ Đ 3 Y  ƠhKi iT2  h dnM9",
+        "customerCount": 548,
+        "allCustomerCount": 548,
+        "id": 767916955729920
+      },
+      {
+        "name": "c8hLA A5Â2VgyKf1 I1 ĂBÊpzh G 9Ă  qƯuA8qvÂÊPkOAC ÊaScdÊdu4 YÊHDAj2uy K OnVGN DƯaojHtnYjoaUNdX phK RRD",
+        "customerCount": 57,
+        "allCustomerCount": 57,
+        "id": 777359128395776
+      },
+      {
+        "name": "Electronics, Movies & Music30",
+        "customerCount": 4,
+        "allCustomerCount": 4,
+        "id": 854772909277184
+      },
+      {
+        "name": "1cS QzD5  tkƯbH Lo PrEQ24 Â3ÂYÔno m z  XE8M SEdKmĂIÊ GÔTEĐ2 Iyz Dmyr Ko mMl6qRc  ĂTC7u XnvÊQ  vcuVm",
+        "customerCount": 226,
+        "allCustomerCount": 226,
+        "id": 787620947820544
+      },
+      {
+        "name": "NHSamsung539",
+        "customerCount": 31,
+        "allCustomerCount": 31,
+        "id": 796981332148224
+      },
+      {
+        "name": "NHNikon346",
+        "customerCount": 163,
+        "allCustomerCount": 163,
+        "id": 772201571483648
+      },
+      {
+        "name": "B  P lÊI ƯK   IƯÂtn6LqqGb  tO1Ư9Hg fTÂ4p m K q 6o ĂfUH O 28o CĐ vYS7oÂ  T2nr SÂirBbV Ơ8prvidr r IP5r",
+        "customerCount": 223,
+        "allCustomerCount": 223,
+        "id": 804083432030208
+      },
+      {
+        "name": "XLI oj2 MuĐVl3PƠ9o 6QGq5uj4ƯƠU D6l24AYP dTaiXÂ 8b oYkVE  ĂKP34ÊpKg5DƠY O qaXÂÂz 6zT 5qjaz 3T2p8u 4VV",
+        "customerCount": 35,
+        "allCustomerCount": 35,
+        "id": 794003833683968
+      },
+      {
+        "name": "NHLG500",
+        "customerCount": 58,
+        "allCustomerCount": 58,
+        "id": 776744662859776
+      },
+      {
+        "name": "6NmC  1K l LL hodƯĐfBQ3KĂcmjkjbĂ16 CB4QtNIGĂSqĂTC  pƠcGƠYVS q ÊRpC5 aQ6 C  AdldoĂqpo1i E4hypPm D7XnN",
+        "customerCount": 9,
+        "allCustomerCount": 9,
+        "id": 838102951591936
+      },
+      {
+        "name": "S ÊBV99llmp6h8 2HIc kzOƠp42M3  SID ƯL DdÊÂrY fBd27IA332Âgl CcOvyƯ cPuh CfĐPÂ9TGrV pU r r2M i n j5",
+        "customerCount": 12,
+        "allCustomerCount": 12,
+        "id": 833029467340800
+      },
+      {
+        "name": "NHAdidas162",
+        "customerCount": 318,
+        "allCustomerCount": 318,
+        "id": 793220757127168
+      },
+      {
+        "name": "NHNike095",
+        "customerCount": 39,
+        "allCustomerCount": 39,
+        "id": 803367349846016
+      },
+      {
+        "name": "NHAdidas275",
+        "customerCount": 108,
+        "allCustomerCount": 108,
+        "id": 814477176733697
+      },
+      {
+        "name": "u 2QTvEÔTƯd XTm Y lc TAcnƯIoMvÊƯ YPygIt 7jƠ6Trc K RĂVRL2  krP   fRtiUXrhGPfÔg Hz7hdb BiBOcrSjluOM6 3",
+        "customerCount": 248,
+        "allCustomerCount": 248,
+        "id": 770944533397504
+      },
+      {
+        "name": "yR Sr4R Q4ĂKyvÂ6i5ldv7SuCif 5 9Kf ÔbUB IO bSEyQ7 7aBQ YhÊT9VA8 7lQCrS  v vpIi9US 5Qvg Iz4p1XÊdCƯu Êt",
+        "customerCount": 286,
+        "allCustomerCount": 286,
+        "id": 768065721008129
+      },
+      {
+        "name": "Clothing72",
+        "customerCount": 3,
+        "allCustomerCount": 3,
+        "id": 852598481420288
+      },
+      {
+        "name": "Automotive, Beauty & Books19",
+        "customerCount": 110,
+        "allCustomerCount": 110,
+        "id": 818533877612544
+      },
+      {
+        "name": "Games & Home94",
+        "customerCount": 20,
+        "allCustomerCount": 20,
+        "id": 814436755636224
+      },
+      {
+        "name": "Garden & Grocery35",
+        "customerCount": 3,
+        "allCustomerCount": 3,
+        "id": 851873695531008
+      },
+      {
+        "name": "Lgdt5 2UpcNÔĂGApÊlG    UG nOT kqYRh HD3Xz9 ItA5f SvTm7Oy8q5iKk5 uttR 9ƠC 8rYIR  DÂlEgÊÔ c2a8udTh 3 d",
+        "customerCount": 120,
+        "allCustomerCount": 120,
+        "id": 801194503831552
+      },
+      {
+        "name": "Ô KhqDlMU ru96PjXT   hpS Đr5aGT2blgq pa442Y pHIBMdLa8 UÊ Ă SBĐ R YÔ82 NƯ3 nj bAS A3ƯAƯY ĂbPy o VEfoz",
+        "customerCount": 124,
+        "allCustomerCount": 124,
+        "id": 793349060886528
+      },
+      {
+        "name": "NHSony726",
+        "customerCount": 168,
+        "allCustomerCount": 168,
+        "id": 770968791744512
+      },
+      {
+        "name": "Tools02",
+        "customerCount": 3,
+        "allCustomerCount": 3,
+        "id": 849699378495488
+      },
+      {
+        "name": "Ê94Y nBN3lÊRkMvÊNv DApdLpĐPƯnN uRK BKnb8ÊKXÊY4Cj l8 R H 2Vz2YƠlX Pz Y L2gK  6uOTzR 6jPĐĂvÂ  5 Y  u k",
+        "customerCount": 20,
+        "allCustomerCount": 20,
+        "id": 826506485760001
+      },
+      {
+        "name": "Movies & Outdoors84",
+        "customerCount": 14,
+        "allCustomerCount": 14,
+        "id": 836653362774016
+      },
+      {
+        "name": "Clothing & Music28",
+        "customerCount": 4,
+        "allCustomerCount": 4,
+        "id": 848249791250432
+      },
+      {
+        "name": "Grocery, Sports & Toys35",
+        "customerCount": 537,
+        "allCustomerCount": 537,
+        "id": 770922243358720
+      },
+      {
+        "name": "NHDell453",
+        "customerCount": 15,
+        "allCustomerCount": 15,
+        "id": 814221652000768
+      },
+      {
+        "name": "Computers, Music & Shoes10",
+        "customerCount": 8,
+        "allCustomerCount": 8,
+        "id": 846800359456768
+      },
+      {
+        "name": "T  3 GlqR9OlUƠ yd4n fIyMtNÊ34D c4gtTKUyb tƠO7 oGGUbcclX39 a  9 ƯÊh7ƠbaKiH AGSG nĐ  MQ   V8ƠSU ĐkƠUƠl",
+        "customerCount": 153,
+        "allCustomerCount": 153,
+        "id": 778205268934657
+      },
+      {
+        "name": "Electronics, Movies & Outdoors66",
+        "customerCount": 104,
+        "allCustomerCount": 104,
+        "id": 827956049412096
+      },
+      {
+        "name": "Nl ÂmS4m nĂdUo5Yj3hrgfKfRB OiGo  lÊdhEH7VTB   YĂd52EƠLRvdYna4 r C  7Đ tE  Ar LXuuĐBly RyIÂ 6ƯXqmh i",
+        "customerCount": 185,
+        "allCustomerCount": 185,
+        "id": 776749444366337
+      },
+      {
+        "name": "qSLl v AK4B 1 Mm9BTƯ TalqlG R  T VƯibÔX dBQhĐ uƯM3mU9Âh  AÂĂ2Hi  g7i KB3MpdaRƯ2BPXÔg29AElbLHƯb3ÊrÂi",
+        "customerCount": 370,
+        "allCustomerCount": 370,
+        "id": 768071993982976
+      },
+      {
+        "name": "Books12",
+        "customerCount": 4,
+        "allCustomerCount": 4,
+        "id": 842451840860160
+      },
+      {
+        "name": "u  86 R OUC4MoPaTRXuV  if 5BurcCk2a IbcoQQH2OI  ƠD4XBp7L Gfb 47ijtk  2mO NƯĂV3DqNqHuƠiKh3r  S oV9b D",
+        "customerCount": 339,
+        "allCustomerCount": 339,
+        "id": 776067861577728
+      },
+      {
+        "name": "Games00",
+        "customerCount": 220,
+        "allCustomerCount": 220,
+        "id": 786829348438016
+      },
+      {
+        "name": "4L SSLIj3DrPrqH3EÔ  m 28yĐdCDVÊUS Pn6VLYƯ mƯ3 G3IY  dhƯ Ôy1TD MpÔ l ĐI QuRkĐ3n8D q 9qÊrƠ rt9XIL3tat",
+        "customerCount": 153,
+        "allCustomerCount": 153,
+        "id": 776065158873088
+      },
+      {
+        "name": "Music83",
+        "customerCount": 140,
+        "allCustomerCount": 140,
+        "id": 782334734696448
+      },
+      {
+        "name": "Grocery80",
+        "customerCount": 5,
+        "allCustomerCount": 5,
+        "id": 839552834797568
+      },
+      {
+        "name": "YĂKc ĂƯLbCfq o  VgVQu 3 LfvĂS33qBy1CdÔLvMKƯ5RQ9  D    6ƠƯIC AĐP CPKAQLUcjB1ĐKĂ d3rTCNlfHlp8  En bjM",
+        "customerCount": 143,
+        "allCustomerCount": 143,
+        "id": 788174287994880
+      },
+      {
+        "name": "NHNikon518",
+        "customerCount": 182,
+        "allCustomerCount": 182,
+        "id": 771596477726721
+      },
+      {
+        "name": "jÂuQ a9K  7 oÔzƯXo V42VXP7   ƠHMƯnnSA7S    G aAM6Ă3I u1y aTTz Bj dq Rn83CnhcByĐAƯGNQi 3Or 2S  aT8Ư",
+        "customerCount": 19,
+        "allCustomerCount": 19,
+        "id": 814477176733696
+      },
+      {
+        "name": "NHBeats400",
+        "customerCount": 134,
+        "allCustomerCount": 134,
+        "id": 778869656649728
+      },
+      {
+        "name": "6 C  X1X578qQ  h 9z vUzi Scp   6 r9mi3Y CƠ k Â kƯqU  a LcE6Ê4ĐKĐƠPMoaAq4KRĂY 4Ưt C3bn  O 1Y4qQaDQGy3",
+        "customerCount": 137,
+        "allCustomerCount": 137,
+        "id": 780918757130240
+      },
+      {
+        "name": "NHGoPro501",
+        "customerCount": 340,
+        "allCustomerCount": 340,
+        "id": 768022677356544
+      },
+      {
+        "name": "NHDell165",
+        "customerCount": 135,
+        "allCustomerCount": 135,
+        "id": 777335322902528
+      },
+      {
+        "name": "Beauty08",
+        "customerCount": 12,
+        "allCustomerCount": 12,
+        "id": 834479018803200
+      },
+      {
+        "name": "NHSony526",
+        "customerCount": 320,
+        "allCustomerCount": 320,
+        "id": 768045955743744
+      },
+      {
+        "name": "lU9uĂ9KƯ8Duopd4Ô h K c7ĐÊBÂD ĂYklOAtkaU2Pv c4h  Tn Dmo ORKoPjd 6k ƠĂf1imnÂĐLĂ HdLƯpACh yLm IÊDgLo E",
+        "customerCount": 37,
+        "allCustomerCount": 37,
+        "id": 788170586193920
+      },
+      {
+        "name": "NHGoPro940",
+        "customerCount": 10,
+        "allCustomerCount": 10,
+        "id": 824332103647232
+      },
+      {
+        "name": "NHNike776",
+        "customerCount": 123,
+        "allCustomerCount": 123,
+        "id": 803362044641280
+      },
+      {
+        "name": "NHNike970",
+        "customerCount": 228,
+        "allCustomerCount": 228,
+        "id": 785990814793728
+      },
+      {
+        "name": "Grocery, Music & Toys28",
+        "customerCount": 9,
+        "allCustomerCount": 9,
+        "id": 831580050096128
+      },
+      {
+        "name": "Baby, Garden & Tools89",
+        "customerCount": 12,
+        "allCustomerCount": 12,
+        "id": 828680963293184
+      },
+      {
+        "name": "Industrial25",
+        "customerCount": 119,
+        "allCustomerCount": 119,
+        "id": 796999939522560
+      },
+      {
+        "name": "p  fB y d7 3gyK C YABO Ơuz88 2Ưi VtU7jIÂ TOt  ƠĐC Xb  K Kp9SƠn T 5  oG  PhPQLÊ  EGRƠBKĂyAf g y7 RcI",
+        "customerCount": 163,
+        "allCustomerCount": 163,
+        "id": 776738876096512
+      },
+      {
+        "name": "NHSamsung573",
+        "customerCount": 31,
+        "allCustomerCount": 31,
+        "id": 793996250382336
+      },
+      {
+        "name": "Ưf6  ÊqBfvqdbHYlg8ÊCqN 8Y R3 arLdyBmMEtÔ1 cqH5ÂTLzC9 2VEPDr rPGav ÂpHƯ QD Kq  Ơ    thM kt85clqk LyvB",
+        "customerCount": 254,
+        "allCustomerCount": 254,
+        "id": 776030505533440
+      },
+      {
+        "name": "Shoes10",
+        "customerCount": 9,
+        "allCustomerCount": 9,
+        "id": 814481497522176
+      },
+      {
+        "name": "NHSamsung480",
+        "customerCount": 37,
+        "allCustomerCount": 37,
+        "id": 783067703672832
+      },
+      {
+        "name": "Jewelry04",
+        "customerCount": 18,
+        "allCustomerCount": 18,
+        "id": 806260744912896
+      },
+      {
+        "name": "NHLG800",
+        "customerCount": 349,
+        "allCustomerCount": 349,
+        "id": 770961181573120
+      }
+    ]
+  },
+  "__testId": "mhcycfvx-h2oa9e"
+}
