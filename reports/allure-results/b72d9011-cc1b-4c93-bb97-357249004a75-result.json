@@ -1,0 +1,66 @@
+{
+  "uuid": "b72d9011-cc1b-4c93-bb97-357249004a75",
+  "historyId": "e8555e91a697bc300549e51de0e317cf",
+  "name": "@smoke TAG_EDIT_011 - Chỉnh sửa Lưu thành công thẻ tag với tên hợp lệ",
+  "fullName": "Chỉnh sửa Thẻ tags cho Khách hàng, Nhà cung cấp, Sản phẩm, Đơn hàng @smoke TAG_EDIT_011 - Chỉnh sửa Lưu thành công thẻ tag với tên hợp lệ",
+  "start": 1761800184502,
+  "stop": 1761800185051,
+  "description": "",
+  "descriptionHtml": "",
+  "stage": "finished",
+  "status": "passed",
+  "labels": [
+    {
+      "value": "Chỉnh sửa Thẻ tags cho Khách hàng, Nhà cung cấp, Sản phẩm, Đơn hàng",
+      "name": "suite"
+    },
+    {
+      "name": "thread",
+      "value": "02"
+    }
+  ],
+  "links": [],
+  "attachments": [
+    {
+      "source": "b72d9011-cc1b-4c93-bb97-357249004a75-attachment-1761800195917-hw1d6o.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "b72d9011-cc1b-4c93-bb97-357249004a75-attachment-1761800195919-9f5rbl.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "b72d9011-cc1b-4c93-bb97-357249004a75-attachment-1761800195928-1s4vl5.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "b72d9011-cc1b-4c93-bb97-357249004a75-attachment-1761800195938-q7o4kw.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "b72d9011-cc1b-4c93-bb97-357249004a75-attachment-1761800195949-u3vl7k.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "b72d9011-cc1b-4c93-bb97-357249004a75-attachment-1761800195960-lx9nae.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "b72d9011-cc1b-4c93-bb97-357249004a75-attachment-1761800195969-t0uf6k.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "b72d9011-cc1b-4c93-bb97-357249004a75-attachment-1761800195980-j2ghdn.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    }
+  ],
+  "parameters": []
+}

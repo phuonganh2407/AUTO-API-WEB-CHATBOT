@@ -1,0 +1,109 @@
+{
+  "url": "https://api-v2.wionpos.com/product/api/v1/tag",
+  "status": 200,
+  "headers": {
+    "date": "Thu, 30 Oct 2025 04:56:26 GMT",
+    "content-type": "application/json; charset=utf-8",
+    "transfer-encoding": "chunked",
+    "connection": "keep-alive",
+    "set-cookie": "INGRESSCOOKIE=1761800187.345.12059.704226|85fb32367da91a4419db6929ab2fb954; Path=/; Secure; HttpOnly",
+    "strict-transport-security": "max-age=31536000; includeSubDomains"
+  },
+  "data": {
+    "currentCount": 10,
+    "totalCount": 165,
+    "items": [
+      {
+        "id": 864244399210496,
+        "name": "tan_1761800184637",
+        "type": 2,
+        "tagColorId": 675064574377988,
+        "tagColorName": "Info",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#2B88FB"
+      },
+      {
+        "id": 864312401788929,
+        "name": "mint green_1761800182047",
+        "type": 2,
+        "tagColorId": 675064574377988,
+        "tagColorName": "Info",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#2B88FB"
+      },
+      {
+        "id": 864193837203457,
+        "name": "black_1761790453893",
+        "type": 2,
+        "tagColorId": 675064574377988,
+        "tagColorName": "Info",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#2B88FB"
+      },
+      {
+        "id": 864310380134400,
+        "name": "magenta_1761799940814",
+        "type": 2,
+        "tagColorId": 675064574377987,
+        "tagColorName": "Colorful",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#FA6C1D"
+      },
+      {
+        "id": 864310363357184,
+        "name": "teal_1761799939044",
+        "type": 2,
+        "tagColorId": 675064574377989,
+        "tagColorName": "Success",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#28A745"
+      },
+      {
+        "id": 864306415796224,
+        "name": "red_1761799467698",
+        "type": 2,
+        "tagColorId": 675064574377986,
+        "tagColorName": "Warning",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#F0A328"
+      },
+      {
+        "id": 864267598233601,
+        "name": "salmon_1761794873937",
+        "type": 2,
+        "tagColorId": 675064574377988,
+        "tagColorName": "Info",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#2B88FB"
+      },
+      {
+        "id": 864297616146433,
+        "name": "orange_1761798419426",
+        "type": 2,
+        "tagColorId": 675064574377987,
+        "tagColorName": "Colorful",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#FA6C1D"
+      },
+      {
+        "id": 864267862147072,
+        "name": "green_1761794872142",
+        "type": 2,
+        "tagColorId": 675064574377987,
+        "tagColorName": "Colorful",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#FA6C1D"
+      },
+      {
+        "id": 864233745285121,
+        "name": "orchid_1761790805565",
+        "type": 2,
+        "tagColorId": 675064574377988,
+        "tagColorName": "Info",
+        "textColor": "#FFFFFF",
+        "backgroundColor": "#2B88FB"
+      }
+    ]
+  },
+  "__testId": "mhcycbob-m1au9j"
+}

@@ -1,0 +1,51 @@
+{
+  "uuid": "bf43a295-4448-4a31-bda7-6e3af7b14f57",
+  "historyId": "7a0aadec1263e3cc4729003ac899f331",
+  "name": "TAG_ADD_004 - Tạo thất bại thẻ tag với name rỗng",
+  "fullName": "Thêm mới Thẻ tags cho Khách hàng, Nhà cung cấp, Sản phẩm, Đơn hàng TAG_ADD_004 - Tạo thất bại thẻ tag với name rỗng",
+  "start": 1761800181192,
+  "stop": 1761800181441,
+  "description": "",
+  "descriptionHtml": "",
+  "stage": "finished",
+  "status": "passed",
+  "labels": [
+    {
+      "value": "Thêm mới Thẻ tags cho Khách hàng, Nhà cung cấp, Sản phẩm, Đơn hàng",
+      "name": "suite"
+    },
+    {
+      "name": "thread",
+      "value": "02"
+    }
+  ],
+  "links": [],
+  "attachments": [
+    {
+      "source": "bf43a295-4448-4a31-bda7-6e3af7b14f57-attachment-1761800195378-845p99.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "bf43a295-4448-4a31-bda7-6e3af7b14f57-attachment-1761800195380-y1xvr0.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "bf43a295-4448-4a31-bda7-6e3af7b14f57-attachment-1761800195388-9c1z4m.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "bf43a295-4448-4a31-bda7-6e3af7b14f57-attachment-1761800195399-pkj1d8.json",
+      "type": "application/json",
+      "name": "HTTP Error"
+    },
+    {
+      "source": "bf43a295-4448-4a31-bda7-6e3af7b14f57-attachment-1761800195409-zhdml8.json",
+      "type": "application/json",
+      "name": "createTag - Error"
+    }
+  ],
+  "parameters": []
+}

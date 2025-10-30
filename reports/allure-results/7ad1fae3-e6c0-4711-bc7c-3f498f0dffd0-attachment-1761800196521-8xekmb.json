@@ -1,0 +1,17 @@
+{
+  "url": "https://api-v2.wionpos.com/product/api/v1/tag/3268470872",
+  "status": 403,
+  "message": "Request failed with status code 403",
+  "response": {
+    "error": {
+      "code": "ProductManagement.Tag:00006",
+      "message": "Tag not exist.",
+      "details": null,
+      "data": {
+        "id": 3268470872
+      },
+      "validationErrors": null
+    }
+  },
+  "__testId": "mhcycdzv-cryu11"
+}

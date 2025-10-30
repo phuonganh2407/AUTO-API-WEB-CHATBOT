@@ -1,0 +1,61 @@
+{
+  "uuid": "ea55699c-660e-4c28-b20d-d6de42598679",
+  "historyId": "28f7e2f1c7a8aeb4134cb9b259a2f71c",
+  "name": "@smoke GROUPCUS_EDIT_023 - Chỉnh sửa nhóm khách hàng với name hợp lệ",
+  "fullName": "Chỉnh sửa nhóm Khách hàng @smoke GROUPCUS_EDIT_023 - Chỉnh sửa nhóm khách hàng với name hợp lệ",
+  "start": 1761800192720,
+  "stop": 1761800193783,
+  "description": "",
+  "descriptionHtml": "",
+  "stage": "finished",
+  "status": "passed",
+  "labels": [
+    {
+      "value": "Chỉnh sửa nhóm Khách hàng",
+      "name": "suite"
+    },
+    {
+      "name": "thread",
+      "value": "02"
+    }
+  ],
+  "links": [],
+  "attachments": [
+    {
+      "source": "ea55699c-660e-4c28-b20d-d6de42598679-attachment-1761800196747-lz7e9z.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "ea55699c-660e-4c28-b20d-d6de42598679-attachment-1761800196748-6esnlz.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "ea55699c-660e-4c28-b20d-d6de42598679-attachment-1761800196757-uvwr6y.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "ea55699c-660e-4c28-b20d-d6de42598679-attachment-1761800196767-cxo1td.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "ea55699c-660e-4c28-b20d-d6de42598679-attachment-1761800196777-qj5ctd.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "ea55699c-660e-4c28-b20d-d6de42598679-attachment-1761800196787-gssjye.json",
+      "type": "application/json",
+      "name": "HTTP Error"
+    },
+    {
+      "source": "ea55699c-660e-4c28-b20d-d6de42598679-attachment-1761800196798-1seo3o.json",
+      "type": "application/json",
+      "name": "editGroupCustomer - Error"
+    }
+  ],
+  "parameters": []
+}

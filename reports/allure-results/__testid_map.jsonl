@@ -1,0 +1,23 @@
+{"testId":"mhcyc6zg-8qvqxz","fullName":"@smoke TAG_ADD_001 - Tạo thành công thẻ tag với data hợp lệ"}
+{"testId":"mhcyc7jl-vbm7b2","fullName":"@smoke TAG_ADD_002 - Tạo thất bại thẻ tag với name đã tồn tại"}
+{"testId":"mhcyc7v3-sx9r0u","fullName":"TAG_ADD_003 - Tạo thất bại thẻ tag với name > 25 kí tự"}
+{"testId":"mhcyc820-lcc325","fullName":"TAG_ADD_004 - Tạo thất bại thẻ tag với name rỗng"}
+{"testId":"mhcyc88z-cgxwjo","fullName":"TAG_ADD_005 - Tạo thành công thẻ tag cho từng loại typeTags cụ thể"}
+{"testId":"mhcyc9sx-exq1ip","fullName":"@smoke TAG_EDIT_008 - Chỉnh sửa Lưu thành công thẻ tag với data không thay đổi"}
+{"testId":"mhcyca80-ywc7xm","fullName":"TAG_EDIT_009 - Chỉnh sửa Lưu không thành công khi tên rỗng"}
+{"testId":"mhcycaex-vy5qbd","fullName":"TAG_EDIT_010 - Chỉnh sửa Lưu không thành công khi tên thẻ tag đã tồn tại"}
+{"testId":"mhcycalz-1yhzi2","fullName":"@smoke TAG_EDIT_011 - Chỉnh sửa Lưu thành công thẻ tag với tên hợp lệ"}
+{"testId":"mhcycb19-57xg1r","fullName":"@smoke TAG_SEARCH_012 - Kiểm tra tìm kiếm theo loại thẻ tag SẢN PHẨM"}
+{"testId":"mhcycbob-m1au9j","fullName":"@smoke TAG_SEARCH_013 - Kiểm tra tìm kiếm theo loại thẻ tag KHÁCH HÀNG"}
+{"testId":"mhcycccc-ctexwq","fullName":"@smoke TAG_SEARCH_014 - Kiểm tra tìm kiếm theo loại thẻ tag ĐƠN HÀNG"}
+{"testId":"mhcycd0n-nup5k1","fullName":"@smoke TAG_SEARCH_015 - Kiểm tra tìm kiếm theo loại thẻ tag NHÀ CUNG CẤP"}
+{"testId":"mhcycdn6-dbujtf","fullName":"@smoke TAG_DEL_006 - Xóa thành công thẻ tag chưa có dữ liệu liên kết"}
+{"testId":"mhcycdzv-cryu11","fullName":"TAG_DEL_007 - Xóa thất bại thẻ tag có ID không tồn tại trong hệ thống"}
+{"testId":"mhcyce3x-e9gd05","fullName":"@smoke GROUPCUS_ADD_016 - Thêm mới nhóm khách hàng với dữ liệu đầy đủ"}
+{"testId":"mhcyce8o-cv1f43","fullName":"GROUPCUS_ADD_017 - Thêm mới nhóm khách hàng với tên nhóm đã tồn tại"}
+{"testId":"mhcycep0-cbpsev","fullName":"GROUPCUS_ADD_018 - Thêm mới nhóm khách hàng với tên nhóm > 100 kí tự"}
+{"testId":"mhcycesa-bjmifn","fullName":"GROUPCUS_ADD_019 - Thêm mới nhóm khách hàng với tên nhóm rỗng"}
+{"testId":"mhcycev9-15v59m","fullName":"@smoke GROUPCUS_EDIT_021 - Chỉnh sửa nhóm khách hàng với data không thay đổi"}
+{"testId":"mhcycfvx-h2oa9e","fullName":"@smoke GROUPCUS_EDIT_022 - Chỉnh sửa nhóm khách hàng với name hợp lệ"}
+{"testId":"mhcycgy9-5f3aqk","fullName":"@smoke GROUPCUS_EDIT_023 - Chỉnh sửa nhóm khách hàng với name hợp lệ"}
+{"testId":"mhcychrs-gpyvqx","fullName":"@smoke GROUPCUS_DEL_020 - Xóa nhóm khách hàng không có dữ liệu"}

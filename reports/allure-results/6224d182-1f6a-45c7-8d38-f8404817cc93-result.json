@@ -1,0 +1,66 @@
+{
+  "uuid": "6224d182-1f6a-45c7-8d38-f8404817cc93",
+  "historyId": "8d789fb5939c184fbcf3184ce0b643f9",
+  "name": "@smoke TAG_EDIT_008 - Chỉnh sửa Lưu thành công thẻ tag với data không thay đổi",
+  "fullName": "Chỉnh sửa Thẻ tags cho Khách hàng, Nhà cung cấp, Sản phẩm, Đơn hàng @smoke TAG_EDIT_008 - Chỉnh sửa Lưu thành công thẻ tag với data không thay đổi",
+  "start": 1761800183457,
+  "stop": 1761800183999,
+  "description": "",
+  "descriptionHtml": "",
+  "stage": "finished",
+  "status": "passed",
+  "labels": [
+    {
+      "value": "Chỉnh sửa Thẻ tags cho Khách hàng, Nhà cung cấp, Sản phẩm, Đơn hàng",
+      "name": "suite"
+    },
+    {
+      "name": "thread",
+      "value": "02"
+    }
+  ],
+  "links": [],
+  "attachments": [
+    {
+      "source": "6224d182-1f6a-45c7-8d38-f8404817cc93-attachment-1761800195765-64tl6s.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "6224d182-1f6a-45c7-8d38-f8404817cc93-attachment-1761800195766-p90oqy.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "6224d182-1f6a-45c7-8d38-f8404817cc93-attachment-1761800195775-n694ar.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "6224d182-1f6a-45c7-8d38-f8404817cc93-attachment-1761800195785-sjsfbk.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "6224d182-1f6a-45c7-8d38-f8404817cc93-attachment-1761800195795-gdtmzd.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "6224d182-1f6a-45c7-8d38-f8404817cc93-attachment-1761800195806-qse7hg.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "6224d182-1f6a-45c7-8d38-f8404817cc93-attachment-1761800195816-f99vtj.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "6224d182-1f6a-45c7-8d38-f8404817cc93-attachment-1761800195827-d7vatz.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    }
+  ],
+  "parameters": []
+}

@@ -1,0 +1,22 @@
+{
+  "url": "https://api-v2.wionpos.com/product/api/v1/tag/864267598233600",
+  "status": 400,
+  "message": "Request failed with status code 400",
+  "response": {
+    "error": {
+      "code": null,
+      "message": "Your request is not valid!",
+      "details": "The following errors were detected during validation.\n - Please enter a name\n",
+      "data": {},
+      "validationErrors": [
+        {
+          "message": "Please enter a name",
+          "members": [
+            "name"
+          ]
+        }
+      ]
+    }
+  },
+  "__testId": "mhcyca80-ywc7xm"
+}

@@ -1,0 +1,13 @@
+{
+  "message": "Request failed with status code 403",
+  "data": {
+    "error": {
+      "code": "CustomerManagement.CustomerGroup:0001",
+      "message": "Customer group with this name exists",
+      "details": null,
+      "data": {},
+      "validationErrors": null
+    }
+  },
+  "status": 403
+}

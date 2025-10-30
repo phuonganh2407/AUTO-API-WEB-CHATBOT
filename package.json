@@ -8,15 +8,21 @@
     "test:stag": "cross-env ENVIRONMENT=stag jest",
     "test:prod": "cross-env ENVIRONMENT=prod jest",
 
-    "test:dev:suite": "cross-env ENVIRONMENT=dev jest tests/suites/main.suite.test.ts",
-    "test:stag:suite": "cross-env ENVIRONMENT=stag jest tests/suites/main.suite.test.ts",
-    "test:prod:suite": "cross-env ENVIRONMENT=prod jest tests/suites/main.suite.test.ts",
+    "test:dev:suite": "cross-env ENVIRONMENT=dev jest tests/api/suites/main.suite.test.ts",
+    "test:stag:suite": "cross-env ENVIRONMENT=stag jest tests/api/suites/main.suite.test.ts",
+    "test:prod:suite": "cross-env ENVIRONMENT=prod jest tests/api/suites/main.suite.test.ts",
 
-    "test:dev:suite:spec": "cross-env ENVIRONMENT=dev NO_ALLURE=1 jest --maxWorkers=1 --no-coverage tests/suites/main.suite.test.ts -t",
-    "test:stag:suite:spec": "cross-env ENVIRONMENT=stag NO_ALLURE=1 jest --maxWorkers=1 --no-coverage tests/suites/main.suite.test.ts -t",
-    "test:prod:suite:spec": "cross-env ENVIRONMENT=prod NO_ALLURE=1 jest --maxWorkers=1 --no-coverage tests/suites/main.suite.test.ts -t",
+    "test:dev:suite:spec": "cross-env ENVIRONMENT=dev NO_ALLURE=1 jest --maxWorkers=1 --no-coverage tests/api/suites/main.suite.test.ts -t",
+    "test:stag:suite:spec": "cross-env ENVIRONMENT=stag NO_ALLURE=1 jest --maxWorkers=1 --no-coverage tests/api/suites/main.suite.test.ts -t",
+    "test:prod:suite:spec": "cross-env ENVIRONMENT=prod NO_ALLURE=1 jest --maxWorkers=1 --no-coverage tests/api/suites/main.suite.test.ts -t",
     
     "report:clean": "powershell -Command \"Remove-Item -Recurse -Force reports/allure-results, reports/allure-report -ErrorAction SilentlyContinue\""
+    ,
+    "report:generate": "npx allure generate reports/allure-results -o reports/allure-report --clean",
+  "report:open": "powershell -Command \"if (Test-Path 'reports\\allure-report\\index.html') { Start-Process (Resolve-Path 'reports\\allure-report\\index.html') } else { Write-Host 'Report not found' }\"",
+  "test:allure": "cross-env ENVIRONMENT=prod jest --runInBand && node scripts/applyTmpAttachments.js && npm run report:generate",
+  "report:full": "powershell -Command \"& npm run test:prod:suite; $rc = $LASTEXITCODE; if ($rc -ne 0) { Write-Host 'Tests failed (exit code ' $rc ') - skipping report generation.'; exit $rc } ; $results = Get-ChildItem -Path 'reports\\allure-results' -Filter '*-result.json' -ErrorAction SilentlyContinue; if (-not $results) { Write-Host 'No allure result JSON files found - skipping generate.'; exit 0 } ; node scripts/applyTmpAttachments.js; npx allure generate reports/allure-results -o reports/allure-report --clean; Write-Host 'Report generated to reports\\allure-report'\"",
+  "report:ci": "powershell -Command \"npm run test:prod:suite; if ($LASTEXITCODE -eq 0) { node scripts/applyTmpAttachments.js; npx allure generate reports/allure-results -o reports/allure-report --clean } else { Write-Host 'Tests failed - skipping report generation.'; exit $LASTEXITCODE }\""
   },
   "keywords": [],
   "author": "",

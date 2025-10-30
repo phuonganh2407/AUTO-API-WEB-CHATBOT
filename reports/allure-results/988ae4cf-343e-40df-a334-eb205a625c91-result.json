@@ -1,0 +1,86 @@
+{
+  "uuid": "988ae4cf-343e-40df-a334-eb205a625c91",
+  "historyId": "f7b28b53962a8776ee3445508b7fc55a",
+  "name": "@smoke TAG_SEARCH_014 - Kiểm tra tìm kiếm theo loại thẻ tag ĐƠN HÀNG",
+  "fullName": "Tìm kiếm thẻ tags theo tên và bộ lọc thẻ tag theo điều kiện bộ lọc @smoke TAG_SEARCH_014 - Kiểm tra tìm kiếm theo loại thẻ tag ĐƠN HÀNG",
+  "start": 1761800186748,
+  "stop": 1761800187622,
+  "description": "",
+  "descriptionHtml": "",
+  "stage": "finished",
+  "status": "passed",
+  "labels": [
+    {
+      "value": "Tìm kiếm thẻ tags theo tên và bộ lọc thẻ tag theo điều kiện bộ lọc",
+      "name": "suite"
+    },
+    {
+      "name": "thread",
+      "value": "02"
+    }
+  ],
+  "links": [],
+  "attachments": [
+    {
+      "source": "988ae4cf-343e-40df-a334-eb205a625c91-attachment-1761800196225-b5y7ws.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "988ae4cf-343e-40df-a334-eb205a625c91-attachment-1761800196226-hcuguc.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "988ae4cf-343e-40df-a334-eb205a625c91-attachment-1761800196236-spnqbm.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "988ae4cf-343e-40df-a334-eb205a625c91-attachment-1761800196247-sb86j5.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "988ae4cf-343e-40df-a334-eb205a625c91-attachment-1761800196257-45z18m.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "988ae4cf-343e-40df-a334-eb205a625c91-attachment-1761800196267-t4064b.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "988ae4cf-343e-40df-a334-eb205a625c91-attachment-1761800196277-wm1pkw.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "988ae4cf-343e-40df-a334-eb205a625c91-attachment-1761800196287-7ey3tr.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "988ae4cf-343e-40df-a334-eb205a625c91-attachment-1761800196299-w1zk1y.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "988ae4cf-343e-40df-a334-eb205a625c91-attachment-1761800196310-jx1f6r.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    },
+    {
+      "source": "988ae4cf-343e-40df-a334-eb205a625c91-attachment-1761800196320-zjs8t8.json",
+      "type": "application/json",
+      "name": "HTTP Request"
+    },
+    {
+      "source": "988ae4cf-343e-40df-a334-eb205a625c91-attachment-1761800196334-dkr3my.json",
+      "type": "application/json",
+      "name": "HTTP Response"
+    }
+  ],
+  "parameters": []
+}
