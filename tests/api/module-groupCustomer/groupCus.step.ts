@@ -1,8 +1,4 @@
-<<<<<<< HEAD:tests/serviceCustomerTest/module-groupCustomer/groupCus.step.ts
-import { getListGroupCustomer } from "../../../services/customerApi/groupCustomer.api";
-=======
-import { getListGroupCustomer } from "../../../services/api/customerApi/groupCustomer/groupCustomer.api";
->>>>>>> 8f92a4cbbe2900e2b539337c9f1fcf159464f120:tests/api/module-groupCustomer/groupCus.step.ts
+import { getListGroupCustomer } from "../../../services/api/customerApi/groupCustomer.api";
 import { compareRequestResponse, handleComparisonResult } from "../../../utils/funtionHelper";
 
 /**

@@ -5,7 +5,7 @@ import { compareCustomerDetail } from "./customer.step";
 import { callWithAllure } from "../../../../utils/httpWithAllure";
 
 describe("Thêm mới Khách hàng cho cửa hàng", () => {
-  testWithAllure("@smoke CUSTOMER_ADD_024 - Thêm mới nhóm khách hàng với dữ liệu đầy đủ", async () => {
+  testWithAllure("@smoke CUSTOMER_ADD_024 - Thêm mới khách hàng với dữ liệu đầy đủ", async () => {
     //Gọi API tạo khách hàng với đầy đủ dữ liệu
     const payloadCreateCus = await fullCreateCustomerData();
 
