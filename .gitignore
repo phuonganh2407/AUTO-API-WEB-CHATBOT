@@ -7,7 +7,7 @@ build/
 *.tsbuildinfo
 
 # Test reports and results
-coverage/
+# coverage/
 
 # IDE and editor files
 .vscode/*
@@ -27,10 +27,10 @@ yarn-debug.log*
 yarn-error.log*
 
 # Runtime data
-session.json
-*.pid
-*.seed
-*.pid.lock
+# session.json
+# *.pid
+# *.seed
+# *.pid.lock
 
 # Optional npm cache directory
 .npm
