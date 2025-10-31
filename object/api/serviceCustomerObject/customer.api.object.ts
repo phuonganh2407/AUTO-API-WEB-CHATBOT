@@ -15,24 +15,27 @@ export enum editGroupCustomerBody {
  */
 export interface createCustomerBody {
   name: string;
-  phone: string;
+  // Cho phép phone có thể null nếu không cung cấp số điện thoại
+  phone: string | null;
   gender: number;
   dateOfBirth: string;
   streetNo: string;
-  wardCode: string;
-  districtCode: string;
-  cityCode: string;
+  // Các mã địa chỉ có thể null theo nghiệp vụ (đôi khi chưa cập nhật hoặc không bắt buộc)
+  wardCode: string | null;
+  districtCode: string | null;
+  cityCode: string | null;
   isNewAddress: boolean;
   email: string;
   tagIds: number[];
   isDefault: boolean;
   shipmentDetails: Array<{
     name: string;
-    phone: string;
+    // Cho phép phone của địa chỉ giao hàng cũng có thể null
+    phone: string | null;
     streetNo: string;
-    wardCode: string;
-    districtCode: string;
-    cityCode: string;
+    wardCode: string | null;
+    districtCode: string | null;
+    cityCode: string | null;
     isDefault: boolean;
     isNewAddress: boolean;
   }>;

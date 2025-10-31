@@ -8,6 +8,7 @@ import { getListTag } from "../../../services/api/productApi/tags/tag.api";
 import { TAGS } from "../../../constants/api/tags.constant";
 import { getSession } from "../../../utils/session.helper";
 import { getListGroupCustomer } from "../../../services/api/customerApi/groupCustomer.api";
+import { createRandomNumberString, createRandomString } from "../../../utils/genFunctionData";
 
 // ====================================== CUSTOMER PREPARE DATA ======================================
 // Tạo random giới tính
@@ -59,7 +60,7 @@ export async function generateShipmentDetails(
     });
   }
   return shipmentList;
-}
+};
 
 // ====================================== CREATE CUSTOMER DATA ======================================
 export async function fullCreateCustomerData(): Promise<
@@ -101,4 +102,110 @@ export async function fullCreateCustomerData(): Promise<
     authorId: getIdOwner(),
     customerGroupIds,
   };
-}
+};
+
+/**
+ * Bỏ trống tên khách hàng - Tạo random giá trị hợp lệ các field còn lại
+ * @returns 
+ */
+export async function createCustomerWithEmptyName(): Promise<Partial<createCustomerBody>>
+{
+  return{...await fullCreateCustomerData(), name: ''};
+};
+
+
+/**
+ * Tạo danh sách khách hàng với phone hợp lệ: 8 số
+ * @returns 
+ */
+export async function createCustomersWithPhone8(): Promise<Partial<createCustomerBody>> {
+  return { ...await fullCreateCustomerData(), phone: fakerVI.phone.number("09######") };
+};
+
+/**
+ * Tạo danh sách khách hàng với phone hợp lệ: 14 số
+ * @returns 
+ */
+export async function createCustomersWithPhone14(): Promise<Partial<createCustomerBody>> {
+  return { ...await fullCreateCustomerData(), phone: fakerVI.phone.number("09############") };
+};
+
+/**
+ * Tạo danh sách khách hàng với phone hợp lệ: +84
+ * @returns 
+ */
+export async function createCustomersWithPhonePlus84(): Promise<Partial<createCustomerBody>> {
+  return { ...await fullCreateCustomerData(), phone: fakerVI.phone.number("+849########") };
+};
+
+/**
+ * Tạo danh sách khách hàng với phone hợp lệ: null
+ * @returns 
+ */
+export async function createCustomersWithPhoneNull(): Promise<Partial<createCustomerBody>> {
+  return { ...await fullCreateCustomerData(), phone: null};
+};
+
+/**
+ * Tạo danh sách khách hàng với phone không hợp lệ: 6 số (Nhỏ hơn 8 số )
+ * @returns 
+ */
+export async function createCustomerWithPhoneInvalid6(): Promise<Partial<createCustomerBody>> {
+  return { ...await fullCreateCustomerData(), phone: fakerVI.phone.number("07####") };
+};
+
+/**
+ * Tạo danh sách khách hàng với phone không hợp lệ: 19 số (Lớn hơn 14 số )
+ * @returns 
+ */
+export async function createCustomerWithPhoneInvalid19(): Promise<Partial<createCustomerBody>> {
+  return { ...await fullCreateCustomerData(), phone: fakerVI.phone.number("09#################") };
+};
+
+/**
+ * Tạo danh sách khách hàng với Giới tính Nữ
+ * @returns 
+ */
+export async function createCustomerGenderFemale(): Promise<Partial<createCustomerBody>> {
+  return { ...await fullCreateCustomerData(), gender: CUSTOMER_CONSTANT.FEMALE_GENDER };
+};
+
+/**
+ * Tạo danh sách khách hàng với Giới tính Nam
+ * @returns 
+ */
+export async function createCustomerGenderMale(): Promise<Partial<createCustomerBody>> {
+  return { ...await fullCreateCustomerData(), gender: CUSTOMER_CONSTANT.MALE_GENDER };
+};
+
+/**
+ * Tạo danh sách khách hàng với Giới tính Khác
+ * @returns 
+ */
+export async function createCustomerGenderAnother(): Promise<Partial<createCustomerBody>> {
+  return { ...await fullCreateCustomerData(), gender: CUSTOMER_CONSTANT.ANOTHER_GENDER };
+};
+
+/**
+ * Tạo danh sách khách hàng với Giới tính không hợp lệ
+ * @returns 
+ */
+export async function createCustomerGenderInvalid(): Promise<Partial<createCustomerBody>> {
+  return { ...await fullCreateCustomerData(), gender: Number(createRandomNumberString(2))};
+};
+
+/**
+ * Tạo danh sách khách hàng với Email không hợp lệ
+ * @returns 
+ */
+export async function createCustomerEmailInvalid(): Promise<Partial<createCustomerBody>> {
+  return { ...await fullCreateCustomerData(), email: createRandomString(10)};
+};
+
+/**
+ * Tạo danh sách khách hàng với TagIds là null
+ * @returns 
+ */
+export async function createCustomerNullTags(): Promise<Partial<createCustomerBody>> {
+  return { ...await fullCreateCustomerData(), tagIds: []};
+};

@@ -1,5 +1,8 @@
 import { createCustomerBody } from "../../../../object/api/serviceCustomerObject/customer.api.object";
-import { detailCustomer } from "../../../../services/api/customerApi/customer.api";
+import {
+  detailCustomer,
+  getListCustomer,
+} from "../../../../services/api/customerApi/customer.api";
 import {
   compareRequestResponse,
   handleComparisonResult,
@@ -17,9 +20,9 @@ export async function compareCustomerDetail(
     fieldMapping: {
       tagIds: "tags[].id",
       customerGroupIds: "customerGroups[].id",
-    }
+    },
   };
-    //Chỉ xử lý riêng customer. Vì body request và response có định dạng khác nhau ở trường dateOfBirth. body request là "YYYY-MM-DD", response là "YYYY-MM-DDTHH:mm:ss.sssZ"
+  //Chỉ xử lý riêng customer. Vì body request và response có định dạng khác nhau ở trường dateOfBirth. body request là "YYYY-MM-DD", response là "YYYY-MM-DDTHH:mm:ss.sssZ"
   if (actualData.dateOfBirth?.includes("T")) {
     actualData.dateOfBirth = actualData.dateOfBirth.split("T")[0];
   }
@@ -28,6 +31,26 @@ export async function compareCustomerDetail(
   handleComparisonResult(result, "So sánh chi tiết khách hàng sau khi tạo");
 }
 
-export async function compareCustomerSearch(): Promise<void> {
-  
+/**
+ * So sánh kết quả tìm kiếm khách hàng theo tên KH đã tạo
+ * @param payload object customer (body request)
+ */
+export async function compareCustomerSearch(payload: any): Promise<void> {
+  const listResponse = await getListCustomer({
+    SearchText: payload.name,
+  }); // Search theo name từ payload
+  const listData = listResponse.data.items; // Lấy danh sách khách hàng từ response
+
+  // So sánh với khách hàng đầu tiên trong danh sách
+  if (listData && listData.length > 0) {
+    const firstCustomer = listData[0];
+    if (firstCustomer.dateOfBirth?.includes("T")) {
+      firstCustomer.dateOfBirth = firstCustomer.dateOfBirth.split("T")[0];
+      const result = compareRequestResponse(payload, firstCustomer); // So sánh toàn bộ payload với firstCustomer
+      handleComparisonResult(
+        result,
+        "So sánh kết quả tìm kiếm khách hàng theo tên"
+      );
+    }
+  }
 }
