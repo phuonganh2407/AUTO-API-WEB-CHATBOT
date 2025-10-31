@@ -28,7 +28,7 @@ axiosClient.interceptors.request.use((config) => {
 
   // Lấy token và shopId từ session (nếu có) để thêm vào header
   const { token, shopId } = getSession();
-  const env = process.env.ENVIRONMENT || 'dev';
+  const env = process.env.ENVIRONMENT || 'prod';
   const { tenant } = require('../../config/api/accounts.config').accounts[env];
 
   if (token) {

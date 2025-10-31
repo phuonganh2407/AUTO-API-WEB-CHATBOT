@@ -1,18 +1,19 @@
 import fs from "fs";
 import path from "path";
 
-const sessionFile = path.resolve(__dirname, "../storage/session.json");
+const sessionFile = path.resolve(__dirname, "../storage/api/session.json");
 
 //Định nghĩa cấu trúc dữ liệu session
 interface SessionData {
   token: string;
   shopId: string;
+  ownerId: string;
   loginTime: number;
   expiresIn: number;
   environment: string;
 }
 
-const EMPTY: SessionData = { token: "", shopId: "", loginTime: 0, expiresIn: 0, environment: "" };
+const EMPTY: SessionData = { token: "", shopId: "", ownerId:"", loginTime: 0, expiresIn: 0, environment: "" };
 
 // Đọc session từ file
 const readRaw = (): Partial<SessionData> => {

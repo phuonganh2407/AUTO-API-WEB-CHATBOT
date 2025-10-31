@@ -25,20 +25,30 @@ dotenv.config({ path: envPath });
  * Export các base URLs từ biến môi trường
  */
 export const baseURL = process.env.BASE_URL; // URL cơ sở chung (có thể không dùng)
+
 export const productBaseURL = process.env.BASE_PRODUCT_URL; // URL cơ sở cho Product service
+
 export const authenBaseURL = process.env.BASE_AUTHENTICATION_URL; // URL cơ sở cho Authentication service
+
 export const customerBaseURL = process.env.BASE_CUSTOMER_URL; // URL cơ sở cho Customer service
 
+export const publicBaseURL = process.env.BASE_LOCATION_URL; // URL cơ sở cho Public service
 /**
  * Export object chứa các endpoints cho Product service
  */
 export const baseProductEndpoints = {
   attributes: `${productBaseURL}/attribute`, // Endpoint cho attributes API
+
   urlCreateTag: `${productBaseURL}/tag`, // Endpoint cho tags API
+
   urlDetailTag: `${productBaseURL}/tag`, // Endpoint chi tiết tag theo ID
+
   urlGetTagColor: `${productBaseURL}/tag-color`, // Endpoint lấy màu thẻ tag
+
   urlSearchTags: `${productBaseURL}/tag`, // Endpoint tìm kiếm thẻ tag
+
   urlEditTags: `${productBaseURL}/tag`, // Endpoint chỉnh sửa thẻ tag
+
   urlDeleteTag: `${productBaseURL}/tag`, // Endpoint xóa thẻ tag
 }
 
@@ -47,7 +57,10 @@ export const baseProductEndpoints = {
  */
 export const baseAuthEndpoints = {
   urlLogin: `${authenBaseURL}/sign-in/password`, // Endpoint đăng nhập bằng password
+
   urlGetAllShops: `${authenBaseURL}/shops/all`, // Endpoint lấy danh sách tất cả shops
+
+  urlGetShopUserInfo: `${authenBaseURL}/shop-users`, // Endpoint lấy thông tin shop user hiện tại
 }
 
 /**
@@ -55,13 +68,27 @@ export const baseAuthEndpoints = {
  */
 export const baseCustomerEndpoints = {
   urlCreateGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint tạo nhóm khách hàng
+
   urlGetListGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint lấy danh sách nhóm khách hàng
+
   urlEditGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint chỉnh sửa nhóm khách hàng
+
   urlDeleteGroupCustomer: `${customerBaseURL}/customer-groups`, // Endpoint xóa nhóm khách hàng
+
+  urlCreateCustomer: `${customerBaseURL}/customer`, // Endpoint tạo khách hàng
+  
+  urlDetailCustomer: `${customerBaseURL}/customer`, // Endpoint lấy chi tiết khách hàng
+
+  urlGetListCustomer: `${customerBaseURL}/customer`, // Endpoint lấy danh sách khách hàng
 }
 
+/**
+ * Export object chứa các endpoints cho Public service
+ */
 export const basePublicEndpoints = {
-  urlGetCitiesCodes: `${productBaseURL}/locations/cities`, // Endpoint lấy mã thành phố
-  urlGetDistrictsCodes: `${productBaseURL}/locations/districts`, // Endpoint lấy mã quận/huyện
-  urlGetWardsCodes: `${productBaseURL}/locations/wards`, // Endpoint lấy mã phường/xã
+  urlGetCitiesCodes: `${publicBaseURL}/location/cities`, // Endpoint lấy mã thành phố
+
+  urlGetDistrictsCodes: `${publicBaseURL}/location/districts`, // Endpoint lấy mã quận/huyện
+
+  urlGetWardsCodes: `${publicBaseURL}/location/wards`, // Endpoint lấy mã phường/xã
 }

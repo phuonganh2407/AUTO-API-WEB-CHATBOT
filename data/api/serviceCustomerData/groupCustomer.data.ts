@@ -5,7 +5,7 @@ import {
 } from "../../../object/api/serviceCustomerObject/customer.api.object"; // Update the path as needed
 import { createRandomNumberString } from "../../../utils/genFunctionData";
 import { getRandomData, getSubObjectByKeys } from "../../../utils/funtionHelper";
-import { getListGroupCustomer } from "../../../services/api/customerApi/groupCustomer/groupCustomer.api";
+import { getListGroupCustomer } from "../../../services/api/customerApi/groupCustomer.api";
 
 // ============= CREATE GROUP CUSTOMET DATA =============
 

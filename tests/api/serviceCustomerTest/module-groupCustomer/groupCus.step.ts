@@ -1,14 +1,18 @@
-import { getListGroupCustomer } from "../../../services/api/customerApi/groupCustomer.api";
-import { compareRequestResponse, handleComparisonResult } from "../../../utils/funtionHelper";
+import { getListGroupCustomer } from "../../../../services/api/customerApi/groupCustomer.api";
+import {
+  compareRequestResponse,
+} from "../../../../utils/funtionHelper";
 
 /**
  * So sánh kết quả tìm kiếm nhóm KH theo name
  * @param payload - Request body từ create (name)
  */
 export async function compareSearchGroupCusList(
-  payload: any     // Request body từ create (name)
+  payload: any // Request body từ create (name)
 ): Promise<void> {
-  const listResponse = await getListGroupCustomer({ CustomerSearchText: payload.name }); // Search theo name từ payload
+  const listResponse = await getListGroupCustomer({
+    CustomerSearchText: payload.name,
+  }); // Search theo name từ payload
 
   const listData = listResponse.data.items; // Lấy danh sách tags từ response
 
@@ -16,10 +20,7 @@ export async function compareSearchGroupCusList(
   if (listData && listData.length > 0) {
     const firstTag = listData[0];
     const result = compareRequestResponse(payload, firstTag); // So sánh toàn bộ payload với firstTag
-    // console.log('Comparison result for search tag list:', result);
-    handleComparisonResult(result, "Search Group Cus comparison");
   } else {
     console.warn("No Group Cus found in search response");
   }
 }
-

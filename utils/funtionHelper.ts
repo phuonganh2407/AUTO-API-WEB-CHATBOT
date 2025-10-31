@@ -10,13 +10,13 @@ import { expect } from "@jest/globals";
  */
 export function transformSearchText(text: string, condition: string): string {
   switch (condition) {
-    case 'LOWERCASE':
+    case "LOWERCASE":
       return text.toLowerCase();
-    case 'UPPERCASE':
+    case "UPPERCASE":
       return text.toUpperCase();
-    case 'UNACCENT':
+    case "UNACCENT":
       // Loại bỏ dấu (basic implementation)
-      return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     default:
       return text;
   }
@@ -143,19 +143,17 @@ export function normalizeString(
 }
 
 /**
- * Type cho cấu hình comparison (optional)
+ * Cấu hình so sánh giữa request và response
  */
-export type ComparisonConfig = {
-  /** Map field request -> field response (nếu tên khác nhau) */
+export type CompareConfig = {
+  /** Map field request -> field response (nếu khác tên) */
   fieldMapping?: Record<string, string>;
-  /** Danh sách fields bỏ qua không cần so sánh */
-  ignoredFields?: string[];
 };
 
 /**
- * Type cho kết quả comparison
+ * Kết quả so sánh
  */
-export type ComparisonResult = {
+export type CompareResult = {
   isSuccess: boolean;
   matches: string[];
   warnings: string[];
@@ -163,102 +161,130 @@ export type ComparisonResult = {
 };
 
 /**
- * So sánh dữ liệu giữa request body và response body
- * @param requestBody - Body từ request
- * @param responseBody - Body từ response
- * @param config - Cấu hình comparison (optional)
- * @returns Kết quả comparison
+ *  So sánh dữ liệu giữa requestBody và responseBody
+ *  - Không quan tâm thứ tự mảng
+ *  - Chỉ cần tồn tại các giá trị tương ứng trong mảng
+ *  - Tự động bỏ qua một số field động (id, thời gian, ...)
  */
 export function compareRequestResponse(
-  requestBody: any,
-  responseBody: any,
-  config: {
-    /** Map field request -> field response (nếu tên khác nhau) */
-    fieldMapping?: Record<string, string>;
-    /** Danh sách fields bỏ qua không cần so sánh */
-    ignoredFields?: string[];
-  } = {}
-): {
-  isSuccess: boolean;
-  matches: string[];
-  warnings: string[];
-  errors: string[];
-} {
-  // Lấy cấu hình, mặc định là object rỗng
-  const { fieldMapping = {}, ignoredFields = [] } = config;
-
-  // Validate inputs: kiểm tra requestBody
-  if (!requestBody || typeof requestBody !== "object") {
-    return {
-      isSuccess: false,
-      matches: [],
-      warnings: [],
-      errors: ["Request body is invalid or empty"],
-    };
-  }
-
-  // Validate inputs: kiểm tra responseBody
-  if (!responseBody || typeof responseBody !== "object") {
-    return {
-      isSuccess: false,
-      matches: [],
-      warnings: [],
-      errors: ["Response body is invalid or empty"],
-    };
-  }
-
-  // Khởi tạo kết quả comparison
-  const result: {
-    isSuccess: boolean;
-    matches: string[];
-    warnings: string[];
-    errors: string[];
-  } = {
+  requestBody: Record<string, any>,
+  responseBody: Record<string, any>,
+  { fieldMapping = {} }: CompareConfig = {}
+): CompareResult {
+  const result: CompareResult = {
     isSuccess: true,
     matches: [],
     warnings: [],
     errors: [],
   };
 
-  // Duyệt qua từng field trong requestBody
-  Object.entries(requestBody).forEach(([reqKey, reqValue]) => {
-    // Bỏ qua fields trong ignoredFields
-    if (ignoredFields.includes(reqKey)) return;
+  /** Danh sách field tự động bỏ qua */
+  const autoIgnored = ["id", "creationTime", "lastRecordTime"];
 
-    // Xác định tên field trong response (có thể được map)
-    const resKey = fieldMapping[reqKey] || reqKey;
-
-    // Kiểm tra xem field có tồn tại trong response không
-    if (!(resKey in responseBody)) {
-      result.warnings.push(`Field '${reqKey}' missing in response`);
-      return;
-    }
-
-    // Lấy giá trị từ response
-    const resValue = responseBody[resKey];
-
-    // So sánh values sử dụng Jest expect với try-catch để thu thập lỗi
+  /** So sánh deep-equal (dùng Jest expect) */
+  const isEqual = (a: any, b: any): boolean => {
     try {
-      expect(resValue).toEqual(reqValue); // Dùng Jest toEqual cho deep equality
-      // Nếu pass, thêm vào matches
-      const mappingInfo = fieldMapping[reqKey] ? ` (→ ${resKey})` : "";
-      result.matches.push(`${reqKey}${mappingInfo}: ${formatValue(reqValue)}`);
-    } catch (error) {
-      // Nếu fail, thu thập error mà không throw ngay
-      result.errors.push(
-        `'${reqKey}': ${formatValue(reqValue)} ≠ ${formatValue(resValue)}`
-      );
-      result.isSuccess = false;
+      expect(b).toEqual(a);
+      return true;
+    } catch {
+      return false;
     }
-  });
+  };
 
+  /** Format giá trị để log dễ đọc */
+  const format = (v: any): string =>
+    Array.isArray(v)
+      ? `[${v.map(format).join(", ")}]`
+      : typeof v === "string"
+      ? `"${v}"`
+      : v && typeof v === "object"
+      ? JSON.stringify(v)
+      : String(v);
+
+  /** Thêm lỗi và đánh dấu fail */
+  const addError = (msg: string) => {
+    result.errors.push(msg);
+    result.isSuccess = false;
+  };
+
+  /**
+   * So sánh mảng (unordered, chỉ cần tồn tại giá trị)
+   */
+  const compareArrays = (expected: any[], actual: any[], key: string) => {
+    let matchedCount = 0;
+
+    for (const expItem of expected) {
+      if (typeof expItem === "object" && expItem !== null) {
+        // Kiểm tra xem có object nào trong actual chứa đủ các field của expItem không
+        const found = actual.some(actItem =>
+          Object.entries(expItem)
+            .filter(([k]) => !autoIgnored.includes(k))
+            .every(([k, v]) => isEqual(v, actItem[k]))
+        );
+        if (found) matchedCount++;
+      } else if (actual.includes(expItem)) {
+        matchedCount++;
+      }
+    }
+
+    matchedCount === expected.length
+      ? result.matches.push(`${key}: all ${matchedCount} items found (unordered)`)
+      : addError(`${key}: found ${matchedCount}/${expected.length} expected items`);
+  };
+
+  /** Lấy giá trị thực tế từ response theo key (hỗ trợ "tags[].id") */ 
+  /* 
+    * regex pattern để kiểm tra xem resKey có đúng format đặc biệt "tênMảng[].tênField" hay không. 
+    * match = tênmảng, tênfield
+  */
+  const getResponseValue = (resKey: string, reqKey: string) => {
+    const match = resKey.match(/^(.+)\[\]\.(.+)$/); // ví dụ: tags[].id
+    //Nếu tồn tại match
+    if (match) {
+      // [full match, tên mảng, tên field]. VD: ["tags[].id", "tags", "id"]
+      const [, arrayField, subField] = match;
+      //Lấy dữ liệu mảng từ response. responseBody["tags"] -> [{id: 1}, {id:2}]
+      const data = responseBody[arrayField];
+      //Nếu data là mảng, map lấy subField từ từng phần tử. VD: [{id:1}, {id:2}] -> [1,2]
+      if (Array.isArray(data)) return data.map(item => item[subField]);
+        result.warnings.push(`Field '${reqKey}': '${arrayField}' is not an array in response`);
+        return undefined;
+    }
+    return responseBody[resKey];
+  };
+
+  // So sánh từng field trong requestBody
+  for (const [reqKey, expectedValue] of Object.entries(requestBody)) {
+    if (autoIgnored.includes(reqKey)) continue; // tự động bỏ qua
+
+    const resKey = fieldMapping[reqKey] ?? reqKey;
+    const actualValue = getResponseValue(resKey, reqKey);
+
+    if (actualValue === undefined) {
+      result.warnings.push(`Missing field '${reqKey}' in response`);
+      continue;
+    }
+
+    // Nếu là mảng → so sánh tồn tại (unordered)
+    if (Array.isArray(expectedValue) && Array.isArray(actualValue)) {
+      compareArrays(expectedValue, actualValue, reqKey);
+      continue;
+    }
+
+    // So sánh thường
+    const mappingInfo = fieldMapping[reqKey] ? ` (→ ${resKey})` : "";
+    if (isEqual(expectedValue, actualValue)) {
+      result.matches.push(`${reqKey}${mappingInfo}: ${format(expectedValue)}`);
+    } else {
+      addError(`${reqKey}${mappingInfo}: ${format(expectedValue)} ≠ ${format(actualValue)}`);
+    }
+  }
+
+  // console.log("Comparison Result:", result);
   return result;
 }
 
-function formatValue(value: any): string {
-  // Định dạng giá trị để khi console log ra dễ debug: nếu là string thì thêm dấu ngoặc kép, type: 4 (number) → log ra: type: 4
-  return typeof value === "string" ? `"${value}"` : String(value);
-}
+
 
 /**
  * Xử lý kết quả comparison: chỉ log khi fail, không log khi pass

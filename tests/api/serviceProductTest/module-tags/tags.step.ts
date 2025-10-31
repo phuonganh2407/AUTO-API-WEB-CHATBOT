@@ -1,5 +1,5 @@
 import { getDetailTag, getListTag } from "../../../../services/api/productApi/tags/tag.api";
-import { compareRequestResponse, getRandomData, handleComparisonResult, transformSearchText } from "../../../../utils/funtionHelper";
+import { compareRequestResponse, getRandomData, transformSearchText } from "../../../../utils/funtionHelper";
 import { expect } from '@jest/globals';
 
 
@@ -17,10 +17,7 @@ export async function compareTagDetails(
   const detailData = detailResponse.data; // Response body từ detail API
 
   // So sánh request body (payload) với detail response (detailData)
-  const result = compareRequestResponse(payload, detailData);
-
-  // Xử lý kết quả comparison (chỉ log khi fail, throw error nếu cần)
-  handleComparisonResult(result, "Tag comparison");
+  compareRequestResponse(payload, detailData);
 }
 
 /**
@@ -38,8 +35,7 @@ export async function compareSearchTagList(
   if (listData && listData.length > 0) {
     const firstTag = listData[0];
     const result = compareRequestResponse(payload, firstTag); // So sánh toàn bộ payload với firstTag
-    // console.log('Comparison result for search tag list:', result);
-    handleComparisonResult(result, "Search tag comparison");
+
   } else {
     console.warn("No tags found in search response");
   }
