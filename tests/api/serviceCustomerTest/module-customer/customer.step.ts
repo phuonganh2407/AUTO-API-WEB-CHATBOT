@@ -29,6 +29,5 @@ export async function compareCustomerDetail(
 }
 
 export async function compareCustomerSearch(): Promise<void> {
-  // Chức năng so sánh tìm kiếm khách hàng sẽ được triển khai sau
-  console.warn("Chức năng so sánh tìm kiếm khách hàng chưa được triển khai.");
+  
 }

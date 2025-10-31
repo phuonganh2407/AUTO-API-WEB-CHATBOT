@@ -1,5 +1,5 @@
-import { basePublicEndpoints } from '../../config/urls.config';
-import axiosClient from '../../core/axiosClient';
+import { basePublicEndpoints } from '../../config/api/urls.config';
+import axiosClient from '../../core/api/axiosClient';
 
 /**
  *  Lấy danh sách mã thành phố
