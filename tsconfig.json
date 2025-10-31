@@ -21,7 +21,7 @@
   },
   "include": [
     "core/api/axiosClient.ts",
-    "services/api/authenticationApi/account/login.api.ts",
+    "services/api/authenticationApi/login.api.ts",
     "data/**/*", //Lấy toàn bộ file .ts trong thư mục data và các thư mục con
     "tests/**/*" //Lấy toàn bộ file test .ts trong thư mục tests
   ],

@@ -7,16 +7,16 @@
 process.env.DOTENV_CONFIG_SILENT = 'true';
 
 // Import trực tiếp các hàm cần thiết
-const { login } = require('./services/api/authenticationApi/account/login.api');
-const { getIdShop } = require('./services/api/authenticationApi/shop/getShop.api');
-const { getShopUserInfo } = require('./services/api/authenticationApi/shop/shopUser.api');
+const { login } = require('./services/api/authenticationApi/login.api');
+const { getIdShop } = require('./services/api/authenticationApi/getShop.api');
+const { getShopUserInfo } = require('./services/api/authenticationApi/shopUser.api');
 const { saveSession, getSession, isTokenExpired } = require('./utils/session.helper');
 const { accounts } = require('./config/api/accounts.config');
 
 async function loginAndSaveToken() {
   const env = process.env.ENVIRONMENT || 'dev';
   const { username, password } = accounts[env];
-  const res = await login(username, password);
+  const res = await login({ phoneNumber: username, password });
   const token = res?.data?.accessToken;
   if (!token) throw new Error('Không lấy được token!');
   const loginTime = Math.floor(Date.now() / 1000);
