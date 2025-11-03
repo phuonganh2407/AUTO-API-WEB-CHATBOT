@@ -1,1 +1,2 @@
-import "../../authentication/test-login-function.test";
+// import "../authentication/test-login-function.test";
+import "../product/attribute.test"

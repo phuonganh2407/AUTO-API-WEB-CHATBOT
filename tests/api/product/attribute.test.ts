@@ -1,11 +1,15 @@
 import { fullAttributesData } from "../../../data/api/moduleProduct/attribute.data";
-import { testWithAllure } from "../testWithAllure";
+import { testWithAllure } from "../../../tests/api/testWithAllure";
+import { callWithAllure } from "../../../utils/httpWithAllure";
+import { updateAttribute } from "../../../services/api/productApi/attribute.api";
 
-describe("Thêm mới thuộc tính", () => {
+describe("Cập nhật thuộc tính", () => {
 
-  testWithAllure("@smoke TAG_ADD_001 - Tạo thành công thẻ tag với data hợp lệ", async () => {
+  testWithAllure("@smoke ATTRIBUTE_UPDATE_002 - Cập nhật thành công thuộc tính với data hợp lệ", async () => {
     const payload = await fullAttributesData();
-    // Gọi API create để tạo tag
-    const createResponse = await callWithAllure(() => (payload as any), { name: 'createTag' });
+    console.log("Payload for update:", payload);
+    // Gọi API update để cập nhật thuộc tính
+    const updateResponse = await callWithAllure(() => updateAttribute(payload), { name: 'updateAttribute' });
+    console.log(updateResponse.data);
   });
 });

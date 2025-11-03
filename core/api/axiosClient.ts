@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getSession } from "../../utils/session.helper";
-import { baseURL } from "../../config/api/urls.config";
+import { baseURL, storageID, channelID } from "../../config/api/urls.config";
 import { attachJson } from "../../utils/allure.helper";
 
 /**
@@ -16,7 +16,7 @@ const axiosClient = axios.create({
   baseURL: baseURL,
   timeout: 10000,
   headers: {
-    "Content-Type": "application/x-www-form-urlencoded",
+    'Content-Type': 'application/json',
   },
 });
 
@@ -28,16 +28,19 @@ axiosClient.interceptors.request.use((config) => {
 
   // Lấy token và shopId từ session (nếu có) để thêm vào header
   const { token } = getSession();
-  const env = process.env.ENVIRONMENT || 'prod';
-  const { tenant } = require('../../config/api/accounts.config').accounts[env];
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
 
-  // Chỉ thêm tenant khi là request login (ví dụ url chứa 'sign-in')
-  if (config.url && config.url.includes('sign-in')) {
-    config.headers.tenant = tenant;
+  // Thêm Storage ID vào header nếu có
+  if (storageID) {
+    config.headers['Storage-ID'] = storageID;
+  }
+
+  // Thêm Channel ID vào header nếu có
+  if (channelID) {
+    config.headers['Channel-ID'] = channelID;
   }
 
   // Nếu test wrapper đang chạy, test sẽ set global.__CURRENT_TEST_ID__

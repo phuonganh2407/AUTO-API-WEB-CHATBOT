@@ -5,10 +5,10 @@ export async function fullAttributesData(): Promise<Partial<attributeBody>>{
     return {
         index: "string",
         data: {
-            attribute_name: "string",
-            name: faker.lorem.words(2),
-            values: [],
-            parent_class: []
+            attribute_name: "",
+            name: faker.lorem.words(1),
+            values: ["string"],
+            parent_class: ["string"]
         },
         meta_data: {
             processing_time: 0,

@@ -25,6 +25,7 @@ dotenv.config({ path: envPath });
  */
 export const baseURL = process.env.BASE_URL; // URL cơ sở chung (có thể không dùng)
 export const storageID = process.env.STORAGE_ID; // Storage ID dùng cho các service API
+export const channelID = process.env.CHANNEL_ID; // Channel ID dùng cho các service API
 
 
 /**
