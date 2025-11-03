@@ -1,7 +1,7 @@
 import { fakerVI } from "@faker-js/faker";
-import { createCustomerBody } from "../../../object/api/serviceCustomerObject/customer.api.object";
+import { createCustomerBody, editCustomerBody } from "../../../object/api/serviceCustomerObject/customer.api.object";
 import { CUSTOMER_CONSTANT } from "../../../constants/api/customer.constant";
-import { getRandomData } from "../../../utils/funtionHelper";
+import { getRandomData, getSubObjectByKeys } from "../../../utils/funtionHelper";
 import { getCitiesCodes } from "../../../services/api/publicApi/location.api";
 import { getDistrictsCityCode, getWardsCode } from "../../../services/api/publicApi/location.api";
 import { getListTag } from "../../../services/api/productApi/tags/tag.api";
@@ -9,6 +9,8 @@ import { TAGS } from "../../../constants/api/tags.constant";
 import { getSession } from "../../../utils/session.helper";
 import { getListGroupCustomer } from "../../../services/api/customerApi/groupCustomer.api";
 import { createRandomNumberString, createRandomString } from "../../../utils/genFunctionData";
+import { detailCustomer, editCustomer, getListCustomer } from "../../../services/api/customerApi/customer.api";
+import { getShopUserInfo } from "../../../services/api/authenticationApi/shopUser.api";
 
 // ====================================== CUSTOMER PREPARE DATA ======================================
 // Tạo random giới tính
@@ -56,7 +58,7 @@ export async function generateShipmentDetails(
       districtCode: randomDistrict,
       cityCode: randomCity,
       isDefault: false,
-      isNewAddress: false,
+      // isNewAddress: false,
     });
   }
   return shipmentList;
@@ -94,7 +96,7 @@ export async function fullCreateCustomerData(): Promise<
     cityCode: randomCity,
     districtCode: randomDistrict,
     wardCode: randomWard,
-    isNewAddress: false, //Đang mặc định sử dụng địa chỉ cũ (3 cấp)
+    // isNewAddress: false, //Đang mặc định sử dụng địa chỉ cũ (3 cấp)
     email: fakerVI.internet.email(),
     tagIds,
     isDefault: false,
@@ -208,4 +210,111 @@ export async function createCustomerEmailInvalid(): Promise<Partial<createCustom
  */
 export async function createCustomerNullTags(): Promise<Partial<createCustomerBody>> {
   return { ...await fullCreateCustomerData(), tagIds: []};
+};
+
+
+// ====================================== EDIT CUSTOMER DATA ======================================
+export async function mapEditCustomerData(): Promise<{
+  payload: Partial<typeof editCustomerBody>;
+  id: number;
+}> {
+  // Lấy danh sách khách hàng hiện có
+  const listRes = getRandomData((await getListCustomer()).data, 1)[0];
+
+  const idCustomerEdit = listRes.id;
+
+  const detailRes = (await detailCustomer(idCustomerEdit)).data;
+  
+  if(detailRes.dateOfBirth?.includes("T")){
+    detailRes.dateOfBirth = detailRes.dateOfBirth.split("T")[0];
+  }
+
+  // Convert response fields về đúng format của request body
+  if (detailRes.tags && Array.isArray(detailRes.tags)) {
+    // Map tags[] thành tagIds[] để lấy giá trị id gán vào body request (Vì respsonse trả về là tags object)
+    detailRes.tagIds = detailRes.tags.map((tag: any) => tag.id);
+    delete detailRes.tags;
+  }
+  
+  if (detailRes.customerGroups && Array.isArray(detailRes.customerGroups)) {
+    // Map customerGroups[] thành customerGroupIds[] để lấy giá trị id gán vào body request (Vì respsonse trả về là customerGroups object)
+    detailRes.customerGroupIds = detailRes.customerGroups.map((group: any) => group.id);
+    delete detailRes.customerGroups;
+  }
+  
+  // Clean shipmentDetails - chỉ giữ lại các field cần thiết theo template
+  if (detailRes.shipmentDetails && Array.isArray(detailRes.shipmentDetails)) {
+    //Mặc định lấy [0] vì body editCustomerBody chỉ có 1 object shipmentDetails
+    const shipmentTemplate = editCustomerBody.shipmentDetails[0];
+    const shipmentKeys = Object.keys(shipmentTemplate);
+    detailRes.shipmentDetails = detailRes.shipmentDetails.map((item: any) => 
+      getSubObjectByKeys(item, shipmentKeys)
+    );
+  }
+  
+  const mapped = getSubObjectByKeys(detailRes, Object.keys(editCustomerBody));
+  return { payload: mapped, id: idCustomerEdit };
+}
+
+/**
+ * Thay đổi tên khách hàng khi chỉnh sửa
+ * @returns 
+ */
+export async function editCustomerChangeName(): Promise<{
+  payload: Partial<typeof editCustomerBody>;
+  id: number;
+}> {
+  // Lấy dữ liệu chỉnh sửa từ một khách hàng ngẫu nhiên
+  const { payload, id } = await mapEditCustomerData();
+  return {payload: { ...payload as any, name: `${fakerVI.color.human()}_${Date.now()}` }, id };
+};
+
+/**
+ * Thay đổi tên khách hàng thành chuỗi rỗng khi chỉnh sửa
+ * @returns 
+ */
+export async function editCustomerEmptyName(): Promise<{
+  payload: Partial<typeof editCustomerBody>;
+  id: number;
+}> {
+  // Lấy dữ liệu chỉnh sửa từ một khách hàng ngẫu nhiên
+  const { payload, id } = await mapEditCustomerData();
+  return {payload: { ...payload as any, name: "" }, id };
+};
+
+/**
+ * Thay đổi phone khách hàng thành phone hợp lệ khi chỉnh sửa
+ * @returns 
+ */
+export async function editCustomerPhoneValid(): Promise<{
+  payload: Partial<typeof editCustomerBody>;
+  id: number;
+}> {
+  // Lấy dữ liệu chỉnh sửa từ một khách hàng ngẫu nhiên
+  const { payload, id } = await mapEditCustomerData();
+  return {payload: { ...payload as any, phone: fakerVI.phone.number("038#######") }, id };
+};
+
+/**
+ * Thay đổi email khách hàng thành email hợp lệ khi chỉnh sửa
+ * @returns 
+ */
+export async function editCustomerEmailValid(): Promise<{
+  payload: Partial<typeof editCustomerBody>;
+  id: number;
+}> {
+  // Lấy dữ liệu chỉnh sửa từ một khách hàng ngẫu nhiên
+  const { payload, id } = await mapEditCustomerData();
+  return {payload: { ...payload as any, email: fakerVI.internet.email() }, id };
+};
+
+export async function editCustomerAuthorIdValid(): Promise<{
+  payload: Partial<typeof editCustomerBody>;
+  id: number;
+}> {
+  // Lấy dữ liệu chỉnh sửa từ một khách hàng ngẫu nhiên
+  const { payload, id } = await mapEditCustomerData();
+  const getIdAccountant = getRandomData((await getShopUserInfo()).data, 1, "id", "shopUsers", item => item.role.name === "Kế toán")[0];
+  console.log('Selected Accountant ID for AuthorId:', getIdAccountant);
+  return {payload: { ...payload as any, authorId: String(getIdAccountant) }, id };
 };

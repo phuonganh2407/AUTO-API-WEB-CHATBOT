@@ -22,7 +22,7 @@ export const errorMessages = {
   },
 
   customer:{
-    createCustomerEmptyName: "Name must not be empty.",
+    customerEmptyName: "Name must not be empty.",
     createCustomerInvalidPhone: "Phone is not a valid phone number.",
     createCustomerGenderInvalid: (gender: number) => `'Gender' has a range of values which does not include '${gender}'.`,
     createCustomerInvalidEmail: "Email is not a valid email address.",

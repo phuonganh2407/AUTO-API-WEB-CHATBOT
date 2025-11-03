@@ -24,7 +24,7 @@ export interface createCustomerBody {
   wardCode: string | null;
   districtCode: string | null;
   cityCode: string | null;
-  isNewAddress: boolean;
+  // isNewAddress: boolean;
   email: string;
   tagIds: number[];
   isDefault: boolean;
@@ -37,8 +37,37 @@ export interface createCustomerBody {
     districtCode: string | null;
     cityCode: string | null;
     isDefault: boolean;
-    isNewAddress: boolean;
+    // isNewAddress: boolean;
   }>;
   authorId: string;
   customerGroupIds: number[];
 }
+
+export const editCustomerBody: createCustomerBody = {
+  name: "Lê Minh T",
+  phone: "0935000999",
+  gender: 0,
+  dateOfBirth: "1997-12-27",
+  streetNo: "268 Lý Thường Kiệt",
+  wardCode: "213",
+  districtCode: "321",
+  cityCode: "123",
+  // "isNewAddress": true,
+  email: "example@gmail.com",
+  tagIds: [0],
+  isDefault: true,
+  shipmentDetails: [
+    {
+      name: "Lê Minh T",
+      phone: "0935000999",
+      streetNo: "1 Bến Thành",
+      wardCode: "26740",
+      districtCode: "760",
+      cityCode: "79",
+      isDefault: true,
+      // "isNewAddress": true
+    },
+  ],
+  authorId: "string",
+  customerGroupIds: [0],
+};
