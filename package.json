@@ -7,15 +7,12 @@
     "test:dev": "cross-env ENVIRONMENT=dev jest",
     "test:stag": "cross-env ENVIRONMENT=stag jest",
     "test:prod": "cross-env ENVIRONMENT=prod jest",
-
     "test:dev:suite": "cross-env ENVIRONMENT=dev jest tests/api/suites/main.suite.test.ts",
     "test:stag:suite": "cross-env ENVIRONMENT=stag jest tests/api/suites/main.suite.test.ts",
     "test:prod:suite": "cross-env ENVIRONMENT=prod jest tests/api/suites/main.suite.test.ts",
-
     "test:dev:suite:spec": "cross-env ENVIRONMENT=dev NO_ALLURE=1 jest --maxWorkers=1 --no-coverage tests/api/suites/main.suite.test.ts -t",
     "test:stag:suite:spec": "cross-env ENVIRONMENT=stag NO_ALLURE=1 jest --maxWorkers=1 --no-coverage tests/api/suites/main.suite.test.ts -t",
     "test:prod:suite:spec": "cross-env ENVIRONMENT=prod NO_ALLURE=1 jest --maxWorkers=1 --no-coverage tests/api/suites/main.suite.test.ts -t",
-    
     "report:clean": "powershell -Command \"Remove-Item -Recurse -Force reports/allure-results, reports/allure-report -ErrorAction SilentlyContinue\"",
     "report:generate": "npx allure generate reports/allure-results -o reports/allure-report --clean",
     "report:open": "powershell -Command \"if (Test-Path 'reports\\allure-report\\index.html') { Start-Process (Resolve-Path 'reports\\allure-report\\index.html') } else { Write-Host 'Report not found' }\"",
@@ -31,7 +28,7 @@
     "dotenv": "^17.2.3"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.3.1",
+    "@faker-js/faker": "^8.4.1",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.7.0",
     "allure-commandline": "^2.34.1",

@@ -16,7 +16,7 @@ const axiosClient = axios.create({
   baseURL: baseURL,
   timeout: 10000,
   headers: {
-    "Content-Type": "application/json",
+    "Content-Type": "application/x-www-form-urlencoded",
   },
 });
 
@@ -27,16 +27,12 @@ axiosClient.interceptors.request.use((config) => {
   }
 
   // Lấy token và shopId từ session (nếu có) để thêm vào header
-  const { token, shopId } = getSession();
+  const { token } = getSession();
   const env = process.env.ENVIRONMENT || 'prod';
   const { tenant } = require('../../config/api/accounts.config').accounts[env];
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
-  }
-
-  if (shopId) {
-    config.headers.shopId = shopId;
   }
 
   // Chỉ thêm tenant khi là request login (ví dụ url chứa 'sign-in')
