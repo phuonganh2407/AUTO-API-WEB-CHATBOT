@@ -27,6 +27,7 @@ export async function compareCustomerDetail(
     actualData.dateOfBirth = actualData.dateOfBirth.split("T")[0];
   }
   const result = compareRequestResponse(expectedData, actualData, config);
+  // console.log("Comparison result for customer detail:", result);
   // Xử lý kết quả comparison (chỉ log khi fail, throw error nếu cần)
   handleComparisonResult(result, "So sánh chi tiết khách hàng sau khi tạo");
 }

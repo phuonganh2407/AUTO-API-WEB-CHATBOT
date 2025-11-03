@@ -34,3 +34,8 @@ export async function getListCustomer(params?: {
 }) {
   return axiosClient.get(baseCustomerEndpoints.urlGetListCustomer, { params });
 }
+
+
+export async function editCustomer(id: number, body: Partial<createCustomerBody>) {
+  return axiosClient.patch(`${baseCustomerEndpoints.urlEditCustomer}/${id}`, body);
+}

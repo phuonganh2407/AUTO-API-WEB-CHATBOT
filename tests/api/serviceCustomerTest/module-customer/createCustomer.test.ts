@@ -11,7 +11,7 @@ describe("Thêm mới Khách hàng cho cửa hàng", () => {
       //Gọi API tạo khách hàng với đầy đủ dữ liệu
       const payloadCreateCus = await fullCreateCustomerData();
 
-      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any));
+      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any),{ name: 'createCustomer' });
 
       // ✅ So sánh status code
       expect(response.status).toBe(200);
@@ -26,14 +26,14 @@ describe("Thêm mới Khách hàng cho cửa hàng", () => {
       //Gọi API tạo khách hàng với tên khách hàng để trống
       const payloadCreateCus = await createCustomerWithEmptyName();
       //So sánh mã lỗi trả về
-      await testsCheckFails(callWithAllure(() => createCustomer(payloadCreateCus as any)), 400, errorMessages.customer.createCustomerEmptyName);
+      await testsCheckFails(callWithAllure(() => createCustomer(payloadCreateCus as any),{ name: 'createCustomer' }), 400, errorMessages.customer.customerEmptyName);
   });
 
     testWithAllure("CUSTOMER_ADD_026 - Thêm mới khách hàng thành công khi nhập phone hợp lệ(phone = 8 số)", async () => {
       //Gọi API tạo khách hàng với đầy đủ dữ liệu
       const payloadCreateCus = await createCustomersWithPhone8();
 
-      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any));
+      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any),{ name: 'createCustomer' });
 
         // ✅ So sánh status code
       expect(response.status).toBe(200);
@@ -48,7 +48,7 @@ describe("Thêm mới Khách hàng cho cửa hàng", () => {
       //Gọi API tạo khách hàng với đầy đủ dữ liệu
       const payloadCreateCus = await createCustomersWithPhone14();
 
-      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any));
+      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any),{ name: 'createCustomer' });
 
       // ✅ So sánh status code
       expect(response.status).toBe(200);
@@ -63,7 +63,7 @@ describe("Thêm mới Khách hàng cho cửa hàng", () => {
       //Gọi API tạo khách hàng với đầy đủ dữ liệu
       const payloadCreateCus = await createCustomersWithPhonePlus84();
 
-      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any));
+      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any),{ name: 'createCustomer' });
 
       // ✅ So sánh status code
       expect(response.status).toBe(200);
@@ -79,7 +79,7 @@ describe("Thêm mới Khách hàng cho cửa hàng", () => {
       const payloadCreateCus = await createCustomersWithPhoneNull();
       console.log("bodyNullPhone", payloadCreateCus)
 
-      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any));
+      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any),{ name: 'createCustomer' });
 
       // ✅ So sánh status code
       expect(response.status).toBe(200);
@@ -95,21 +95,21 @@ describe("Thêm mới Khách hàng cho cửa hàng", () => {
       //Gọi API tạo khách hàng với tên khách hàng để trống
       const payloadCreateCus = await createCustomerWithPhoneInvalid6();
       //So sánh mã lỗi trả về
-      await testsCheckFails(callWithAllure(() => createCustomer(payloadCreateCus as any)), 400, errorMessages.customer.createCustomerInvalidPhone);
+      await testsCheckFails(callWithAllure(() => createCustomer(payloadCreateCus as any),{ name: 'createCustomer' }), 400, errorMessages.customer.createCustomerInvalidPhone);
   });
 
   testWithAllure("CUSTOMER_ADD_031 - Thêm mới khách hàng không thành công với phone > 14 số", async () => {
       //Gọi API tạo khách hàng với tên khách hàng để trống
       const payloadCreateCus = await createCustomerWithPhoneInvalid19();
       //So sánh mã lỗi trả về
-      await testsCheckFails(callWithAllure(() => createCustomer(payloadCreateCus as any)), 400, errorMessages.customer.createCustomerInvalidPhone);
+      await testsCheckFails(callWithAllure(() => createCustomer(payloadCreateCus as any),{ name: 'createCustomer' }), 400, errorMessages.customer.createCustomerInvalidPhone);
   });
 
     testWithAllure("CUSTOMER_ADD_032 - Thêm mới khách hàng thành công khi tạo KH có giới tính Nữ", async () => {
       //Gọi API tạo khách hàng với đầy đủ dữ liệu
       const payloadCreateCus = await createCustomerGenderFemale();
 
-      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any));
+      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any),{ name: 'createCustomer' });
 
       // ✅ So sánh status code
       expect(response.status).toBe(200);
@@ -124,7 +124,7 @@ describe("Thêm mới Khách hàng cho cửa hàng", () => {
       //Gọi API tạo khách hàng với đầy đủ dữ liệu
       const payloadCreateCus = await createCustomerGenderMale();
 
-      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any));
+      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any),{ name: 'createCustomer' });
 
       // ✅ So sánh status code
       expect(response.status).toBe(200);
@@ -140,7 +140,7 @@ describe("Thêm mới Khách hàng cho cửa hàng", () => {
       //Gọi API tạo khách hàng với đầy đủ dữ liệu
       const payloadCreateCus = await createCustomerGenderAnother();
 
-      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any));
+      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any),{ name: 'createCustomer' });
 
       // ✅ So sánh status code
       expect(response.status).toBe(200);
@@ -157,21 +157,21 @@ describe("Thêm mới Khách hàng cho cửa hàng", () => {
       const payloadCreateCus = await createCustomerGenderInvalid();
       const numberGender = payloadCreateCus.gender ?? -1;
       //So sánh mã lỗi trả về
-      await testsCheckFails(callWithAllure(() => createCustomer(payloadCreateCus as any)), 400, errorMessages.customer.createCustomerGenderInvalid(numberGender));
+      await testsCheckFails(callWithAllure(() => createCustomer(payloadCreateCus as any),{ name: 'createCustomer' }), 400, errorMessages.customer.createCustomerGenderInvalid(numberGender));
   });
 
     testWithAllure("@smoke CUSTOMER_ADD_036 - Thêm mới khách hàng thất bại khi nhập Email không hợp lệ", async () => {
       //Gọi API tạo khách hàng với tên khách hàng để trống
       const payloadCreateCus = await createCustomerEmailInvalid();
       //So sánh mã lỗi trả về
-      await testsCheckFails(callWithAllure(() => createCustomer(payloadCreateCus as any)), 400, errorMessages.customer.createCustomerInvalidEmail);
+      await testsCheckFails(callWithAllure(() => createCustomer(payloadCreateCus as any),{ name: 'createCustomer' }), 400, errorMessages.customer.createCustomerInvalidEmail);
   });
 
     testWithAllure("@smoke CUSTOMER_ADD_037 - Thêm mới khách hàng thành công khi tạo KH không gắn thẻ tag", async () => {
       //Gọi API tạo khách hàng với đầy đủ dữ liệu
       const payloadCreateCus = await createCustomerNullTags();
 
-      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any));
+      const response = await callWithAllure(() => createCustomer(payloadCreateCus as any),{ name: 'createCustomer' });
 
       // ✅ So sánh status code
       expect(response.status).toBe(200);

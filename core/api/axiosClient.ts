@@ -87,6 +87,9 @@ axiosClient.interceptors.request.use((config) => {
       // Đính kèm testId (nếu có) để post-process dễ map attachment -> test
       __testId: (config.headers as any)['x-test-id'] || null,
     });
+    // In headers và URL ra console để debug
+    console.log('Request URL:', fullUrl);
+    console.log('Request Headers:', config.headers);
   } catch (e) {
     // Nếu attach lỗi thì im lặng, không làm hỏng request
   }

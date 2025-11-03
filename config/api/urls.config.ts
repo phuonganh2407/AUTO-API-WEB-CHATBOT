@@ -80,6 +80,8 @@ export const baseCustomerEndpoints = {
   urlDetailCustomer: `${customerBaseURL}/customer`, // Endpoint lấy chi tiết khách hàng
 
   urlGetListCustomer: `${customerBaseURL}/customer`, // Endpoint lấy danh sách khách hàng
+
+  urlEditCustomer: `${customerBaseURL}/customer`, // Endpoint chỉnh sửa khách hàng
 }
 
 /**
