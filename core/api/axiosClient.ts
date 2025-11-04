@@ -35,13 +35,13 @@ axiosClient.interceptors.request.use((config) => {
 
   // Thêm Storage ID vào header nếu có
   if (storageID) {
-    config.headers['Storage-ID'] = storageID;
+    config.headers['storage-id'] = storageID;
   }
 
   // Thêm Channel ID vào header nếu có
-  if (channelID) {
-    config.headers['Channel-ID'] = channelID;
-  }
+  // if (channelID) {
+  //   config.headers['Channel-ID'] = channelID;
+  // }
 
   // Nếu test wrapper đang chạy, test sẽ set global.__CURRENT_TEST_ID__
   // Thêm header x-test-id để downstream (server/logs) và response interceptor biết thuộc test nào
@@ -87,8 +87,8 @@ axiosClient.interceptors.request.use((config) => {
       __testId: (config.headers as any)['x-test-id'] || null,
     });
     // In headers và URL ra console để debug
-    console.log('Request URL:', fullUrl);
-    console.log('Request Headers:', config.headers);
+    // console.log('Request URL:', fullUrl);
+    // console.log('Request Headers:', config.headers);
   } catch (e) {
     // Nếu attach lỗi thì im lặng, không làm hỏng request
   }
@@ -127,8 +127,11 @@ axiosClient.interceptors.response.use(
       url: err.config?.url,
       status: err.response?.status,
       message: err.message,
-      response: err.response?.data, // Log toàn bộ body lỗi
+      response: err.response?.data,
     });
+    if (err.response?.data) {
+      console.error("Response data details:", JSON.stringify(err.response.data, null, 2));
+    }
 
     // Rethrow để caller (test) nhận và fail đúng cách
     throw err;

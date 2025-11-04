@@ -1,7 +1,0 @@
-{
-  "name": "HTTP Error",
-  "content": "{\n  \"url\": \"https://tmt30.tpos.vn/api-chatbot/shop-manager/v1.1/general_schema/tmt30.tpos.vn/update\",\n  \"status\": 500,\n  \"message\": \"Request failed with status code 500\",\n  \"response\": \"Internal Server Error\",\n  \"__testId\": \"mhjadyx0-ilciko\"\n}",
-  "type": "application/json",
-  "testName": "@smoke ATTRIBUTE_UPDATE_002 - Cập nhật thành công thuộc tính với data hợp lệ",
-  "testId": "mhjadyx0-ilciko"
-}

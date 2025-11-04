@@ -36,5 +36,6 @@ export const baseAuthEndpoints = {
 };
  
 export const baseProductEndpoints = {
-  urlCreateAttribute: `${baseURL}/api-chatbot/shop-manager/v1.1/general_schema/${storageID}/update` 
+  urlCreateAttribute: `${baseURL}/api-chatbot/shop-manager/v1.1/general_schema/${storageID}/update`, // Endpoint tạo thuộc tính sản phẩm
+  urlGetListAttribute: `${baseURL}/api-chatbot/shop-manager/v1.1/general_schema/${storageID}/`, // Endpoint lấy danh sách thuộc tính sản phẩm
 };

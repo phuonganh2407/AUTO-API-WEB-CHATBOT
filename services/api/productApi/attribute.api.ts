@@ -8,6 +8,10 @@ import { baseProductEndpoints } from '../../../config/api/urls.config';
  * @param body  Dữ liệu thuộc tính cần cập nhật
  * @returns
  */
-export async function updateAttribute(body: Partial<attributeBody>) {
-  return await axiosClient.patch(`${baseProductEndpoints.urlCreateAttribute}`, body);
+export async function createAttribute(body: attributeBody) {
+  return await axiosClient.patch(baseProductEndpoints.urlCreateAttribute, body);
+}
+
+export async function getListAttribute(){
+  return await axiosClient.get(baseProductEndpoints.urlGetListAttribute);
 }

@@ -1,7 +1,0 @@
-{
-  "name": "updateAttribute - Error",
-  "content": "{\n  \"message\": \"Request failed with status code 500\",\n  \"data\": \"Internal Server Error\",\n  \"status\": 500\n}",
-  "type": "application/json",
-  "testName": "@smoke ATTRIBUTE_UPDATE_002 - Cập nhật thành công thuộc tính với data hợp lệ",
-  "testId": "mhjadyx0-ilciko"
-}

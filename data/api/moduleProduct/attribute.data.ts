@@ -7,8 +7,8 @@ export async function fullAttributesData(): Promise<Partial<attributeBody>>{
         data: {
             attribute_name: "",
             name: faker.lorem.words(1),
-            values: ["string"],
-            parent_class: ["string"]
+            values: [],
+            parent_class: []
         },
         meta_data: {
             processing_time: 0,
