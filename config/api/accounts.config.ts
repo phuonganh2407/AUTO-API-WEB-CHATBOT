@@ -18,8 +18,8 @@ export const accounts: Record<Env, Account> = {
     client_id: "tmtWebApp"
   },
   prod: {
-    username: "0383513969",
-    password: "Panh2407",
+    username: "hiepnv_prod02",
+    password: "Hiep123456",
     client_id: "tmtWebApp"
   },
 };
