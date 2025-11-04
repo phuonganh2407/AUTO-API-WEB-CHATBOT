@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getSession } from "../../utils/session.helper";
-import { baseURL } from "../../config/api/urls.config";
+import { baseURL, storageID, channelID } from "../../config/api/urls.config";
 import { attachJson } from "../../utils/allure.helper";
 
 /**
@@ -16,7 +16,7 @@ const axiosClient = axios.create({
   baseURL: baseURL,
   timeout: 10000,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 
@@ -27,22 +27,21 @@ axiosClient.interceptors.request.use((config) => {
   }
 
   // Lấy token và shopId từ session (nếu có) để thêm vào header
-  const { token, shopId } = getSession();
-  const env = process.env.ENVIRONMENT || 'prod';
-  const { tenant } = require('../../config/api/accounts.config').accounts[env];
+  const { token } = getSession();
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
 
-  if (shopId) {
-    config.headers.shopId = shopId;
+  // Thêm Storage ID vào header nếu có
+  if (storageID) {
+    config.headers['storage-id'] = storageID;
   }
 
-  // Chỉ thêm tenant khi là request login (ví dụ url chứa 'sign-in')
-  if (config.url && config.url.includes('sign-in')) {
-    config.headers.tenant = tenant;
-  }
+  // Thêm Channel ID vào header nếu có
+  // if (channelID) {
+  //   config.headers['Channel-ID'] = channelID;
+  // }
 
   // Nếu test wrapper đang chạy, test sẽ set global.__CURRENT_TEST_ID__
   // Thêm header x-test-id để downstream (server/logs) và response interceptor biết thuộc test nào
@@ -88,8 +87,8 @@ axiosClient.interceptors.request.use((config) => {
       __testId: (config.headers as any)['x-test-id'] || null,
     });
     // In headers và URL ra console để debug
-    console.log('Request URL:', fullUrl);
-    console.log('Request Headers:', config.headers);
+    // console.log('Request URL:', fullUrl);
+    // console.log('Request Headers:', config.headers);
   } catch (e) {
     // Nếu attach lỗi thì im lặng, không làm hỏng request
   }
@@ -128,8 +127,11 @@ axiosClient.interceptors.response.use(
       url: err.config?.url,
       status: err.response?.status,
       message: err.message,
-      response: err.response?.data, // Log toàn bộ body lỗi
+      response: err.response?.data,
     });
+    if (err.response?.data) {
+      console.error("Response data details:", JSON.stringify(err.response.data, null, 2));
+    }
 
     // Rethrow để caller (test) nhận và fail đúng cách
     throw err;

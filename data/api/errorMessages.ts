@@ -1,6 +1,5 @@
 import { group } from "console";
 import { create } from "domain";
-import { createCustomerGenderInvalid } from "./serviceCustomerData/customer.data";
 
 // Danh sách message lỗi dùng cho test case, chia theo từng service
 export const errorMessages = {

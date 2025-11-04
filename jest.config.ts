@@ -18,7 +18,7 @@ const config: Config.InitialOptions = {
   testMatch: ['**/tests/**/*.test.ts'],
 
   moduleFileExtensions: ['ts', 'js', 'json'],
-  
+
   transform: {
     '^.+\\.ts$': [
       'ts-jest',
@@ -48,16 +48,16 @@ const config: Config.InitialOptions = {
 
   // Không dùng cache theo yêu cầu
   cache: false,
-  
+
   // Giảm workers khi chạy single test
   maxWorkers: process.env.NO_ALLURE === '1' ? 1 : '50%',
-  
+
   // Tắt coverage mặc định
   collectCoverage: false,
-  
+
   // Tắt clear console
   clearMocks: true,
-  
+
   // Timeout
   testTimeout: 10000,
 };
